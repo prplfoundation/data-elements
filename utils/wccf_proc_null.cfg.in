@@ -1,0 +1,16 @@
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Configuration for OpenWrt WCCF process wccf_proc_null
+#
+# Update these values consistent with installed 
+# WCCF Sensors(s)
+#
+
+# These values likely DO NOT require change
+export WCCF_PIDFILE=/tmp/run/wccf_proc_null.pid
+export WCCF_INPUT_PATH=/tmp/wccf/sensor
+export WCCF_OUTPUT_PATH=/tmp/wccf/tx
+export WCCF_LOG_PATH=/root/log
+

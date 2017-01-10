@@ -1,0 +1,338 @@
+{
+  "Device": {
+    "Wifi": {
+      "Scan": [
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "20:aa:4b:e0:88:1d",
+          "SSID": "DianneMarie",
+          "Signal": -23
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 4,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "10:da:43:7a:8a:1d",
+          "SSID": "Boardwalk",
+          "Signal": -63
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "04:a1:51:9d:66:a1",
+          "SSID": "ABDevelopment02a",
+          "Signal": -47
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "10:0d:7f:64:ca:32",
+          "SSID": "AB-SDN-Lab01-bgn",
+          "Signal": -40
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "84:00:2d:c4:69:2b",
+          "SSID": "XFINITY",
+          "Signal": -54
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "84:00:2d:c4:69:28",
+          "SSID": "CBCI-0616-2.4",
+          "Signal": -46
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "44:94:fc:72:ce:b1",
+          "SSID": "ABDevelopment05a",
+          "Signal": -44
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "20:aa:4b:16:11:d0",
+          "SSID": "ab-guest",
+          "Signal": -41
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "dc:fe:07:c4:b0:d2",
+          "SSID": "xfinitywifi",
+          "Signal": -73
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "20:aa:4b:27:d4:5b",
+          "SSID": "ab-guest",
+          "Signal": -72
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "dc:fe:07:c4:b0:d3",
+          "SSID": "XFINITY",
+          "Signal": -73
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "64:a5:c3:63:dd:46",
+          "SSID": "PD-MAC",
+          "Signal": -75
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 1,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "02:18:4a:2f:74:31",
+          "SSID": "Boulder-Nissan-Guest",
+          "Signal": -80
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "90:72:40:1d:2c:56",
+          "SSID": "",
+          "Signal": -48
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 4,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "a0:63:91:8f:5b:c8",
+          "SSID": "POCCI",
+          "Signal": -76
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "84:00:2d:c4:69:2a",
+          "SSID": "xfinitywifi",
+          "Signal": -47
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "02:18:4a:2f:65:0f",
+          "SSID": "",
+          "Signal": -86
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 1,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "02:18:4a:2f:74:3f",
+          "SSID": "",
+          "Signal": -80
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 1,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "02:18:4a:2f:74:30",
+          "SSID": "Boulder-Nissan",
+          "Signal": -81
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 1,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "08:17:35:d0:c3:62",
+          "SSID": "ab-internal",
+          "Signal": -70
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 9,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "e8:37:7a:ec:75:c5",
+          "SSID": "Catalpa202",
+          "Signal": -67
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 4,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "00:19:5b:50:8f:7d",
+          "SSID": "NMB Tech",
+          "Signal": -82
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 8,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "d4:68:4d:32:22:48",
+          "SSID": "BoulderShop",
+          "Signal": -75
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "dc:fe:07:c4:b0:d0",
+          "SSID": "CBCI-3BA0-2.4",
+          "Signal": -65
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "06:18:0a:f4:c5:20",
+          "SSID": "Boulder-Nissan-Guest",
+          "Signal": -81
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 11,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "fa:8f:ca:3a:f5:aa",
+          "SSID": "",
+          "Signal": -74
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 1,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "90:a7:c1:07:69:ce",
+          "SSID": "BRC Private",
+          "Signal": -86
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 1,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "dc:fe:07:8f:58:ba",
+          "SSID": "xfinitywifi",
+          "Signal": -85
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 1,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "00:71:c2:7d:a6:da",
+          "SSID": "xfinitywifi",
+          "Signal": -85
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 2,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "00:24:01:79:20:79",
+          "SSID": "79207A",
+          "Signal": -77
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "14:91:82:6e:dc:df",
+          "SSID": "NAEFBUD",
+          "Signal": -81
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "74:85:2a:35:fe:a8",
+          "SSID": "PropertyBase-2.4",
+          "Signal": -85
+        },
+        {
+          "APIfIndex": 6,
+          "APMACAddress": "44:94:fc:73:55:cc",
+          "APName": "wlan0",
+          "Channel": 6,
+          "CurrentUTCTime": 1485819602,
+          "RemoteMacAddress": "74:85:2a:35:fe:ab",
+          "SSID": "XFINITY",
+          "Signal": -87
+        }
+      ]
+    }
+  }
+}

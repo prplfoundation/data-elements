@@ -1,0 +1,51 @@
+#!/bin/sh /etc/rc.common
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Init script: wccf_proc_null
+# usage: $ /etc/init.d/wccf_proc_null [ enable | disable | start | stop | restart ]
+# To be placed in /etc/init.d
+
+START=90
+STOP=10
+
+source /etc/config/wccf_proc_null.cfg
+
+# From above cfg file (first two may differ):
+# WCCF_PIDFILE=/tmp/run/wccf_proc_null.pid
+# WCCF_INPUT_PATH=/tmp/wccf/sensor
+# WCCF_OUTPUT_PATH=/tmp/wccf/tx
+# WCCF_LOG_PATH=/root/log
+
+
+start() {
+	if [ -f "$WCCF_PIDFILE" ]; then
+		echo "File $WCCF_PIDFILE exists - cannot start wccf_proc_null"
+		exit 1
+	fi
+	echo "Starting wccf_proc_null"
+	mkdir -p $WCCF_INPUT_PATH
+	mkdir -p $WCCF_OUTPUT_PATH
+	mkdir -p $WCCF_LOG_PATH
+	/usr/sbin/wccf_proc_null --input-path=$WCCF_INPUT_PATH --output-path=$WCCF_OUTPUT_PATH >> $WCCF_LOG_PATH/wccf_proc_null.log 2>&1 & echo $! > $WCCF_PIDFILE
+	PID=`cat $WCCF_PIDFILE`
+	echo "Process wccf_proc_null started with pid $PID"
+}
+
+stop() {
+	if [ ! -f "$WCCF_PIDFILE" ]; then
+		echo "File $WCCF_PIDFILE missing - cannot stop wccf_proc_null"
+		exit 1
+	fi
+	echo "Stoping wccf_proc_null"
+	WCCF_PID=`cat $WCCF_PIDFILE`
+	kill -9 $WCCF_PID
+	rm -f $WCCF_PIDFILE
+}
+
+restart() {
+	stop
+	start
+}
+

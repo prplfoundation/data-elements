@@ -1,0 +1,51 @@
+#!/bin/sh /etc/rc.common
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Init script: wccf_tx_rest
+# usage: $ /etc/init.d/wccf_tx_rest [ enable | disable | start | stop | restart ]
+# To be placed in /etc/init.d
+
+START=90
+STOP=10
+
+source /etc/config/wccf_tx_rest.cfg
+
+# From above cfg file (first two may differ):
+# WCCF_RECEIVER_HOST=208.113.103.113
+# WCCF_RECEIVER_PORT=8888
+# WCCF_PIDFILE=/tmp/run/wccf_tx_rest.pid
+# WCCF_INPUT_PATH=/tmp/wccf/tx/rest
+# WCCF_LOG_PATH=/root/log
+
+
+start() {
+	if [ -f "$WCCF_PIDFILE" ]; then
+		echo "File $WCCF_PIDFILE exists - cannot start wccf_tx_rest"
+		exit 1
+	fi
+	echo "Starting wccf_tx_rest"
+	mkdir -p $WCCF_INPUT_PATH
+	mkdir -p $WCCF_LOG_PATH
+	/usr/sbin/wccf_tx_rest --input-path=$WCCF_INPUT_PATH --host=$WCCF_RECEIVER_HOST --port=$WCCF_RECEIVER_PORT >> $WCCF_LOG_PATH/wccf_tx_rest.log 2>&1 & echo $! > $WCCF_PIDFILE
+	PID=`cat $WCCF_PIDFILE`
+	echo "Process wccf_tx_rest started with pid $PID"
+}
+
+stop() {
+	if [ ! -f "$WCCF_PIDFILE" ]; then
+		echo "File $WCCF_PIDFILE missing - cannot stop wccf_tx_rest"
+		exit 1
+	fi
+	echo "Stoping wccf_tx_rest"
+	WCCF_PID=`cat $WCCF_PIDFILE`
+	kill -9 $WCCF_PID
+	rm -f $WCCF_PIDFILE
+}
+
+restart() {
+	stop
+	start
+}
+

@@ -1,0 +1,67 @@
+include $(TOPDIR)/rules.mk
+
+PKG_NAME:=wccf
+PKG_VERSION:=1.2.0
+PKG_RELEASE:=1
+
+PKG_BUILD_DIR:=$(BUILD_DIR)/wccf-$(PKG_VERSION)
+PKG_SOURCE:=wccf-$(PKG_VERSION).tar.gz
+#PKG_SOURCE_URL:=@SF/wccf
+#PKG_MD5SUM:=
+PKG_CAT:=zcat
+
+include $(INCLUDE_DIR)/package.mk
+
+define Package/wccf
+  SECTION:=base
+  CATEGORY:=Network
+  TITLE:=Wireless Common Collection Framework - WCCF
+  DEPENDS:=+PACKAGE_kmod-cfg80211:libnl-tiny +libcurl +libjson-c +libiwinfo +libiw  +libnl-tiny +libc 
+  URL:=http://wccf.appliedbroadband.com/
+endef
+
+define Package/wccf/description
+    Wireless Common Collection Framework - WCCF
+endef
+
+define Build/Configure
+	$(call Build/Configure/Default)
+endef
+
+TARGET_CPPFLAGS:= \
+	-I$(STAGING_DIR)/usr/include/libnl-tiny \
+	-I$(STAGING_DIR)/usr/include/json-c \
+	$(TARGET_CPPFLAGS) \
+	-DCONFIG_LIBNL20 \
+	-D_GNU_SOURCE
+
+MAKE_FLAGS += \
+	CFLAGS="$(TARGET_CPPFLAGS) $(TARGET_CFLAGS) -ffunction-sections -fdata-sections" \
+	LDFLAGS="$(TARGET_LDFLAGS) -Wl,--gc-sections" \
+	NL1FOUND="" NL2FOUND=Y \
+	NLLIBNAME="libnl-tiny" \
+	LIBS="-lm -lnl-tiny -liwinfo -ljson-c -lcurl" \
+	V=1
+
+define Package/wccf/install
+	$(INSTALL_DIR) $(1)/usr/sbin
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_scan $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_station $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_survey $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/processors/wccf_proc_null $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/transmitters/wccf_tx_rest $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_util_purge.sh $(1)/usr/sbin/
+	$(INSTALL_DIR) $(1)/etc/init.d/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_tx_rest $(1)/etc/init.d/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_null $(1)/etc/init.d/
+	$(INSTALL_DIR) $(1)/etc/crontabs/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/cron.update $(1)/etc/crontabs/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/root $(1)/etc/crontabs/
+	$(INSTALL_DIR) $(1)/root/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_sensors.cron $(1)/root/
+	$(INSTALL_DIR) $(1)/etc/config/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_tx_rest.cfg $(1)/etc/config/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_null.cfg $(1)/etc/config/
+endef
+
+$(eval $(call BuildPackage,wccf,+libiw))

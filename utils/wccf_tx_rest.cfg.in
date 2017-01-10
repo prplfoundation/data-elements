@@ -1,0 +1,18 @@
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Configuration for OpenWrt WCCF process wccf_tx_rest
+#
+# Update these values consistent with installed 
+# WCCF Sensors(s)
+#
+# These values likely DO require change
+export WCCF_RECEIVER_HOST=208.113.130.113
+export WCCF_RECEIVER_PORT=8888
+
+# These values likely DO NOT require change
+export WCCF_PIDFILE=/tmp/run/wccf_tx_rest.pid
+export WCCF_INPUT_PATH=/tmp/wccf/tx
+export WCCF_LOG_PATH=/root/log
+

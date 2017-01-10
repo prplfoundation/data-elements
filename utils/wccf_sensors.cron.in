@@ -1,0 +1,6 @@
+*/5 * * * * /usr/sbin/wccf_sensor_scan --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
+*/5 * * * * /usr/sbin/wccf_sensor_scan --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
+*/5 * * * * /usr/sbin/wccf_sensor_station --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
+*/5 * * * * /usr/sbin/wccf_sensor_station --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
+*/5 * * * * /usr/sbin/wccf_sensor_survey --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
+*/5 * * * * /usr/sbin/wccf_sensor_survey --interface-name=wlan1 --output-dir=/tmp/wccf/sensor

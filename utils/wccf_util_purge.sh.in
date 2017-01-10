@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Because the openwrt find command does not support mmin, will purge based on FILE COUNT
+#
+# parameters:
+# $1 = number of files to keep
+# $2 = directory to examine for files (searches this and all underlying directories)
+#
+
+if [ $# -ne 2 ]; then
+    echo "  usage: wccf_util_purge.sh  <number_of_files_to_keep>  <target_directory>
+    echo "example: wccf_util_purge.sh  300  /tmp/wccf_sensor_output
+    exit 1
+fi
+
+logTime=`date +%Y%m%d-%H:%M:%S`
+
+FIND=/usr/bin/find
+AWK=/usr/bin/awk
+RM=/bin/rm
+LOGGER=/usr/bin/logger
+DU=/usr/bin/du
+
+filemax=$1
+
+# check if directory exists
+if [ ! -d $2 ]; then
+  echo $logTime purgeFiles.sh -- error $2 does not exist
+  exit 1
+fi
+
+startamount=`$DU -sk $2 | $AWK 'begin {fs = " "}; {print $1} ;'`
+logstartamount=`$DU -sh $2 | $AWK 'begin {fs = " "}; {print $1} ;'`
+rootfsAvail=`df -h | grep rootfs | awk '{print $4}'`
+rootfsPerc=`df -h | grep rootfs | awk '{print $5}'`
+
+filecnt=`ls $2 | wc -l`
+
+if [ $filecnt -gt $filemax ]; then
+  let headcnt=$filecnt-$filemax
+  for i in `ls -rt $2 | head -$headcnt`
+  do
+    rm -f $2/$i
+    echo $logTime purgeFiles.sh -- purged: $i
+  done
+  endamount=`$DU -sk $2 | $AWK 'begin {fs = " "}; {print $1} ;'`
+  logendamount=`$DU -sh $2 | $AWK 'begin {fs = " "}; {print $1} ;'`
+
+  let totalpurged=$startamount-$endamount
+
+  echo $logTime purgeFiles.sh -- purged: $totalpurged kB from $2
+  endfilecnt=`ls $2 | wc -l`
+  rootfsAvail=`df -h | grep rootfs | awk '{print $4}'`
+  rootfsPerc=`df -h | grep rootfs | awk '{print $5}'`
+  echo $logTime purgeFiles.sh -- purged: start filecnt: $filecnt filemax: $filemax end filecnt: $endfilecnt archive dir: $logendamount rootfs Avail: $rootfsAvail rootfs \%Used: $rootfsPerc
+  exit 0
+fi
+
+echo $logTime purgeFiles.sh -- nothing purged filecnt: $filecnt filemax: $filemax archive dir: $logstartamount rootfs Avail: $rootfsAvail rootfs \%Used: $rootfsPerc

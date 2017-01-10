@@ -1,0 +1,21 @@
+This directory (wccf/qa/results_20170131) contains testing results
+collected during the dev cycle leading up to Jan 31, 2017. 
+
+File wccf_qa_all_sensors.out is produced by coping these files -
+
+wccf/qa/sensors/wccf_qa_do_all_sensors.sh
+wccf/qa/sensors/wccf_qa_all_sensors.sh
+
+To the Access Point, here: 
+
+/etc/config/
+
+With stations connected to the Access Point, the following command
+is run on the Access Point:
+
+$ /etc/config/wccf_qa_do_all_sensors.sh
+
+Within the resulting output file (wccf_qa_all_sensors.out) are the
+results of each sensor's execution with a similar collection of this
+date using other utilities built on nl80211 - iw and iwinfo.
+
