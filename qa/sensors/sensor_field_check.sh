@@ -79,7 +79,7 @@ do_field_check interface Interface CenterFreq1 R2
 do_field_check interface Interface CenterFreq2 R2
 do_field_check interface Interface ChannelWidth R2
 do_field_check interface Interface CurrentUTCTime R2
-do_field_check interface Interface HTChannelType R2
+do_field_check interface Interface HtChannelType R2
 do_field_check scan Scan APIfIndex R1
 do_field_check scan Scan APMACAddress R1
 do_field_check scan Scan APName R1

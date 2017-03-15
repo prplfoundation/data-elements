@@ -18,7 +18,7 @@ Device.WiFi.Interface.CenterFreq1 R2
 Device.WiFi.Interface.CenterFreq2 R2
 Device.WiFi.Interface.ChannelWidth R2
 Device.WiFi.Interface.CurrentUTCTime R2
-Device.WiFi.Interface.HTChannelType R2
+Device.WiFi.Interface.HtChannelType R2
 Device.WiFi.Scan.APIfIndex R1
 Device.WiFi.Scan.APMACAddress R1
 Device.WiFi.Scan.APName R1
