@@ -1,13 +1,13 @@
 #WCCF Admin Guide#
-##Version 1.2.0.  January 31, 2017##
+##Version 1.3.0.  March 15, 2017##
 
 Copyright (c) 2017 Applied Broadband, Inc., and Cable Television Laboratories, Inc. ("CableLabs")
 
 ##Contents##
 
 1. Overview
-2. Installing WCCF Version 1.2.0
-3. Configuring WCCF Version 1.2.0 Apps
+2. Installing WCCF Version 1.3.0
+3. Configuring WCCF Version 1.3.0 Apps
     - i. Space Management
     - ii. Sensors
     - iii. Processors
@@ -17,11 +17,14 @@ Copyright (c) 2017 Applied Broadband, Inc., and Cable Television Laboratories, I
 
 ##1. Overview##
 
-Wi-Fi Common Collection Framework (WCCF), Version 1.2.0, targets OpenWrt-based Access Point (AP) hardware (https://openwrt.org/) running OpenWrt branch master (aka Designated Driver).  WCCF Version 1.2.0 also has focused on supporting the Netgear N600 Model WNDR3800 access point device.
+Wi-Fi Common Collection Framework (WCCF), Version 1.3.0, targets OpenWrt-based Access Point (AP) hardware (https://openwrt.org/) running OpenWrt branch master (aka Designated Driver).  WCCF Version 1.3.0 has focused on supporting the following access point devices:
+
++ Netgear N600 Model WNDR3800 dual band with 2.4GHz 802.11b/g/n and 5GHz 802.11a/n,
++ TP-Link AC1750 Model Archer C7 dual band with 5GHz 802.11a/n/ac capability.
 
 This document covers the details of configuring and operating WCCF applications within an OpenWrt Access Point image built with WCCF.  This document also addresses the configuration of a "Receiver" network element to which the WCCF-enabled Access Point will send its collected data.
 
-The WCCF Version 1.2.0 release includes a fully-functional system image ready to flash onto the Netgear device (see above) for demonstration, testing, and production AP operation.  See Section 4, Configuring the OpenWrt Device, for details on AP configuration with this image.
+The WCCF Version 1.3.0 release includes fully-functional system images ready to flash onto each of the Netgear and TP-Link devices (see above) for demonstration, testing, and production AP operation.  See Section 4, Configuring the OpenWrt Device, for details on AP configuration with these images.
 
 Other technical documentation provided in the release covers the following topics:
 
@@ -31,32 +34,34 @@ Other technical documentation provided in the release covers the following topic
 + Building WCCF into OpenWrt ([wccf/doc/HOWTO_build_flashable_image.md](./HOWTO_build_flashable_image.md))
 + Samples of each Sensor's output content and format in the reponsitory [wccf/doc/](./).
 
-##2. Installing WCCF Version 1.2.0##
+##2. Installing WCCF Version 1.3.0##
 
-The WNDR3800 image file in release 1.2.0 is an OpenWrt "sysupgrade" format image.  This image is suitable to upgrade ("flash") an existing OpenWrt Netgear WNDR3800.  It is not suitable for use as a "first installation" of OpenWrt onto a factory-image based WNDR3800 device.  Such a "first installation" image can be built following the steps detailed in the HOWTO documents above.
+The image files included with release 1.3.0 are OpenWrt "sysupgrade" format images.  This format is suitable to upgrade ("flash") an existing OpenWrt device.  It is not suitable for use as a "first installation" of OpenWrt onto a factory-image based access point.  Such a "first installation" image can be built following the steps detailed in the HOWTO documents above.
 
-To install the provided image, one can either interact with the target WNDR3800 using its Web-based U/I, or one can scp the image onto the device, then ssh to the device and force the flash using the command line.
+To install either provided image, one can either interact with the target device using its Web-based OpenWrt U/I, or one can scp the image onto the device, then ssh to the device and force the flash using the command line.
 
 ###Using the Web-based U/I to Reflash the Device###
 Access the Access Point's OpenWrt Web U/I from any web browser.  You will need the root-user password for the device to log on.
 
 Under the System menu, choose item "Backup / Flash Firmware" and then scroll down to "Flash new firmware image."
 
-Decide whether to check the "Keep settings" box (**recommended**).  If you do not select to keep settings, various AP values such as IP addresses and wireless settings likely will be lost (effectively like doing a firmware reset on any AP).  Additionally, the wireless radios themselves may be disabled when settings are lost.  Finally, the root password for ssh access may be lost, requiring you to telnet onto the device to reset the root password, thus restoring ssh access.  (*Note that these are all basic OpenWrt behaviors, not WCCF behaviors.  Consequently, it is recommended that you initially work locally, as a Station attached to the AP - wireless or wired - until such behaviors become familiar.*)
+Decide whether to check the "Keep settings" box (**recommended**).  See "Reflashing using the Command Line", below, for tips on how to see exactly what will be preserved in a reflash if you choose "Keep settings", and how to interactively alter the specific behavior of "Keep settings".
+
+If you do not select to keep settings, various AP values such as IP addresses and wireless settings likely will be lost (effectively like doing a firmware reset on any AP).  Additionally, the wireless radios themselves may be disabled when settings are lost.  Finally, the root password for ssh access may be lost, requiring you to telnet onto the device to reset the root password, thus restoring ssh access.  (*Note that these are all basic OpenWrt behaviors, not WCCF behaviors.  Consequently, it is recommended that you initially work locally, as a Station attached to the AP - wireless or wired - until such behaviors become familiar.*)
 
 ****
-WARNING: Resetting the AP, especially if *not* saving settings, may cause loss of network access depending upon how you have accessed the device.  For example, the WAN port may revert to 192.168.1.1 from a previously defined static address, or may revert from static to a prior, or new, DHCP-assigned IP address.  In such cases, your only alternative to reconnect may be directly through a LAN port on the AP.
+WARNING: Resetting the AP, especially if *not* saving settings, may cause loss of network access depending upon how you have connected to the device.  For example, the WAN port may revert to address 192.168.1.1 from a previously defined static address, or may revert from static to a prior, or new, DHCP-assigned IP address.  In such cases, your only alternative to reconnect may be directly through a LAN port on the AP (which may require physical access to the device).
 ****
 
-Continuing using the Web U/I, using the Choose File browser button, select the desired image file (in this release it will be named openwrt-ar71xx-generic-wndr3800-squashfs-sysupgrade.bin), then proceed with the re-flash by clicking the "Flash Image..." button, and finally, the "Proceed" button.  
+Continuing using the Web U/I, using the Choose File browser button, select the desired image file (in this release it will be named openwrt-ar71xx-generic-\<profile\>-squashfs-sysupgrade.bin, where \<profile\> is wndr3800 or archer-c7-v2), then proceed with the re-flash by clicking the "Flash Image..." button, and finally, the "Proceed" button.  
 
-Typically, the flash and reboot will take 3-4 minutes.
+Typically, the flash and reboot will take no more than 3-4 minutes.
 
 ###Reflashing using the Command Line###
 
-Rather than using the OpenWrt Web U/I, the new image can be copied (scp) to the Netgear and flashed using the command line.  SSH access to the AP is required for the second step in this process.  Note that to connect to the AP over its WAN (vs a LAN port) the SSH process (dropbear) must be configured to allow SSH through that interface, and the firewall process (firewall) must have a rule to allow TCP through the WAN interface, port 22.
+Rather than using the OpenWrt Web U/I, the new image can be copied (scp) to the device and flashed using the command line.  SSH access to the AP is required for the second step in this process.  Note that to connect to the AP over its WAN port (vs a LAN port) the SSH process (called dropbear in OpenWrt) must be configured to allow SSH through that WAN interface (which is disabled by default), and the firewall process (called firewall) must have a rule to allow TCP through the WAN interface, port 22.  You may also wish to allow port 80 access (http) through the WAN interface, also.
 
-For these changed to be made, access first must take place over a LAN port - either through SSH or via the Web U/I.  The following steps describe a command-line approach.
+For these changes to be made, access first must take place over a LAN port - either through SSH or via the Web U/I.  The following steps describe a command-line approach.
 
 In file `/etc/config/firewall`, enable ssh access over WAN, and (*optionally*) http over WAN.  Add these sections to the file:
 
@@ -64,7 +69,7 @@ In file `/etc/config/firewall`, enable ssh access over WAN, and (*optionally*) h
         option target 'ACCEPT'
         option src 'wan'
         option proto 'tcp'
-        option dest_port '22'du
+        option dest_port '22'
         option name 'Allow-SSH-WAN'
         
     config rule
@@ -78,7 +83,10 @@ Then, restart the firewall process:
 
     $ /etc/init.d/firewall restart
 
-In file `/etc/config/dropbear`, comment out `option Interface 'lan'`.
+In file `/etc/config/dropbear`, include only one of the two option statements below to designate which interface allows SSH.  For support on both interfaces, **remove** both statements from the config (which would correspond to 'unspecified' in the Web U/I):
+
+    option Interface 'lan'
+    option Interface 'wan'
 
 Then, restart the sshd process (dropbear):
 
@@ -86,22 +94,29 @@ Then, restart the sshd process (dropbear):
 
 At this point, the AP will allow HTTP and SSH access over the WAN interface.
 
-Finally, from a remote (connected) computer:
+Finally, from a remote (connected) computer enter these commands (where \<profile\> represents your Netgear or your TP-Link selection during the OpenWrt build):
 
-    $ scp <image_file_loc>/openwrt-ar71xx-generic-wndr3800-squashfs-sysupgrade.bin  root@<Netgear_IP>:
-    $ ssh root@<Netgear_IP>
+    $ scp <image_file_loc>/openwrt-ar71xx-generic-<profile>-squashfs-sysupgrade.bin  root@<AccessPoint_IP>:
+    $ ssh root@<AccessPoint_IP>
 
-    root@OpenWrt:~# sysupgrade openwrt-ar71xx-generic-wndr3800-squashfs-sysupgrade.bin
+    root@OpenWrt:~# sysupgrade openwrt-ar71xx-generic-<profile>-squashfs-sysupgrade.bin
 
-At this stage, the AP will load the new image and reboot.
+At this stage, the AP will load the new image and reboot with the same behavior as the above Web U/I upgrade with "Keep settings" selected.  If you wish to discard settings, or alter which settings are kept, you can view the help for command sysupgrade with the -h cmd line argument.  There you'll see additional options including 'do not save' and 'interactive mode' which offer options.
 
-For more on command-line upgrade, see [https://wiki.openwrt.org/doc/howto/generic.sysupgrade](https://wiki.openwrt.org/doc/howto/generic.sysupgrade).
+For more on command-line upgrade, see:
+
+ - [https://wiki.openwrt.org/doc/techref/sysupgrade](https://wiki.openwrt.org/doc/techref/sysupgrade).
+ - [https://wiki.openwrt.org/doc/howto/generic.sysupgrade](https://wiki.openwrt.org/doc/howto/generic.sysupgrade).
+
+For an illustration of the above process on the Netgear (which is very similar to the TP-LINK process), you may view:
+
+- [wccf/doc/HOWTO_FlashTheNetgearWNDR3800.md](./HOWTO_FlashTheNetgearWNDR3800.md)
 
 
-##3. Configuring WCCF Version 1.2.0 Apps##
+##3. Configuring WCCF Version 1.3.0 Apps##
 
 ###i. Space Management###
-Storage space generally is limited on OpenWrt devices.  WCCF apps use some storage space on the AP.  Generally, they configure space under /tmp for files until they are transferred to a Receiver at another address.
+Storage space generally is limited on OpenWrt devices.  WCCF apps use some storage space on the AP.  Generally, they configure space under /tmp for files only until they are transferred to a Receiver at another address.
 
 App logging is initially configured to go to /root/log.  Although this location may be on a smaller partion than /tmp, content is preserved across reboots which is a benefit.
 
@@ -109,25 +124,28 @@ See the following sections for details on configuring file locations.
 
 ###ii. Sensors###
 
-In WCCF, Version 1.2.0, Sensors exist that obtain Wi-Fi information and store it in files for subsequent delivery through a Transmitter to a remote Receiver.  In Version 1.2.0, crontabs are used to trigger the Sensors periodically (initially, at 5-minute intervals).  The WCCF Version 1.2.0 build/install package installs a cronjob for user root with pre-configured sensor entries.  This cronjob starts on boot after an image flash.
+In WCCF, Version 1.3.0, Sensors exist that obtain Wi-Fi information and store it in files for subsequent delivery through a Transmitter to a remote Receiver.  In Version 1.3.0, crontabs are used to trigger the Sensors periodically (initially, at 5-minute intervals).  The WCCF Version 1.3.0 build/install package installs a cronjob for user root with pre-configured sensor entries.  This cronjob starts on boot after an image flash.
 
-Note, if 'Keep settings' is selected - see above - a prior crontab may be preserved.)
+Note, if 'Keep settings' is selected - see above - a prior crontab may be preserved and operational instead of the 1.3.0 crontab. Regardless, the Version 1.3.0 cronjob is always present and available for reference in file form as `/root/wccf_sensors.cron`.
 
-This cronjob can be viewed and changed through the Web U/I at menu `System -> Scheduled Tasks`.  Alternatively, when ssh'd into the AP, from the command line use `$ crontab -e` to view and edit these configurations.
+The current cronjob can be viewed and changed through the Web U/I at menu `System -> Scheduled Tasks`.  Alternatively, when ssh'd into the AP, from the command line use `$ crontab -e` to view and edit these configurations, and `$ crontab -h` for more options.
 
-There are three Sensors in WCCF, 1.2.0: 
+There are four Sensors in WCCF, 1.3.0: 
 
 - /usr/sbin/wccf_sensor_scan
 - /usr/sbin/wccf_sensor_station
-- /usr/sbin/wccf_sensor_survey
+- /usr/sbin/wccf_sensor_channel
+- /usr/sbin/wccf_sensor_interface
 
-Each must be configured with cmd line arguments that designate (a) a specific interface and (b) a file output directory.  Note that the output directory should match the input directory configured for the Transmitter running on the AP (see below).  See the existing cronjob for further details.
+Each must be configured with cmd line arguments that designate (a) a specific interface\*\* and (b) a file output directory.  Note that the output directory (b) should match the input directory configured for the Transmitter running on the AP (see below).  See the existing crontab for examples of invoking sensors.
+
+\*\* Sensor wccf_sensor_interface does not accept an interface; rather, it executes upon all interfaces each invocation.
 
 Output of the sensors is in JSON format.  Specific output-content of each Sensor is documented in the WCCF git respository [wccf/doc/](./) directory.
 
 ###iii. Processors###
 
-In WCCF, Processors are apps intended (generally) to accept Sensor output and transform it in some fashion prior to delivery by a Transmitter to a corresponding Receiver.  In the base Version 1.2.0, there is a single Processor that demonstrates this architectural relationship by merely transferring Sensor output to the Transmitter's input directory.  This Processor is named wccf_proc_null.
+In WCCF, Processors are apps intended (generally) to accept Sensor output and transform it in some fashion prior to delivery by a Transmitter to a corresponding Receiver.  In the base Version 1.3.0, there is a single Processor that demonstrates this architectural relationship by merely transferring Sensor output to the Transmitter's input directory.  This Processor is named wccf_proc_null.
 
 The config file for wccf_proc_null is file [`/etc/config/wccf_proc_null.cfg`](../utils/wccf_proc_null.cfg.in).  Its content is largely self documenting and is reproduced in its entirety here:
 
@@ -151,11 +169,11 @@ Under default OpenWrt behavior, changes to this config file will survive a refla
 
 The init script for wccf_proc_null is file [`/etc/init.d/wccf_proc_null`](../utils/wccf_proc_null.in).  It controls the location of logging output as well as illustrates the mapping of the above variables in the config file to specfic cmd line input parameters of the process.
 
-Process wccf_proc_null is configured to start on boot by virtue of its init script installed in /etc/init.d/.
+Process wccf_proc_null is configured to start on boot by virtue of the presence of its init script installed in /etc/init.d/.  (In other words, there is no chkconfig utility in OpenWrt.)
 
 ###iv. Transmitters###
 
-In WCCF, the Transmitter element is responsible for moving data from the WCCF Agent to a Receiver.  In Version 1.2.0, there is a single Transmitter that is configured to accept output from the above Processor and send it off of the AP to a configured Receiver using REST.  This Transmitter is named wccf_tx_rest.
+In WCCF, the Transmitter element is responsible for moving data from the WCCF Agent to a Receiver.  In Version 1.3.0, there is a single Transmitter that is configured to accept output from the above Processor and send it off of the AP to a configured Receiver using REST.  This Transmitter is named wccf_tx_rest.
 
 The config file for wccf_tx_rest is file [`/etc/config/wccf_tx_rest.cfg`](../utils/wccf_tx_rest.cfg.in).  Its content is largely self documenting and is reproduced in its entirety here:
 
@@ -250,7 +268,7 @@ The designated output directory will be created (if necessary).
 
 OpenWrt offers a full Web-based U/I for configuration and management.  While this U/I is only optionally present on any OpenWrt device, the build instructions in [wccf/doc/HOWTO_build_flashable_image.md](./HOWTO_build_flashable_image.md) include the steps required to insure the Web U/I's presence.
 
-WCCF Version 1.2.0 Apps (see Section 3) assume certain settings within the Access Point.  Use of the Web U/I is recommended to set or change these and other device settings.
+WCCF Version 1.3.0 Apps (see Section 3) assume certain settings within the Access Point.  Use of the Web U/I is recommended to set or change these and other device settings.
 
 ###i. Scheduled Tasks (crontab)###
 
@@ -270,5 +288,7 @@ If the Firewall rules presented above (Section 2) have been added, these rules c
 
 ###iv. Build Image Management###
 
-Over time, OpenWrt images may proliferate, representing various options, etc.  This is a file management issue on the build machine.  However, on the Access Point itself, it's useful to be able to identify the origin of the flashed image.  In the Web U/I, under `Status -> Kernel Log`, the first line shown includes the build username@hostname along with a build timestamp.
+Over time, OpenWrt images may proliferate, representing various options, etc.  This is a file management issue on the build machine.  However, on the Access Point itself, it's useful to be able to identify the origin of the flashed image.  In the Web U/I, under `Status -> System Log`, the first line shown includes the build username@hostname along with a build timestamp.  Alternatively, you may type ```logread``` at the command line in an ssh session to view syslog.
+
+More detail on OpenWrt logging is available here: [https://wiki.openwrt.org/doc/howto/log.essentials](https://wiki.openwrt.org/doc/howto/log.essentials).
 

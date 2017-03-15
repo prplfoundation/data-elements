@@ -1,0 +1,1092 @@
+Formatted Output from ./wccf_sensor_test_output/WNDR3800/wccf/
+
+======================================================================================
+FILE: 44:94:fc:73:55:cd_channel-wlan0_2017031420005600.json
+{
+    "Device": {
+        "Wifi": {
+            "Channel": [
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 114,
+                    "ChannelBusyTime": 30,
+                    "ChannelNumber": 1,
+                    "ChannelReceiveTime": 20,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2412,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 23,
+                    "ChannelNumber": 2,
+                    "ChannelReceiveTime": 10,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2417,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 22,
+                    "ChannelNumber": 3,
+                    "ChannelReceiveTime": 8,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2422,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 23,
+                    "ChannelNumber": 4,
+                    "ChannelReceiveTime": 4,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2427,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 32,
+                    "ChannelNumber": 5,
+                    "ChannelReceiveTime": 15,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2432,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 31,
+                    "ChannelNumber": 6,
+                    "ChannelReceiveTime": 24,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2437,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 42,
+                    "ChannelNumber": 7,
+                    "ChannelReceiveTime": 24,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2442,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 22,
+                    "ChannelNumber": 8,
+                    "ChannelReceiveTime": 4,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2447,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 26,
+                    "ChannelNumber": 9,
+                    "ChannelReceiveTime": 9,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2452,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 21,
+                    "ChannelNumber": 10,
+                    "ChannelReceiveTime": 13,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2457,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelActiveTime": 2504359,
+                    "ChannelBusyTime": 620628,
+                    "ChannelNumber": 11,
+                    "ChannelReceiveTime": 526203,
+                    "ChannelTransmitTime": 45460,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 2462,
+                    "InUse": 1,
+                    "Noise": -95
+                }
+            ]
+        }
+    }
+}
+======================================================================================
+FILE: 44:94:fc:73:55:cd_channel-wlan1_2017031420005600.json
+{
+    "Device": {
+        "Wifi": {
+            "Channel": [
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 2496732,
+                    "ChannelBusyTime": 109623,
+                    "ChannelNumber": 36,
+                    "ChannelReceiveTime": 95436,
+                    "ChannelTransmitTime": 934,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5180,
+                    "InUse": 1,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 40,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5200,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 7,
+                    "ChannelNumber": 44,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5220,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 7,
+                    "ChannelNumber": 48,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5240,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 52,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5260,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 56,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5280,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 8,
+                    "ChannelNumber": 60,
+                    "ChannelReceiveTime": 2,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5300,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 64,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5320,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 10,
+                    "ChannelNumber": 100,
+                    "ChannelReceiveTime": 3,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5500,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 104,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5520,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 108,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5540,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 112,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5560,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 11,
+                    "ChannelNumber": 116,
+                    "ChannelReceiveTime": 4,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5580,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 8,
+                    "ChannelNumber": 120,
+                    "ChannelReceiveTime": 2,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5600,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 7,
+                    "ChannelNumber": 124,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5620,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 9,
+                    "ChannelNumber": 128,
+                    "ChannelReceiveTime": 3,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5640,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 7,
+                    "ChannelNumber": 132,
+                    "ChannelReceiveTime": 1,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5660,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 11,
+                    "ChannelNumber": 136,
+                    "ChannelReceiveTime": 4,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5680,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 140,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5700,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 8,
+                    "ChannelNumber": 149,
+                    "ChannelReceiveTime": 2,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5745,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 7,
+                    "ChannelNumber": 153,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5765,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 7,
+                    "ChannelNumber": 157,
+                    "ChannelReceiveTime": 1,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5785,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 7,
+                    "ChannelNumber": 161,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5805,
+                    "InUse": 0,
+                    "Noise": -95
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelActiveTime": 109,
+                    "ChannelBusyTime": 6,
+                    "ChannelNumber": 165,
+                    "ChannelReceiveTime": 0,
+                    "ChannelTransmitTime": 0,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5825,
+                    "InUse": 0,
+                    "Noise": -95
+                }
+            ]
+        }
+    }
+}
+======================================================================================
+FILE: 44:94:fc:73:55:cd_interface_2017031420005700.json
+{
+    "Device": {
+        "Wifi": {
+            "Interface": [
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "CenterFreq1": 5190,
+                    "ChannelWidth": "40",
+                    "CurrentUTCTime": 1489521657,
+                    "HtChannelType": "HT40+"
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "CenterFreq1": 2462,
+                    "ChannelWidth": "20",
+                    "CurrentUTCTime": 1489521657,
+                    "HtChannelType": "HT20"
+                }
+            ]
+        }
+    }
+}
+======================================================================================
+FILE: 44:94:fc:73:55:cd_scan-wlan0_2017031420005400.json
+{
+    "Device": {
+        "Wifi": {
+            "Scan": [
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 1,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2412,
+                    "RemoteMACAddress": "dc:fe:07:c4:b0:d3",
+                    "SSID": "XFINITY",
+                    "Signal": -74
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 1,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2412,
+                    "RemoteMACAddress": "90:72:40:1d:2c:56",
+                    "SSID": "",
+                    "Signal": -43
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 1,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2412,
+                    "RemoteMACAddress": "dc:fe:07:c4:b0:d2",
+                    "SSID": "xfinitywifi",
+                    "Signal": -75
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 3,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2422,
+                    "RemoteMACAddress": "10:da:43:7a:8a:1d",
+                    "SSID": "Boardwalk",
+                    "Signal": -51
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 1,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2412,
+                    "RemoteMACAddress": "00:25:2e:28:fc:d1",
+                    "SSID": "96b725",
+                    "Signal": -71
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 4,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2427,
+                    "RemoteMACAddress": "a0:63:91:8f:5b:c8",
+                    "SSID": "POCCI",
+                    "Signal": -69
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 4,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2427,
+                    "RemoteMACAddress": "a0:63:91:e6:0e:ff",
+                    "SSID": "MBS",
+                    "Signal": -78
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "04:a1:51:9d:66:a1",
+                    "SSID": "ABDevelopment02a",
+                    "Signal": -39
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "20:aa:4b:16:11:d0",
+                    "SSID": "ab-guest",
+                    "Signal": -40
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "64:a5:c3:63:dd:46",
+                    "SSID": "PD-MAC",
+                    "Signal": -67
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "20:aa:4b:27:d4:5b",
+                    "SSID": "ab-guest",
+                    "Signal": -62
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "08:17:35:d0:c3:62",
+                    "SSID": "\u000e\u0014",
+                    "Signal": -63
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "42:49:0f:73:3e:8e",
+                    "SSID": "DIRECT-8e-HP M477 LaserJet",
+                    "Signal": -72
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "10:0d:7f:64:ca:32",
+                    "SSID": "AB-SDN-Lab01-bgn",
+                    "Signal": -29
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "02:18:4a:2f:74:30",
+                    "SSID": "Boulder-Nissan",
+                    "Signal": -83
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "02:18:4a:2f:74:31",
+                    "SSID": "Boulder-Nissan-Guest",
+                    "Signal": -83
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 6,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2437,
+                    "RemoteMACAddress": "9c:d2:1e:83:ec:5c",
+                    "SSID": "HP-Print-5C-LaserJet 1102",
+                    "Signal": -89
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 8,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2447,
+                    "RemoteMACAddress": "d4:68:4d:32:22:48",
+                    "SSID": "BoulderShop",
+                    "Signal": -79
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 9,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2452,
+                    "RemoteMACAddress": "e8:37:7a:ec:75:c5",
+                    "SSID": "Catalpa202",
+                    "Signal": -70
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 9,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2452,
+                    "RemoteMACAddress": "00:19:5b:50:8f:7d",
+                    "SSID": "NMB Tech",
+                    "Signal": -81
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "84:00:2d:c4:69:2b",
+                    "SSID": "XFINITY",
+                    "Signal": -64
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "78:f2:9e:b7:a4:48",
+                    "SSID": "CBCI-5218-2.4",
+                    "Signal": -72
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "84:00:2d:c4:69:2a",
+                    "SSID": "xfinitywifi",
+                    "Signal": -57
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "18:d6:c7:6d:5a:25",
+                    "SSID": "ABDevelopment11a",
+                    "Signal": -44
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "84:00:2d:c4:69:28",
+                    "SSID": "CBCI-0616-2.4",
+                    "Signal": -64
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "02:18:4a:2f:65:0f",
+                    "SSID": "",
+                    "Signal": -86
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "08:bd:43:a9:84:b7",
+                    "SSID": "GilaAck",
+                    "Signal": -85
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "50:67:f0:f2:da:44",
+                    "SSID": "myqwest9752",
+                    "Signal": -86
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "b6:e6:4f:6b:87:a5",
+                    "SSID": "SETUP",
+                    "Signal": -86
+                },
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "ChannelNumber": 11,
+                    "CurrentUTCTime": 1489521654,
+                    "Frequency": 2462,
+                    "RemoteMACAddress": "58:8b:f3:02:e2:d7",
+                    "SSID": "CenturyLink8729",
+                    "Signal": -74
+                }
+            ]
+        }
+    }
+}
+======================================================================================
+FILE: 44:94:fc:73:55:cd_scan-wlan1_2017031420005600.json
+{
+    "Device": {
+        "Wifi": {
+            "Scan": [
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 36,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5180,
+                    "RemoteMACAddress": "18:d6:c7:6d:5a:24",
+                    "SSID": "ABDevelopment11b",
+                    "Signal": -57
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 36,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5180,
+                    "RemoteMACAddress": "10:0d:7f:64:ca:34",
+                    "SSID": "AB-SDN-Lab01-an",
+                    "Signal": -56
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 36,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5180,
+                    "RemoteMACAddress": "dc:fe:07:c4:b0:d9",
+                    "SSID": "xfinitywifi",
+                    "Signal": -84
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 44,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5220,
+                    "RemoteMACAddress": "10:da:43:7a:8a:1c",
+                    "SSID": "Boardwalk-5G",
+                    "Signal": -69
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 48,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5240,
+                    "RemoteMACAddress": "78:f2:9e:b7:a4:50",
+                    "SSID": "CBCI-5218-5",
+                    "Signal": -83
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 60,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5300,
+                    "RemoteMACAddress": "04:a1:51:9d:66:a3",
+                    "SSID": "ABDevelopment02b",
+                    "Signal": -50
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 100,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5500,
+                    "RemoteMACAddress": "d4:68:4d:32:22:4c",
+                    "SSID": "BoulderShop",
+                    "Signal": -83
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 132,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5660,
+                    "RemoteMACAddress": "90:72:40:1d:2c:57",
+                    "SSID": "",
+                    "Signal": -62
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 149,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5745,
+                    "RemoteMACAddress": "20:aa:4b:27:d4:5c",
+                    "SSID": "ab-guest",
+                    "Signal": -82
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 149,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5745,
+                    "RemoteMACAddress": "64:a5:c3:63:dd:47",
+                    "SSID": "PD-MAC",
+                    "Signal": -87
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 153,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5765,
+                    "RemoteMACAddress": "10:da:43:7a:8a:1e",
+                    "SSID": "Boardwalk-5G-2",
+                    "Signal": -73
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 157,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5785,
+                    "RemoteMACAddress": "20:aa:4b:16:11:d1",
+                    "SSID": "ab-guest-5GHz",
+                    "Signal": -51
+                },
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "ChannelNumber": 161,
+                    "CurrentUTCTime": 1489521656,
+                    "Frequency": 5805,
+                    "RemoteMACAddress": "84:00:2d:c4:69:32",
+                    "SSID": "XFINITY",
+                    "Signal": -66
+                }
+            ]
+        }
+    }
+}
+======================================================================================
+FILE: 44:94:fc:73:55:cd_station-wlan0_2017031420005600.json
+{
+    "Device": {
+        "Wifi": {
+            "Station": [
+                {
+                    "APIfIndex": 11,
+                    "APMACAddress": "44:94:fc:73:55:cc",
+                    "APName": "wlan0",
+                    "CurrentUTCTime": 1489521656,
+                    "HtTxMCS": 7,
+                    "InactiveTime": 690,
+                    "MACAddress": "00:c1:a1:14:e3:43",
+                    "RxBitrate": 1,
+                    "RxBytes": 35262,
+                    "RxPackets": 865,
+                    "Signal": -65,
+                    "SignalAvg": -51,
+                    "TxBitrate": 65,
+                    "TxBytes": 94055,
+                    "TxFailed": 5,
+                    "TxPackets": 341,
+                    "TxRetries": 10
+                }
+            ]
+        }
+    }
+}
+======================================================================================
+FILE: 44:94:fc:73:55:cd_station-wlan1_2017031420005600.json
+{
+    "Device": {
+        "Wifi": {
+            "Station": [
+                {
+                    "APIfIndex": 10,
+                    "APMACAddress": "44:94:fc:73:55:ce",
+                    "APName": "wlan1",
+                    "CurrentUTCTime": 1489521656,
+                    "HtTxMCS": 6,
+                    "InactiveTime": 57390,
+                    "MACAddress": "5c:e0:c5:a9:20:db",
+                    "RxBitrate": 36,
+                    "RxBytes": 241275,
+                    "RxPackets": 1663,
+                    "Signal": -11,
+                    "SignalAvg": -26,
+                    "TxBitrate": 122,
+                    "TxBytes": 2555867,
+                    "TxFailed": 31,
+                    "TxPackets": 2031,
+                    "TxRetries": 163
+                }
+            ]
+        }
+    }
+}
+======================================================================================

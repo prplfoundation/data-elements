@@ -1,0 +1,26 @@
+{  
+   "Device":{  
+      "Wifi":{  
+         "Interface":[  
+            {  
+               "APName":"wlan1",
+               "APMACAddress":"44:94:fc:73:55:ce",
+               "APIfIndex":10,
+               "CurrentUTCTime":1488926388,
+               "HtChannelType":"HT40+",
+               "ChannelWidth":"40",
+               "CenterFreq1":5190
+            },
+            {  
+               "APName":"wlan0",
+               "APMACAddress":"44:94:fc:73:55:cc",
+               "APIfIndex":11,
+               "CurrentUTCTime":1488926388,
+               "HtChannelType":"HT20",
+               "ChannelWidth":"20",
+               "CenterFreq1":2462
+            }
+         ]
+      }
+   }
+}

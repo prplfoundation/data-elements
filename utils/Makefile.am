@@ -5,9 +5,9 @@ remove-mac-resource-forks:
 AM_CPPFLAGS =
 ACLOCAL_AMFLAGS = -I m4
 
-bin_SCRIPTS=wccf_tx_rest wccf_proc_null wccf_tx_rest.cfg wccf_proc_null.cfg wccf_util_purge.sh wccf_sensors.cron root cron.update
+bin_SCRIPTS=wccf_tx_rest wccf_proc_null wccf_tx_rest.cfg wccf_proc_null.cfg wccf_util_purge.sh wccf_sensors.cron root
 CLEANFILES = $(bin_SCRIPTS)
-EXTRA_DIST=wccf_tx_rest.in wccf_proc_null.in wccf_tx_rest.cfg.in wccf_proc_null.cfg.in wccf_util_purge.sh.in wccf_sensors.cron.in cron.update.in
+EXTRA_DIST=wccf_tx_rest.in wccf_proc_null.in wccf_tx_rest.cfg.in wccf_proc_null.cfg.in wccf_util_purge.sh.in wccf_sensors.cron.in
 
 wccf_util_purge.sh: wccf_util_purge.sh.in Makefile
 	cp $(srcdir)/wccf_util_purge.sh.in wccf_util_purge.sh
@@ -36,8 +36,3 @@ wccf_sensors.cron: wccf_sensors.cron.in Makefile
 root: wccf_sensors.cron.in Makefile
 	cp $(srcdir)/wccf_sensors.cron.in root
 	chmod 600 root
-
-cron.update: cron.update.in Makefile
-	cp $(srcdir)/cron.update.in cron.update
-	chmod 600 cron.update
-

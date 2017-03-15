@@ -2,14 +2,16 @@
 
 #HOWTO_start_here#
 
+###Version 1.3###
+
 `Copyright (c) 2017 Applied Broadband, Inc., and`
 `                   Cable Television Laboratories, Inc. ("CableLabs")`
 
-The Wireless Common Collection Framework (WCCF), Version 1.2.0, assumes a host environment of OpenWrt, branch master.  OpenWrt is described as a Linux distribution for embedded devices (from https://openwrt.org).  
+The Wireless Common Collection Framework (WCCF), Version 1.3.0, assumes a host environment of OpenWrt, branch master.  OpenWrt is described as a Linux distribution for embedded devices (from https://openwrt.org).  
 
 Building and using WCCF assumes strong familiarity with the mechanics of installing OpenWrt and building and deploying OpenWrt images.  No attempt is made to duplicate within the WCCF project the materials required to master those tasks.  However, just for clarity, note that it is not sufficient to download a prepared OpenWrt flash image which has already been created to be flashed onto your Vendor/Model-specific Access Point hardware device.  Rather, you must install the entire OpenWrt build environment and to be able to create new flash images that incorporate the WCCF components.
 
-WCCF Version 1.2.0 has focused development and testing on the Netgear N600 (model WNDR3800) Wireless Access Point device.
+WCCF Version 1.3.0 has focused development and testing on two APs - the Netgear N600 (model WNDR3800) and the TP-LINK AC1750 Archer C7 Wireless Access Point devices.
 
 ##WCCF Build/Deployment/Run OVERVIEW##
 

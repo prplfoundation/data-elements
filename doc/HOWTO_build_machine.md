@@ -79,7 +79,7 @@ Install the following set of software tools and libraries (as root, or with sudo
 		$ apt-get install ssh
 		$ systemctl enable ssh.service
 		$ systemctl start ssh.service
-		$ apt-get install uuid-dev libexpat-dev autoconf
+		$ apt-get install uuid-dev libexpat-dev autoconf libtool
 		$ apt-get install git-core build-essential libssl-dev libncurses5-dev unzip
 		$ apt-get install subversion mercurial
 		$ apt-get install libboost-all-dev

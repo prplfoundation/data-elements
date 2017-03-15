@@ -3,14 +3,17 @@
 # Copyright (c) 2017 Applied Broadband, Inc., and
 #                    Cable Television Laboratories, Inc. ("CableLabs")
 #
+# File: wccf/qa/utilities/build_wccf.sh
+#
 # A design goal of this script is to be callable eventually from Jenkins.
 # Jenkins jobs are usually run from user jenkins - therefore, user
 # jenkins would define WCCF_BUILD_ROOT in its environment eg - in file
-# ~/.bashrc adding:
+# ~/.bashrc adding (for example):
 #
 #    export WCCF_BUILD_ROOT=$HOME/wccf_git_clone/wccf
 #
-# That said, this script does NOT assume it's run by user jenkins.
+# That said, this script does NOT assume it's run by user jenkins but
+# the above env var must be set prior to script invocation.
 #
 # Usage: ./build_wccf.sh n # where n=0 avoids count-down
 
@@ -19,10 +22,18 @@ echo -e "\nStarting script $SCRIPT_NAME."
 
 : ${WCCF_BUILD_ROOT?"User environment must set var WCCF_BUILD_ROOT"}
 
-WCCF_BUILD_PRODUCT=wccf-1.2.0.tar.gz
+# This controls the build product handed to OpenWrt build
+# and must match the value in wccf/qa/utilities/build_openwrt.sh:
+WCCF_VERSION=1.3.0
+
+WCCF_BUILD_PRODUCT=wccf-${WCCF_VERSION}.tar.gz
 WCCF_MAKEFILE_TEMPLATE=targets/openwrt/Makefile.template
 WCCF_PATCHES_DIR=targets/openwrt/patches
-TMP_WCCF=/tmp/__wccf_to_openwrt__
+
+# This is the location where wccf/qa/utilities/build_openwrt.sh looks
+# for the wccf build product and related package wccf files to
+# include in its build. It must match the value in build_openwrt.sh
+TMP_WCCF=/tmp/${USER}/__wccf_to_openwrt__
 
 # The git pull cmd in function build_now works without credentials
 # because the local (persistent) repository is created with this:
@@ -36,13 +47,14 @@ build_now() {
 	echo -e "Changing to $WCCF_BUILD_ROOT\n"
 	cd $WCCF_BUILD_ROOT
 
+	# Update local WCCF git repo
 	git pull
 
 	libtoolize
 	aclocal
+	autoconf
 	automake --add-missing
 	automake
-	autoconf
 	./configure
 	make dist
 
@@ -72,8 +84,11 @@ while (( --counter >= 0 )); do
 	sleep 1
 done 
 
+echo ""
 build_now
 
+echo "******************************************************************************"
 echo "WCCF build products for OpenWrt inclusion written to $TMP_WCCF"
+echo "******************************************************************************"
 echo "Script $SCRIPT_NAME complete."
 

@@ -4,8 +4,8 @@
   #                    Cable Television Laboratories, Inc. ("CableLabs")
   #
 */
-#ifndef _WCCF_SENSOR_SURVEY_
-#define _WCCF_SENSOR_SURVEY_
+#ifndef _WCCF_SENSOR_CHANNEL_
+#define _WCCF_SENSOR_CHANNEL_
 
 #include "wccf_sensor.h"
 

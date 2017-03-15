@@ -31,3 +31,27 @@
 # Debug files
 *.dSYM/
 *.su
+
+# Autotools files
+Makefile
+Makefile.in
+aclocal.m4
+aclocal.cache
+autom4te.cache
+compile
+config.guess
+config.log
+config.status
+config.sub
+config.h
+config.h.in
+configure
+depcomp
+install-sh
+libtool
+ltmain.sh
+m4
+missing
+
+# Build product
+*.tar.gz

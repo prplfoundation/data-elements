@@ -2,6 +2,8 @@
 
 #HOWTO\_build\_wccf#
 
+###Version 1.3.0###
+
 `Copyright (c) 2017 Applied Broadband, Inc., and`
 `                   Cable Television Laboratories, Inc. ("CableLabs")`
 
@@ -15,18 +17,20 @@ Obtain a copy of the WCCF source from the appropriate git repository (example on
 		$ cd ~/wccf-source
 		$ git clone https://github.com/appliedbroadband/wccf.git
 
+> See utility scripts here [wccf/qa/utilities/build_*](../qa/utilities) that automate these steps (and others).
+
 With a fresh git clone of wccf, enter the following steps on a fully prepared build machine (see [wccf/doc/HOWTO_build_machine.md](./HOWTO_build_machine.md)):
 
 		$ cd ~/wccf-source/wccf
 		$ libtoolize
 		$ aclocal
+		$ autoconf
 		$ automake --add-missing
 		$ automake
-		$ autoconf
 		$ ./configure
 		$ make dist
 
-The resulting build product is file `wccf-1.2.0.tar.gz`.  This file along with others are introduced to the OpenWrt build environment to create a flashable image for the Wireless Access Point.
+The resulting build product is file `wccf-1.3.0.tar.gz`.  This file along with others are introduced to the OpenWrt build environment to create a flashable image for the Wireless Access Point.
 
 ##Next Steps##
 This completes the process of building the WCCF components.  For additional steps required to build and deploy an OpenWrt image with WCCF, see file:

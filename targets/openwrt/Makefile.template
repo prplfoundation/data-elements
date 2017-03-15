@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=wccf
-PKG_VERSION:=1.2.0
+PKG_VERSION:=1.3.0
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/wccf-$(PKG_VERSION)
@@ -47,7 +47,8 @@ define Package/wccf/install
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_scan $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_station $(1)/usr/sbin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_survey $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_interface $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_channel $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/processors/wccf_proc_null $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/transmitters/wccf_tx_rest $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_util_purge.sh $(1)/usr/sbin/
@@ -55,7 +56,6 @@ define Package/wccf/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_tx_rest $(1)/etc/init.d/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_null $(1)/etc/init.d/
 	$(INSTALL_DIR) $(1)/etc/crontabs/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/cron.update $(1)/etc/crontabs/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/root $(1)/etc/crontabs/
 	$(INSTALL_DIR) $(1)/root/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_sensors.cron $(1)/root/

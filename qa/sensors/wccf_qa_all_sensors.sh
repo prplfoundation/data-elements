@@ -30,13 +30,13 @@ wccf_sensor_station --interface-name=wlan1 --output-dir=$TMP_DIR
 echo "iw dev wlan0 survey dump" >> $TMP_DIR/iw_survey_dump_wlan0
 iw dev wlan0 survey dump >> $TMP_DIR/iw_survey_dump_wlan0
 
-wccf_sensor_survey --interface-name=wlan0 --output-dir=$TMP_DIR
+wccf_sensor_channel --interface-name=wlan0 --output-dir=$TMP_DIR
 
 
 echo "iw dev wlan1 survey dump" >> $TMP_DIR/iw_survey_dump_wlan1
 iw dev wlan1 survey dump >> $TMP_DIR/iw_survey_dump_wlan1
 
-wccf_sensor_survey --interface-name=wlan1 --output-dir=$TMP_DIR
+wccf_sensor_channel --interface-name=wlan1 --output-dir=$TMP_DIR
 
 
 echo "iwinfo wlan0 scan" >> $TMP_DIR/iwinfo_scan_wlan0

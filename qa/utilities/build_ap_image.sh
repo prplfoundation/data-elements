@@ -3,8 +3,13 @@
 # Copyright (c) 2017 Applied Broadband, Inc., and
 #                    Cable Television Laboratories, Inc. ("CableLabs")
 #
-# File: wccf/qa/utilities/build_openwrt.sh
+# File: wccf/qa/utilities/build_ap_image.sh
 #
+# This script builds EITHER the Netgear WNDR3800 image OR the TP-LINK
+# Archer C7 image.  It accomplishes this by reusing a .config file
+# with all appropriate menu selections made.  These .config files are
+# held in the WCCF repository and can be inspected or augmented there.
+
 # A design goal of this script is to be callable eventually from Jenkins.
 # Jenkins jobs are usually run from user jenkins - therefore, user
 # jenkins would define OPENWRT_BUILD_ROOT in its environment eg - in file
@@ -15,14 +20,26 @@
 # That said, this script does NOT assume it's run by user jenkins but
 # the above env var must be set prior to script invocation.
 #
-# Usage: ./build_openwrt.sh [ n [ NOMENU ] ] 
-#    where n is the seconds to count-down - n=0 avoids count-down,
-#    and including NOMENU avoids the 'make menuconfig' step.
 
 SCRIPT_NAME=$( basename "$0" )
 echo -e "\nStarting script $SCRIPT_NAME."
 
 : ${OPENWRT_BUILD_ROOT?"User environment must set var OPENWRT_BUILD_ROOT"}
+
+if [ $# -lt 1 ]; then
+    echo "  usage: ./build_ap_image.sh <target_ap_build_config>"
+    echo "example: ./build_ap_image.sh \$WCCF_BUILD_ROOT/qa/utilities/TP-LINK.config"
+    exit 1
+fi
+
+AP_CONFIG=$1
+if [ ! -f $AP_CONFIG ]; then
+    echo "Designated build config does not exist: $AP_CONFIG"
+    exit 2
+fi
+
+# Before we start changing directory, move the build config into place
+cp $AP_CONFIG $OPENWRT_BUILD_ROOT/.config
 
 # This identifies the build product created by WCCF build
 # and must match the value in wccf/qa/utilities/build_wccf.sh:
@@ -60,12 +77,9 @@ build_now() {
 	./scripts/feeds update packages libexpat
 	./scripts/feeds install -a -p libexpat
 
-	make defconfig
-	make prereq
-
-	if [ $# -lt 2 ] ; then
-		make menuconfig
-	fi
+	# using predefined config: make defconfig
+	# using predefined config: make prereq
+	# using predefined config: make menuconfig
 
 	echo "Running OpenWrt make"
 	make
@@ -74,21 +88,6 @@ build_now() {
 	echo -e "\nChanging back to $CUR_DIR"
 	cd $CUR_DIR
 }
-
-show_count_down () {
-	SECS=$1
-	echo -ne "\rBuilding OpenWrt in $SECS seconds ... enter Ctrl-C to abort  " # trailing spaces erase longer lines
-}
-
-counter=10
-if [ $# -gt 0 ]; then
-	counter=$1
-fi
-
-while (( --counter >= 0 )); do
-	show_count_down $counter
-	sleep 1
-done 
 
 echo ""
 build_now

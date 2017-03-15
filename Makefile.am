@@ -7,5 +7,7 @@ remove-mac-resource-forks:
 tag-distribution-date:
 	echo "Distribution date: `date`" >> README
 
+ACLOCAL_AMFLAGS = -I m4
+
 SUBDIRS = sensors utils processors transmitters
 

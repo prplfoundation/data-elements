@@ -6,7 +6,8 @@
 */
 #include "wccf_sensor_scan.h"
 
-int get_interface_mac(const char *if_name, char *mac_string)
+int get_interface_mac(const char *if_name,
+                      char *mac_string)
 {
     int fd;
     struct ifreq ifr;
@@ -33,7 +34,9 @@ int get_interface_mac(const char *if_name, char *mac_string)
     return 0;
 }
 
-int dump_scan(const struct iwinfo_ops *iw, const char *ifname, json_object *jobj)
+int dump_scan(const struct iwinfo_ops *iw,
+              const char *ifname,
+              json_object *jobj)
 {
     int i, x, len, ret;
     char buf[IWINFO_BUFSIZE];
@@ -79,7 +82,7 @@ int dump_scan(const struct iwinfo_ops *iw, const char *ifname, json_object *jobj
         sprintf(mac_str, "%02x:%02x:%02x:%02x:%02x:%02x",
                 e->mac[0],e->mac[1],e->mac[2],e->mac[3],e->mac[4],e->mac[5]);
         json_object *jremmac = json_object_new_string(mac_str);
-        json_object_object_add(jdev,"RemoteMacAddress", jremmac);
+        json_object_object_add(jdev,"RemoteMACAddress", jremmac);
 
         json_object *jssid = json_object_new_string(e->ssid);
         json_object_object_add(jdev, "SSID", jssid);
@@ -88,7 +91,23 @@ int dump_scan(const struct iwinfo_ops *iw, const char *ifname, json_object *jobj
         json_object_object_add(jdev, "Signal", jsig);
 
         json_object *jchan = json_object_new_int((int)e->channel);
-        json_object_object_add(jdev, "Channel", jchan);
+        json_object_object_add(jdev, "ChannelNumber", jchan);
+
+        int frequency = 0;
+        if (e->channel < 14) {
+            frequency = (e->channel * 5) + 2407;
+        }
+        else if (e->channel == 14) {
+            frequency = 2484;
+        }
+        else if (e->channel >= 182 && e->channel <= 196) {
+            frequency = (e->channel * 5) + 4000;
+        }
+        else {
+            frequency = (e->channel * 5) + 5000;
+        }
+        json_object *jfreq = json_object_new_int(frequency);
+        json_object_object_add(jdev, "Frequency", jfreq);
     
         json_object_array_add(jobj, jdev);
     }  
@@ -155,7 +174,8 @@ int main(int argc, char *argv[])
     strftime(tstamp, 16, "%Y%m%d%H%M%S", tstruct);
     get_interface_mac("br-wan", dev_mac);
   
-    sprintf(file_name, "%s/%s_scan-%s_%s00.json", output_dir, dev_mac, iface_name, tstamp);
+    sprintf(file_name, "%s/%s_scan-%s_%s00.json", output_dir, dev_mac,
+            iface_name, tstamp);
     fp = fopen(file_name, "wb");
     if (!fp) {
         fprintf(stderr, "Cant open output file: %s", file_name);

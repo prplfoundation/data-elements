@@ -1,0 +1,13 @@
+These are the configurations that can be saved during a flash, or, 
+modified by a flash/install.
+
+The zipped tar file here was created with this sysupgrade cmd:
+
+# sysupgrade -v -b sysupgrade-create-backup.tar.gz
+
+That file was expanded in a subdirectory, and this script was
+against the content:
+
+$ catall.sh > openwrt_default_configs.out
+
+That output file is included here.

@@ -4,7 +4,7 @@
   #                    Cable Television Laboratories, Inc. ("CableLabs")
   #
 */
-#include "wccf_sensor_survey.h"
+#include "wccf_sensor_channel.h"
 
 static int get_interface_cb(struct nl_msg *msg, void* arg)
 {
@@ -53,7 +53,7 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
      */
     json_object *jifindex = json_object_new_int(nla_get_u32(tb[NL80211_ATTR_IFINDEX]));
     json_object_object_add(jdev, "APIfIndex", jifindex);
-  
+
     /*
      * current c-epoch of data sample
      */
@@ -63,7 +63,7 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
     json_object_object_add(jdev, "CurrentUTCTime", jctime);
   
     if (!tb[NL80211_ATTR_SURVEY_INFO]) {
-        fprintf(stderr, "survey data missing!\n");
+        fprintf(stderr, "survey channel data missing!\n");
         return NL_SKIP;
     }
 
@@ -75,9 +75,32 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
     }
 
     if (sinfo[NL80211_SURVEY_INFO_FREQUENCY]) {
-        json_object *jfreq =
-            json_object_new_int(nla_get_u32(sinfo[NL80211_SURVEY_INFO_FREQUENCY]));
+        int freq = (int)nla_get_u32(sinfo[NL80211_SURVEY_INFO_FREQUENCY]);
+        int channel = 0;
+
+        json_object *jfreq = json_object_new_int(freq);
         json_object_object_add(jdev, "Frequency", jfreq);
+        /*
+         * TODO: fix
+         * couldn't get convenient access to the driver level conversion
+         * logic so we duplicate it here (in cfg80211.h)
+         */
+        if (freq == 2484)
+            channel = 14;
+        else if (freq < 2484)
+            channel = (freq - 2407) / 5;
+        else if (freq >= 4910 && freq <= 4980)
+            channel = (freq - 4000) / 5;
+        else if (freq <= 45000)
+            channel = (freq - 5000) / 5;
+        else if (freq >= 58320 && freq <= 64800)
+            channel = (freq - 56160) / 2160;
+
+        json_object *jchan = json_object_new_int(channel);
+        json_object_object_add(jdev, "ChannelNumber", jchan);                                               
+    }
+    if (tb[NL80211_ATTR_WIPHY_BANDS]) {
+        printf("Have NL80211_ATTR_WIPHY_BANDS\n");
     }
     if (sinfo[NL80211_SURVEY_INFO_NOISE]) {
         int8_t noise = (int8_t)nla_get_u8(sinfo[NL80211_SURVEY_INFO_NOISE]);
@@ -94,6 +117,11 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
         json_object *jbusytime =
             json_object_new_int64((long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_BUSY]));
         json_object_object_add(jdev, "ChannelBusyTime", jbusytime);
+    }
+    if (sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_EXT_BUSY]) {
+        json_object *jbusyexttime =
+            json_object_new_int64((long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_EXT_BUSY]));
+        json_object_object_add(jdev, "ChannelBusyExtTime", jbusyexttime);
     }
     if (sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_RX]) {
         json_object *jreceivetime =
@@ -217,13 +245,13 @@ int main(int argc, char *argv[])
     }
   
     memset(iface_mac, 0, 18);
-    ret = get_interface_mac("wlan0", iface_mac);
+    ret = get_interface_mac(iface_name, iface_mac);
   
     svy_args.if_mac_address = iface_mac;
   
-    int if_index = if_nametoindex("wlan0");
+    int if_index = if_nametoindex(iface_name);
     if (if_index == 0) {
-        printf("cannot find index for wlan0, exiting\n");
+        printf("cannot find index for %s, exiting\n", iface_name);
         exit(1);
     }
 
@@ -247,7 +275,7 @@ int main(int argc, char *argv[])
      * for now output the main json structure anyway
      */
     json_object *jstation = json_object_new_object();
-    json_object_object_add(jstation, "Survey", svy_args.jarray);
+    json_object_object_add(jstation, "Channel", svy_args.jarray);
     json_object *jwifi = json_object_new_object();
     json_object_object_add(jwifi, "Wifi", jstation);
     json_object *jdevice = json_object_new_object();
@@ -259,7 +287,8 @@ int main(int argc, char *argv[])
     strftime(tstamp, 16, "%Y%m%d%H%M%S", tstruct);
     get_interface_mac("br-wan", dev_mac);
   
-    sprintf(file_name, "%s/%s_survey-%s_%s00.json", output_dir, dev_mac, iface_name, tstamp);
+    sprintf(file_name, "%s/%s_channel-%s_%s00.json", output_dir,
+            dev_mac, iface_name, tstamp);
     fp = fopen(file_name, "wb");
     if (!fp) {
         fprintf(stderr, "Cant open output file: %s", file_name);

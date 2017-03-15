@@ -106,6 +106,7 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
         json_object_array_add(jarray, jdev);
         return NL_SKIP;
     }
+
     /*
      * parse the station-specific data 
      */
@@ -190,7 +191,21 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
                 uint8_t mcs = nla_get_u8(rinfo[NL80211_RATE_INFO_MCS]);
                 json_object *jtxmcs = json_object_new_int(mcs);
                 json_object_object_add(jdev, "HtTxMCS", jtxmcs);
-            }               
+            }
+            else if (rinfo[NL80211_RATE_INFO_VHT_MCS]) {
+                uint8_t mcs = nla_get_u8(rinfo[NL80211_RATE_INFO_VHT_MCS]);
+                json_object *jtxmcs = json_object_new_int(mcs);
+                json_object_object_add(jdev, "VhtTxMCS", jtxmcs);
+            }
+            if (rinfo[NL80211_RATE_INFO_VHT_NSS]) {
+                uint8_t nss = nla_get_u8(rinfo[NL80211_RATE_INFO_VHT_NSS]);
+                json_object *jtxnss = json_object_new_int(nss);
+                json_object_object_add(jdev, "VhtTxNSS", jtxnss);
+            }
+            if (rinfo[NL80211_RATE_INFO_SHORT_GI]) {
+                json_object *jtxsgi = json_object_new_string("true");
+                json_object_object_add(jdev, "VhtTxShortGI", jtxsgi);
+            }
         }
     }
 
@@ -209,6 +224,20 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
                 uint8_t mcs = nla_get_u8(rinfo[NL80211_RATE_INFO_MCS]);
                 json_object *jrxmcs = json_object_new_int(mcs);
                 json_object_object_add(jdev, "HtRxMCS", jrxmcs);
+            }
+            else if (rinfo[NL80211_RATE_INFO_VHT_MCS]) {
+                uint8_t mcs = nla_get_u8(rinfo[NL80211_RATE_INFO_VHT_MCS]);
+                json_object *jrxmcs = json_object_new_int(mcs);
+                json_object_object_add(jdev, "VhtRxMCS", jrxmcs);
+            }
+            if (rinfo[NL80211_RATE_INFO_VHT_NSS]) {
+                uint8_t nss = nla_get_u8(rinfo[NL80211_RATE_INFO_VHT_NSS]);
+                json_object *jrxnss = json_object_new_int(nss);
+                json_object_object_add(jdev, "VhtRxNSS", jrxnss);
+            }
+            if (rinfo[NL80211_RATE_INFO_SHORT_GI]) {
+                json_object *jrxsgi = json_object_new_string("true");
+                json_object_object_add(jdev, "VhtRxShortGI", jrxsgi);
             }
         }
     }
