@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=wccf
-PKG_VERSION:=1.3.0
+PKG_VERSION:=1.4.0
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/wccf-$(PKG_VERSION)
@@ -49,10 +49,15 @@ define Package/wccf/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_station $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_interface $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_channel $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_phycapa $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_event $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/processors/wccf_proc_null $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/transmitters/wccf_tx_rest $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_util_purge.sh $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_util_update.sh $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_config_sync.sh $(1)/usr/sbin
 	$(INSTALL_DIR) $(1)/etc/init.d/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_sensor_event $(1)/etc/init.d/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_tx_rest $(1)/etc/init.d/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_null $(1)/etc/init.d/
 	$(INSTALL_DIR) $(1)/etc/crontabs/
@@ -60,8 +65,19 @@ define Package/wccf/install
 	$(INSTALL_DIR) $(1)/root/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_sensors.cron $(1)/root/
 	$(INSTALL_DIR) $(1)/etc/config/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_sensor_event.cfg $(1)/etc/config/
+	chmod 755 $(1)/etc/config/wccf_sensor_event.cfg
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_tx_rest.cfg $(1)/etc/config/
+	chmod 755 $(1)/etc/config/wccf_tx_rest.cfg
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_null.cfg $(1)/etc/config/
+	chmod 755 $(1)/etc/config/wccf_proc_null.cfg
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_openwrt_pubkey $(1)/etc/config
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_openwrt_privkey $(1)/etc/config
+	chmod 644 $(1)/etc/config/wccf_openwrt_p*key
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_util_update_worker.sh $(1)/etc/config
+	chmod 755 $(1)/etc/config/wccf_util_update_worker.sh
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_config_sync.cfg $(1)/etc/config
+
 endef
 
 $(eval $(call BuildPackage,wccf,+libiw))

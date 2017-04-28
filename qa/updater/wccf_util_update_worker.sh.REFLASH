@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+# THIS IS UPDATED ON ServerSide Sync Site
+# Update worker script to be called by WCCF generalized update script.
+# REQUIRED:: this script to reside in /etc/config/ (matching config
+# rsync loc).
+#
+# Example cron invocation of this worker script:
+#    /usr/sbin/wccf_util_update.sh wccf_util_update_worker.sh
+#
+# ===========================================================================
+# The usual case is for this cycle to be a no-op. Any other process should
+# return this script to a state which results in no operation. An easy
+# approach to acheive this is shown in function return_to_null_behavior to
+# FINISH by heading the first 36 lines from this file to a tmp file, then
+# moving it back onto itself.
+#
+# Function return_to_null_behavior() does this! THEREFORE, always end your
+# custom implementation with a call to that function.
+# ===========================================================================
+WORKER_SCRIPT_LOC=/etc/config
+WORKER_SCRIPT_NAME=$(basename $0)
+THIS_FILE=$WORKER_SCRIPT_LOC/$WORKER_SCRIPT_NAME
+HEAD_LINES=36
+ASM_WORKER_TMP=/tmp/__ASM_WORKER_TMP__
+# ===========================================================
+function return_to_null_behavior ()
+{
+    NOW=`date +%s`; touch ~/update_worker.update.$NOW
+    head -n $HEAD_LINES $THIS_FILE > $ASM_WORKER_TMP
+    mv -f $ASM_WORKER_TMP $THIS_FILE
+    chmod 755 $THIS_FILE
+}
+# == Do Not Change Above == LINE 36 == Do Not Change Above ==
+
+NOW=`date +%s`; touch ~/pre-reflash-call.$NOW
+/etc/config/reflash_ap.sh &
+NOW=`date +%s`; touch ~/pos-reflash-call.$NOW
+
+return_to_null_behavior

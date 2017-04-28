@@ -22,11 +22,11 @@
 SCRIPT_NAME=$( basename "$0" )
 echo -e "\nStarting script $SCRIPT_NAME."
 
-: ${OPENWRT_BUILD_ROOT?"User environment must set var OPENWRT_BUILD_ROOT"}
+: ${OPENWRT_BUILD_ROOT?"ERROR: User environment must set var OPENWRT_BUILD_ROOT. Exiting."}
 
 # This identifies the build product created by WCCF build
 # and must match the value in wccf/qa/utilities/build_wccf.sh:
-WCCF_VERSION=1.3.0
+WCCF_VERSION=1.4.0
 
 WCCF_BUILD_PRODUCT=wccf-${WCCF_VERSION}.tar.gz
 WCCF_MAKEFILE_TEMPLATE=targets/openwrt/Makefile.template

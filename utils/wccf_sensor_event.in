@@ -1,0 +1,106 @@
+#!/bin/sh /etc/rc.common
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Init script: wccf_sensor_event
+# usage: $ /etc/init.d/wccf_sensor_event [ start | stop | restart ]
+# To be placed in /etc/init.d
+
+START=90
+STOP=10
+
+source /etc/config/wccf_sensor_event.cfg
+
+# From above cfg file (first two may differ):
+# WCCF_PIDFILE=/tmp/run/wccf_sensor_event.pid
+# WCCF_INPUT_PATH=/tmp/wccf/sensor
+# WCCF_OUTPUT_PATH=/tmp/wccf/tx
+# WCCF_LOG_PATH=/root/log
+
+IW=/usr/sbin/iw
+IFCONFIG=/sbin/ifconfig
+TCPDUMP=/usr/sbin/tcpdump
+
+start() {
+    if [ ! -f "$WCCF_WLAN0_PIDFILE" ]
+    then
+	echo "Starting wccf_sensor_event for wlan0"
+	mkdir -p $WCCF_OUTPUT_PATH
+	mkdir -p $WCCF_LOG_PATH
+        #
+        # configure monitor interface for phy0 to enable tcpdump capabilities
+        #
+        IW_ADD_OPTS=" phy phy0 interface add mon0 type monitor"
+        IW_DEL_OPTS=" dev mon0 del"
+        IFCONFIG_OPTS=" mon0 up"
+        ${IW} ${IW_DEL_OPTS}
+        ${IW} ${IW_ADD_OPTS}
+        ${IFCONFIG} ${IFCONFIG_OPTS}
+        #
+        # run the sensor
+        #
+	/usr/sbin/wccf_sensor_event -i wlan0 -o $WCCF_OUTPUT_PATH >> $WCCF_LOG_PATH/wccf_sensor_event_wlan0.log 2>&1 & echo $! > $WCCF_WLAN0_PIDFILE
+	PID=`cat $WCCF_WLAN0_PIDFILE`
+	echo "Process wccf_sensor_event for wlan0 started with pid $PID"
+    else
+	echo "File $WCCF_WLAN0_PIDFILE exists - cannot start wccf_sensor_event for wlan0"
+        exit 1
+    fi
+    
+    if [ ! -f "$WCCF_WLAN1_PIDFILE" ]
+    then
+	echo "Starting wccf_sensor_event for wlan1"
+	mkdir -p $WCCF_OUTPUT_PATH
+	mkdir -p $WCCF_LOG_PATH
+        #
+        # configure monitor interface for phy1 to enable tcpdump capabilities
+        #
+        IW_ADD_OPTS=" phy phy1 interface add mon1 type monitor"
+        IW_DEL_OPTS=" dev mon1 del"
+        IFCONFIG_OPTS=" mon1 up"
+        ${IW} ${IW_DEL_OPTS}
+        ${IW} ${IW_ADD_OPTS}
+        ${IFCONFIG} ${IFCONFIG_OPTS}
+        #
+        # run the sensor
+        #
+	/usr/sbin/wccf_sensor_event -i wlan1 -o $WCCF_OUTPUT_PATH >> $WCCF_LOG_PATH/wccf_sensor_event_wlan1.log 2>&1 & echo $! > $WCCF_WLAN1_PIDFILE
+	PID=`cat $WCCF_WLAN1_PIDFILE`
+	echo "Process wccf_sensor_event for wlan1 started with pid $PID"
+    else
+	echo "File $WCCF_WLAN1_PIDFILE exists - cannot start wccf_sensor_event for wlan1"
+        exit 1
+    fi
+}
+
+stop() {
+    
+    if [ -f "$WCCF_WLAN0_PIDFILE" ]
+    then
+	echo "Stoping wccf_sensor_event for wlan0"
+	WCCF_PID=`cat $WCCF_WLAN0_PIDFILE`
+	kill -9 $WCCF_PID
+        pkill tcpdump
+	rm -f $WCCF_WLAN0_PIDFILE
+    else
+	echo "File $WCCF_WLAN0_PIDFILE missing - cannot stop wccf_sensor_event for wlan0"
+    fi
+        
+    if [ -f "$WCCF_WLAN1_PIDFILE" ]
+	echo "Stoping wccf_sensor_event for wlan1"
+	WCCF_PID=`cat $WCCF_WLAN1_PIDFILE`
+	kill -9 $WCCF_PID
+        pkill tcpdump
+	rm -f $WCCF_PIDFILE
+    then
+	echo "File $WCCF_WLAN1_PIDFILE missing - cannot stop wccf_sensor_event for wlan1"
+    fi
+        
+}
+
+restart() {
+	stop
+	start
+}
+

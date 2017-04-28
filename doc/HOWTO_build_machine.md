@@ -1,6 +1,6 @@
-#Wireless Common Collection Framework - WCCF#
+# Wireless Common Collection Framework - WCCF
 
-#HOWTO\_build\_machine#
+# HOWTO\_build\_machine
 
 `Copyright (c) 2017 Applied Broadband, Inc., and`
 `                   Cable Television Laboratories, Inc. ("CableLabs")`
@@ -23,14 +23,14 @@ During the Ubuntu iso installation, select "manual package selection" and "stand
 
 During the installation process, define user wccf (password at your discretion).  Ubuntu server enables this initial user (user wccf in this case) with sudo privileges. Ubuntu does not enable user root until a password is set for root.  Therefore, the initial logon will be as user wccf.
 
-##Setting Password for User root##
+## Setting Password for User root
 
 		$ sudo passwd root
 		$ <user-wccf-passwd>
 		$ <user-root-passwd>
 		$ <user-root-passwd-repeated>
 
-##Networking##
+## Networking
 Networking must be set up within file /etc/network/interfaces.  Here is a sample only - adjust as appropriate for your infrastructure (esp. enp0s3 and enp0s8 settings):
 
 		$ cat /etc/network/interfaces
@@ -61,7 +61,7 @@ To modify the interface definitions and effect your changes, take these steps (s
 		$ systemctl enable networking.service
 		$ systemctl start networking.service
 
-##Hostname##
+## Hostname
 Also set the hostname (sudo or root):
 
 		$ hostnamectl set-hostname <my_new_host_name>
@@ -69,7 +69,7 @@ Also set the hostname (sudo or root):
 
 Edit /etc/hosts as appropriate (sudo or root).
 
-##Additional Required Software Packages##
+## Additional Required Software Packages
 Additional (required by OpenWrt and/or WCCF) Software Package Installations
 
 Install the following set of software tools and libraries (as root, or with sudo):
@@ -88,7 +88,7 @@ Install the following set of software tools and libraries (as root, or with sudo
 
 Reboot the server to boot up into the GUI desktop (console or VNC session is probably required for GUI).
 
-##Next Steps##
+## Next Steps
 This completes the minimum required installation of the WCCF Reference Build Machine OS and User.  For additional steps required to build and deploy WCCF, see file:
 
 [wccf/doc/HOWTO_start_here.md](./HOWTO_start_here.md).

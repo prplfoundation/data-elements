@@ -1,0 +1,58 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Configuration syncronization script
+#
+# $1 = config file name
+#
+set -xv
+
+if [ $# -ne 1 ]; then
+    echo "  usage: wccf_config_sync.sh  <configuration file path>"
+    echo "example: wccf_config_sync.sh /etc/config/wccf_config_sync.cfg"
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo "ERROR: configuration file $1 does not exist, exiting"
+    exit 1
+fi
+
+source $1
+
+export RSYNC_OPTS=-ytuav
+export RSYNC=/usr/bin/rsync
+export LOCAL_MAC=`cat /sys/class/net/br-wan/address`
+
+export LOCAL_CONFIG_PATH=/etc/config/
+export REMOTE_ADDRESS=${WCCF_CONFIG_SYNC_USER}@${WCCF_CONFIG_SYNC_HOST}:${WCCF_CONFIG_REMOTE_PATH}/${LOCAL_MAC}/
+
+${RSYNC} ${RSYNC_OPTS} -e "ssh -y -i ${WCCF_ADMIN_PRIVATE_KEY_NAME}" ${LOCAL_CONFIG_PATH} ${REMOTE_ADDRESS}
+${RSYNC} ${RSYNC_OPTS} -e "ssh -y -i ${WCCF_ADMIN_PRIVATE_KEY_NAME}" ${REMOTE_ADDRESS} ${LOCAL_CONFIG_PATH} > /tmp/rsync_activity
+
+for line in `cat /tmp/rsync_activity`;
+do
+
+if [[ $line == *wireless ]]; then
+	`/etc/init.d/network reload`
+	continue
+fi
+
+if [[ $line == *network ]]; then
+        `/etc/init.d/network reload`
+        continue
+fi
+
+if [[ $line == *wccf_tx_rest.cfg ]]; then
+	`/etc/init.d/wccf_tx_rest restart`
+	continue
+fi
+
+if [[ $line == *wccf_proc_null.cfg ]]; then
+	`/etc/init.d/wccf_proc_null restart`
+	continue
+fi
+
+done

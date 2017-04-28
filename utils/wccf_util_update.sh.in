@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# WCCF generalitzed update script
+#
+# Execute cmd-line provided script or fail silently
+#
+# $1 = worker script filename WITHOUT path (MUST BE IN /etc/config)
+# This worker script must be in /etc/config because that is the
+# location served by the rsync config backup/restore feature.
+#
+# Example:
+#    /usr/sbin/wccf_util_update.sh wccf_util_update_worker.sh
+#
+# NOTE: each customized worker script SHOULD, under any circumstance, restore
+# itself to be effectively a no-op at its conclusion.  See the default
+# implementation of wccf_util_update_worker.sh for best-practice technique
+# to achieve this.
+#
+set -xv
+
+# Location must match rsync config backup/restore loc
+WORKER_LOC=/etc/config
+
+if [ $# -ne 1 ]; then
+    exit 0
+fi
+
+if [ -f "$WORKER_LOC/$1" ]; then
+    $WORKER_LOC/$1
+else
+    exit 0
+fi
+

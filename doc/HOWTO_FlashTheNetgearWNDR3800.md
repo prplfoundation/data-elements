@@ -1,4 +1,4 @@
-#Uploading and Flashing a SysUpgrade OpenWrt Build Product to the WNDR3800#
+# Uploading and Flashing a SysUpgrade OpenWrt Build Product to the WNDR3800
     
 `Copyright (c) 2017 Applied Broadband, Inc., and`
 `                   Cable Television Laboratories, Inc. ("CableLabs")`
@@ -17,12 +17,12 @@ On Build Machine:
     openwrt-ar71xx-generic-wndr3800-squashfs-sysupgrade.bin            100% 4864KB 148.6KB/s   00:32
         
     
-##SSH into Netgear on the network (at 10.10.10.129)##
+## SSH into Netgear on the network (at 10.10.10.129)
     
     $ ssh root@10.10.10.129
     root@10.10.10.129's password:
     
-##Verify Netgear originally running OpenWrt Chaos Calmer (or any older version)##
+## Verify Netgear originally running OpenWrt Chaos Calmer (or any older version)
     
     BusyBox v1.23.2 (2017-01-12 09:01:04 MST) built-in shell (ash)
     
@@ -42,7 +42,7 @@ On Build Machine:
      -----------------------------------------------------
     
 
-##Verify current OpenWrt image date/time (placed during prior image flash)##
+## Verify current OpenWrt image date/time (placed during prior image flash)
     
     root@OpenWrt:~# ls -lart
     drwxr-xr-x    1 root     root             0 Jan 23 17:16 ..
@@ -51,14 +51,14 @@ On Build Machine:
 **New OpenWrt image is then copied onto the Netgear *from build machine* (see above).**
 
     
-##Verify updated OpenWrt image date/time##
+## Verify updated OpenWrt image date/time
     
     root@OpenWrt:~# ls -lart
     drwxr-xr-x    1 root     root             0 Jan 23 17:16 ..
     -rw-r--r--    1 root     root       4456452 Jan 25 09:24 openwrt-ar71xx-generic-wndr3800-squashfs-sysupgrade.bin
     
 
-##On Netgear AP, force new image flash from cmd line (vs GUI)##
+## On Netgear AP, force new image flash from cmd line (vs GUI)
 
     root@OpenWrt:~# sysupgrade ./openwrt-ar71xx-generic-wndr3800-squashfs-sysupgrade.bin
     Saving config files...
@@ -76,7 +76,7 @@ On Build Machine:
 
 **Important Note:** Verify that you see the above message "Upgrade copmleted" as part of the AP output.  If the upgrade process is unsuccessful, the AP may boot back into the old image and not reflect the desired upgrade.
 
-##Reboot complete; restore SSH connection to Netgear AP over network##
+## Reboot complete; restore SSH connection to Netgear AP over network
 
 Verify version is updated to Designated Driver.
     

@@ -8,7 +8,7 @@ include-files: remove-mac-resource-forks
 AM_CPPFLAGS =  
 ACLOCAL_AMFLAGS = -I m4
 
-bin_PROGRAMS = wccf_sensor_station wccf_sensor_scan wccf_sensor_channel wccf_sensor_interface
+bin_PROGRAMS = wccf_sensor_station wccf_sensor_scan wccf_sensor_channel wccf_sensor_interface wccf_sensor_phycapa wccf_sensor_event
 wccf_sensor_station_SOURCES = wccf_sensor_station.c
 wccf_sensor_station_CFLAGS = -I ./
 wccf_sensor_station_CPPFLAGS = -I ./
@@ -25,4 +25,11 @@ wccf_sensor_interface_SOURCES = wccf_sensor_interface.c
 wccf_sensor_interface_CFLAGS = -I ./
 wccf_sensor_interface_CPPFLAGS = -I ./
 wccf_sensor_interface_LDFLAGS = -liw -lnl-tiny -ljson-c -lc
-
+wccf_sensor_phycapa_SOURCES = wccf_sensor_phycapa.c
+wccf_sensor_phycapa_CFLAGS = -I ./
+wccf_sensor_phycapa_CPPFLAGS = -I ./
+wccf_sensor_phycapa_LDFLAGS = -liw -lnl-tiny -ljson-c -lc
+wccf_sensor_event_SOURCES = wccf_sensor_event.c
+wccf_sensor_event_CFLAGS = -I ./
+wccf_sensor_event_CPPFLAGS = -I ./
+wccf_sensor_event_LDFLAGS = -liw -lnl-tiny -ljson-c -lc

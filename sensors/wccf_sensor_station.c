@@ -117,6 +117,13 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
         return NL_SKIP;
     }
 
+    if (tb_msg[NL80211_ATTR_STA_SUPPORTED_CHANNELS]) {
+        printf("found NL80211_ATTR_STA_SUPPORTED_CHANNELS\n");
+    }
+    if (tb_msg[NL80211_ATTR_STA_SUPPORTED_RATES]) {
+        printf("found NL80211_ATTR_STA_SUPPORTED_RATES\n");
+    }
+    
     if (sinfo[NL80211_STA_INFO_INACTIVE_TIME]) {
         json_object *jinactive =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_INACTIVE_TIME]));
@@ -353,7 +360,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    genlmsg_put(msg, 0, 0, driver_id, 0, flags,
+    genlmsg_put(msg, 0, 0, driver_id, 0, NLM_F_DUMP,
                 NL80211_CMD_GET_STATION, 0);
 
     NLA_PUT_U32(msg, NL80211_ATTR_IFINDEX, if_index);

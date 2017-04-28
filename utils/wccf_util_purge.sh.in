@@ -12,7 +12,7 @@
 
 if [ $# -ne 2 ]; then
     echo "  usage: wccf_util_purge.sh  <number_of_files_to_keep>  <target_directory>
-    echo "example: wccf_util_purge.sh  300  /tmp/wccf_sensor_output
+    echo "example: wccf_util_purge.sh  250  /tmp/wccf_sensor_output
     exit 1
 fi
 

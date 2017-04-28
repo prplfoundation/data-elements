@@ -1,0 +1,76 @@
+The files in this dir represent tests of the WCCF Update facility.
+
+Important Pieces
+
+Pieces of the Update Facility include:
+
+(1) the crontab entry that triggers the update script, 
+(2) the update script itself that's triggered by the crontab,
+(3) the worker script invoked by the update script (#2), and
+(4) any related files referenced by the worker script.
+
+Details
+
+(1) The crontab entry (times may differ):
+
+4,19,34,49 * * * * /usr/sbin/wccf_util_update.sh wccf_util_update_worker.sh
+
+Note, the worker script must be in directory /etc/config.
+
+(2) The update script:
+
+/usr/sbin/wccf_util_update.sh
+
+This script looks for the provided file only in /etc/config.  It silently
+fails if the file is absent.
+
+(3) The worker script:
+
+wccf_util_update_worker.sh (must reside in /etc/config)
+
+This file has a function that will redefine its behavior to be a NO-OP
+if invoked.  All changes to this file (to cause updating) should be
+added after the line 36 shown internally (see comments there) and ALSO
+must end with a call to the function return_to_null_behavior in order
+to restore NO-OP.
+
+(4) The related files:
+
+cron_timeshift.sh
+wccf_sensors.cron.TIMESHIFT
+wccf_util_update_worker.sh.TIMESHIFT
+delayed_reboot.sh
+reflash_ap.sh
+wccf_util_update_worker.sh.REFLASH
+
+
+Process Overview
+
+The crontab entry is included by the default crontab file of WCCF.  The
+update script is installed in /usr/sbin by WCCF.  The default worker
+script is a NO-OP, but contains important content.  Specifically, the
+worker script contains a function that is always available to restore
+its behavior to NO-OP.  ANY NEW BEHAVIOR INTRODUCED INTO THE WORKER
+MUST ALWAYS END WITH THE FUNCTION CALL TO RESTORE NO-OP BEHAVIOR.  This
+makes the update behavior a once-and-done event (so it's not repeated
+accidentally with whatever impact that may have on the AP operation).
+
+See file wccf_util_update_worker.sh.REFLASH for an example.
+
+To effect one-time behaviors (such as a crontab change or a reflash as
+illustrated in the files colocated here), the files are copied to a temp
+location and modified as desired, renamed as appropriate, and moved to
+the remote endpoint of the wccf_config_sync facility.  This remote
+endpoint is the location to and from which each AP syncs config files.
+Note that each AP has its own subdirectory so in order to update ten
+APs in the field, the collection of update files (see #1 - 4) would have 
+to go into each of the ten subdirectories corresponding to the target
+APs.  Those directories are named with the MAC address of each AP.
+Hence, the target APs' MAC addresses must be known.
+
+The sync process moves files from and to the AP local directory
+/etc/config.  These update-related files will be delivered to the AP in
+the next sync cycle.  Shortly after that (4 minutes in the default
+crontab file), the update will take place.
+
+

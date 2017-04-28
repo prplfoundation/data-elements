@@ -1,0 +1,40 @@
+NETGEAR CONFIG FILES
+
+After an OpenWrt image flash, copy these files to the NETGEAR WNDR3800
+and reboot after OpenWrt flash to configure wireless and other
+important aspects. SEE BELOW:
+ 
+In this directory are five files that set initial configurations for
+ssh (dropbear), wireless, network, firewall, and a root password 
+(shadow).
+
+NOTE: File tp-link/copy_configs.sh is available to do the following.
+
+Here, and in the script, IP 192.168.1.1 is hard-coded.  Verify that
+default LAN address is the desired destination before proceeding.
+
+If, rather than using a LAN port, you are connected over the WAN port
+note that these files may cause the device to acquire a new IP addr
+for its WAN port and loss of connectivity - necessitating a
+reconnection through a LAN port.
+
+After flashing the AP with a WCCF-enabled image, these files should
+be transferred to the AP with (note, two destinations accessed):
+
+$ scp dropbear wireless network firewall root@192.168.1.1:/etc/config/
+$ scp shadow root@192.168.1.1:/etc/
+
+At that point, the AP now has a root password (from shadow) which is:
+
+Wccf.Rt.Pw
+
+This above password will be required to ssh to the AP, or to access
+the Web Mgmt U/I.
+
+Once restarted, the AP will have wireless enabled with SSID, Security,
+and shared passwords set.
+
+FINAL NOTE:
+
+Cat file wireless herein to verify the values you have configured or
+to make desired changes prior to use.

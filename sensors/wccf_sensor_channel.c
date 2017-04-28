@@ -32,6 +32,13 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
     nla_parse(tb, NL80211_ATTR_MAX, genlmsg_attrdata(gnlh, 0),
               genlmsg_attrlen(gnlh, 0), NULL);
 
+    if (tb[NL80211_ATTR_VHT_CAPABILITY]) {
+        printf("found NL80211_ATTR_VHT_CAPABILITY\n");
+    }
+    if (tb[NL80211_ATTR_HT_CAPABILITY]) {
+        printf("found NL80211_ATTR_HT_CAPABILITY\n");
+    }
+    
     json_object *jdev = json_object_new_object();
 
     /*

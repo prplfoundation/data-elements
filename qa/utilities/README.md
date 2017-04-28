@@ -1,6 +1,6 @@
-#QA Utilities README#
+# QA Utilities README
 
-##Build Script Utilities##
+## Build Script Utilities
 
 These scripts - 
 
@@ -33,13 +33,18 @@ commands below.
 
 UPDATE: 
 
-Script full_build.sh is the newest and simplest way to build.  It
+Script `full_build.sh` is the newest and simplest way to build.  It
 utilizes the helper files (above) to avoid the OpenWrt image build
 options menus completely.  Full build takes a cmd line arg to set
-the desired AP type (NETGEAR or TP-LINK).  See internal comments.
+the desired AP type (NETGEAR or TP-LINK).  Note that it utilizes
+previously prepared .config files so any changes made by hand in
+a `make menuconfig` step are overwritten by `full_build.sh`. See
+internal comments.
 
 Script build_image.sh is used to call, in order, each of the other
 two scripts to fully automate the rebuild step.
+
+END UPDATE
 
 Note that build_openwrt.sh always executes step 'make menuconfig'
 so some keyboard input is required to complete and/or verify the

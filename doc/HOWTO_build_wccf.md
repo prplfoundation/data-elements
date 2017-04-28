@@ -1,8 +1,8 @@
-#Wireless Common Collection Framework - WCCF#
+# Wireless Common Collection Framework - WCCF
 
-#HOWTO\_build\_wccf#
+# HOWTO\_build\_wccf
 
-###Version 1.3.0###
+### Version 1.4.0
 
 `Copyright (c) 2017 Applied Broadband, Inc., and`
 `                   Cable Television Laboratories, Inc. ("CableLabs")`
@@ -30,9 +30,9 @@ With a fresh git clone of wccf, enter the following steps on a fully prepared bu
 		$ ./configure
 		$ make dist
 
-The resulting build product is file `wccf-1.3.0.tar.gz`.  This file along with others are introduced to the OpenWrt build environment to create a flashable image for the Wireless Access Point.
+The resulting build product is file `wccf-1.4.0.tar.gz`.  This file along with others are introduced to the OpenWrt build environment to create a flashable image for the Wireless Access Point.
 
-##Next Steps##
+## Next Steps
 This completes the process of building the WCCF components.  For additional steps required to build and deploy an OpenWrt image with WCCF, see file:
 
 [wccf/doc/HOWTO_start_here.md](./HOWTO_start_here.md)
