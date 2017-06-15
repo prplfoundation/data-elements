@@ -10,7 +10,7 @@
 - Fixed IfIndex, APName issues with PhyCapa sensor
 - Fixed problem with wccf_sensor_event where STAMAC values were incorrect
 
-####Known Issues:
+#### Known Issues:
 - JIRA issue C3CCF-57 - disabling a radio kills its event sensor; reboot required to work around (or pid file deletion; service restart)
 
 ## Version 1.4.0 - April 30, 2017
