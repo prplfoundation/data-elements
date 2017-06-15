@@ -1,13 +1,13 @@
 # WCCF Admin Guide
-## Version 1.4.0.  April 30, 2017
+## Version 1.4.1.  June 15, 2017
 
 Copyright (c) 2017 Applied Broadband, Inc., and Cable Television Laboratories, Inc. ("CableLabs")
 
 ## Contents
 
 1. Overview
-2. Installing WCCF Version 1.4.0
-3. Configuring WCCF Version 1.4.0 Apps
+2. Installing WCCF Version 1.4.x
+3. Configuring WCCF Version 1.4.x Apps
     - i. Space Management
     - ii. Sensors
     - iii. Processors
@@ -32,16 +32,16 @@ Copyright (c) 2017 Applied Broadband, Inc., and Cable Television Laboratories, I
 
 ## 1. Overview
 
-Wi-Fi Common Collection Framework (WCCF), Version 1.4.0, targets OpenWrt-based Access Point (AP) hardware (https://openwrt.org/) running OpenWrt branch master (aka Designated Driver).  WCCF Version 1.4.0 has focused on supporting the following access point devices:
+Wi-Fi Common Collection Framework (WCCF), Version 1.4.x, targets OpenWrt-based Access Point (AP) hardware (https://openwrt.org/) running OpenWrt branch master (aka Designated Driver).  WCCF Version 1.4.x has focused on supporting the following access point devices:
 
 + Netgear N600 Model WNDR3800 dual band with 2.4GHz 802.11b/g/n and 5GHz 802.11a/n,
 + TP-Link AC1750 Model Archer C7 dual band with 2.4GHz 802.11b/g/n and 5GHz 802.11a/n/ac capability.
 
 This document covers the details of configuring and operating WCCF services within an OpenWrt Access Point image built with WCCF.  This document also addresses the configuration of a "Receiver" network element to which the WCCF-enabled Access Point will send its collected data.
 
-The WCCF Version 1.4.0 release includes fully-functional system images ready to flash onto each of the Netgear and TP-Link devices (see above) for demonstration, testing, and production AP operation.  See Section 4, Configuring the OpenWrt Device, for details on AP configuration with these images.
+The WCCF Version 1.4.x release includes fully-functional system images ready to flash onto the TP-Link device (see above) for demonstration, testing, and production AP operation.  See Section 4, Configuring the OpenWrt Device, for details on AP configuration with these images.
 
-Other technical documentation provided in release 1.4.0 covers the following topics:
+Other technical documentation provided in release 1.4.x covers the following topics:
 
 + WCCF HOWTO Docs Overview ([wccf/doc/HOWTO_start_here.md](./HOWTO_start_here.md))
 + WCCF/OpenWrt Build Machine ([wccf/doc/HOWTO_build_machine.md](./HOWTO_build_machine.md))
@@ -49,9 +49,9 @@ Other technical documentation provided in release 1.4.0 covers the following top
 + Building WCCF into OpenWrt ([wccf/doc/HOWTO_build_flashable_image.md](./HOWTO_build_flashable_image.md))
 + Samples of each Sensor's output content and format in the reponsitory [wccf/doc/](./).
 
-## 2. Installing WCCF Version 1.4.0
+## 2. Installing WCCF Version 1.4.x
 
-The image files included with release 1.4.0 are OpenWrt "sysupgrade" format images.  This format is suitable to upgrade ("flash") an existing OpenWrt device.  It is not suitable for use as a "first installation" of OpenWrt onto a factory-image based access point.  Such a "first installation" image can be built following the steps detailed in the HOWTO documents above.
+The image files included with release 1.4.x are TP-LINK OpenWrt "sysupgrade" and "factory" format images at  [wccf/qa/images/1.4.1](../qa/images/1.4.1).  The sysupgrade format is suitable to upgrade ("flash") an existing OpenWrt device.  It is not suitable for use as a "first installation" of OpenWrt onto a factory-image based access point.  The "factory" image is such a "first installation" image. Either can be built following the steps detailed in the HOWTO documents above.
 
 To install either provided image, one can either interact with the target device using its Web-based OpenWrt U/I, or one can scp the image onto the device, then ssh to the device and force the flash using the command line.
 
@@ -128,7 +128,7 @@ For an illustration of the above process on the Netgear (which is very similar t
 - [wccf/doc/HOWTO_FlashTheNetgearWNDR3800.md](./HOWTO_FlashTheNetgearWNDR3800.md)
 
 
-## 3. Configuring WCCF Version 1.4.0 Apps
+## 3. Configuring WCCF Version 1.4.x Apps
 
 ### i. Space Management
 Storage space generally is limited on OpenWrt devices.  WCCF apps use some storage space on the AP.  Generally, they configure space under /tmp for files only until they are transferred to a Receiver at another address.
@@ -139,13 +139,15 @@ See the following sections for details on configuring file locations.
 
 ### ii. Sensors
 
-In WCCF, Version 1.4.0, Sensors exist that obtain Wi-Fi information and store it in files for subsequent delivery through a Transmitter to a remote Receiver.  In Version 1.4.0, crontabs are used to trigger the Sensors periodically (initially, at 5-minute intervals).  The WCCF Version 1.4.0 build/install package installs a cronjob for user root with pre-configured sensor entries.  This cronjob starts on boot after an image flash.
+In WCCF, Version 1.x, Sensors exist that obtain Wi-Fi information and store it in files for subsequent delivery through a Transmitter to a remote Receiver.  In Version 1.x, crontabs are used to trigger the Sensors periodically (initially, at 5-minute intervals).  The WCCF Version 1.x build/install package installs a cronjob for user root with pre-configured sensor entries.  This cronjob starts on boot after an image flash.
 
-Note, if 'Keep settings' is selected - see above - a prior crontab may be preserved and operational instead of the 1.4.0 crontab. Regardless, the Version 1.4.0 cronjob is always present and available for reference in file form as `/root/wccf_sensors.cron`.  If upgrading from WCCF 1.3.0 to 1.4.0, you may need to hand edit (or scp) the new crontab.
+Note, WCCF 1.4.1 includes a ConTab update.  If 'Keep settings' is selected - see above - a prior OpenWrt crontab may be preserved and operational instead of the 1.4.1 crontab.  Regardless, the most current cronjob is always copied onto the AP and so is present and available for reference in file form as `/root/wccf_sensors.cron`.  If upgrading to 1.4.1 from a prior WCCF version, you MUST change the new crontab with the following command (or use the GUI Console to edit it):
+
+        $ crontab /root/wccf_sensors.cron
 
 The current cronjob can be viewed and changed through the Web U/I at menu `System -> Scheduled Tasks`.  Alternatively, when ssh'd into the AP, from the command line use `$ crontab -e` to view and edit these configurations, and `$ crontab -h` for more options.
 
-There are five Sensors in WCCF, 1.4.0: 
+There are five Sensors in WCCF, 1.4.x: 
 
 - /usr/sbin/wccf_sensor_scan
 - /usr/sbin/wccf_sensor_station
@@ -161,7 +163,7 @@ Output of the sensors is in JSON format.  Specific output-content of each Sensor
 
 ### iii. Processors
 
-In WCCF, Processors are apps intended (generally) to accept Sensor output and transform it in some fashion prior to delivery by a Transmitter to a corresponding Receiver.  In the base Version 1.4.0, there is a single Processor that demonstrates this architectural relationship by merely transferring Sensor output to the Transmitter's input directory.  This Processor is named wccf_proc_null.
+In WCCF, Processors are apps intended (generally) to accept Sensor output and transform it in some fashion prior to delivery by a Transmitter to a corresponding Receiver.  In Version 1.x, there is a single Processor that demonstrates this architectural relationship by merely transferring Sensor output to the Transmitter's input directory.  This Processor is named wccf_proc_null.
 
 The config file for wccf_proc_null is file [`/etc/config/wccf_proc_null.cfg`](../utils/wccf_proc_null.cfg.in).  Its content is largely self documenting and is reproduced in its entirety here:
 
@@ -189,7 +191,7 @@ Process wccf_proc_null is configured to start on boot by virtue of the presence 
 
 ### iv. Transmitters
 
-In WCCF, the Transmitter element is responsible for moving data from the WCCF Agent to a Receiver.  In Version 1.4.0, there is a single Transmitter that is configured to accept output from the above Processor and send it off of the AP to a configured Receiver using REST.  This Transmitter is named wccf_tx_rest.
+In WCCF, the Transmitter element is responsible for moving data from the WCCF Agent to a Receiver.  In Version 1.x, there is a single Transmitter that is configured to accept output from the above Processor and send it off of the AP to a configured Receiver using REST.  This Transmitter is named wccf_tx_rest.
 
 The config file for wccf_tx_rest is file [`/etc/config/wccf_tx_rest.cfg`](../utils/wccf_tx_rest.cfg.in).  Its content is largely self documenting and is reproduced in its entirety here:
 
@@ -219,22 +221,30 @@ Process wccf_tx_rest is configured to start on boot by virtue of its init script
 
 ### v. Receivers
 
-The Receiver is installed on a server that will act as the data target for the remote WCCF AP's.
+The Receiver is installed on a server that will act as the data target for the operating WCCF AP transmitter(s).
 
-The Receiver is a Python module that consists of 2 files:
+The provided WCCF Receiver is a Python module that consists of 2 files:
 
  + bottle.py - A standalone opensource web server library (MIT license)
- + wccf_rx_rest.py - The main receiver code
+ + wccf_rx_rest.py - The main receiver code implementing a REST API to receive transmitted json files
 
-**Basic Receiver Server Requirements**
+**Receiver Server Requirements**
+
+There are no base requirements for a WCCF Receiver other than the capability to run Python 2.7 and to handle generated traffic.  As configured by default, each WCCF-enabled AP will generate approximately 20-25K bytes of output once every five minutes.  (The total byte-count received per AP per cycle is *unrelated* to the amount of broadband traffic handled locally by each AP.)
+
+A typical Receiver host profile may be:
 
   + 1 PU 2G RAM minimum (for larger installations, more may be required but for testing, this is sufficient)
-  + CentOS 7 or equivalent Linux Distro (CentOS 7 used for testing)
+  + CentOS 7 or equivalent Linux Distro (eg, Unbuntu - note: CentOS 7 used for testing)
   + Python 2.7
 
-One additional Python library, Paste, is required to run this version of the Receiver.  Paste provides well-established multithreading and asynchronous web access through an MIT-licensed Python library.  Paste is required and can be installed using the following pip command (as root):
+One additional Python library, Paste, is required to run the current version of the Receiver.  Paste provides well-established multithreading and asynchronous web access through an MIT-licensed Python library.  Paste is required and can be installed using the following pip command (as root):
 
     $ pip install paste
+
+If pip is not installed, use this command:
+
+    $ yum install -y python-pip
 
 **Receiver Installation**
 
@@ -246,14 +256,20 @@ One additional Python library, Paste, is required to run this version of the Rec
 
 **Receiver Logging**
 
-By default, wccf_rx_rest.py logs to CentOS service rsyslog, facility local5.  This is hardwired in the code at this time.
+By default, wccf_rx_rest.py logs to CentOS service rsyslog, facility local5.  This is hardwired in the code at this time.  Some useful logging output may go to stdout so the startup command redirects this to a file also.
 
 Without any changes, log messages up to INFO will be logged to /var/log/messages.  If you wish to have DEBUG level messaging enabled, and/or desire a separate log for wccf_rx_rest, you will need to add the following line to `/etc/rsyslog.conf` just before the comment as illustrated here:
 
     # ### begin forwarding rule ###
     local5.*                                                /var/log/wccf.log
 
-A restart of service rsyslog is required to enable this change.
+The rsyslog service on Ubuntu differs from CentOS so configuration may require additional steps.  The following ownership change was found to be necessary in cursory testing:
+
+    $ chown syslog:adm /var/log/wccf.log
+
+A restart of service rsyslog is required to effect the above changes.
+
+    $ service rsyslog restart
 
 **Running the Receiver**
 
@@ -274,23 +290,35 @@ Help for wccf_rx_rest.py is available with the -h switch:
       -D LOGLEVEL, --debug=LOGLEVEL
                             DEBUG level, [ERROR|WARN|INFO|DEBUG] [default: INFO]
 
-To execute wccf_rx_rest.py in the background, run the following command, substituting approriate values for the data directory location, IP address and port numbers:
+To execute wccf_rx_rest.py in the background, run the following command, substituting your approriate values for the data directory location, the Receiver's IP address and port numbers:
 
-    $ nohup python2.7 /usr/sbin/wccf_rx_rest.py -o /data/wccf -p 8888 -H 208.113.130.113 &> /dev/null &
+    $ nohup python2.7 /usr/sbin/wccf_rx_rest.py -o /data/wccf -p 8888 -H 10.10.10.101 &> $HOME/wccf_rcvr.log &
 
-The designated output directory will be created (if necessary).
+The designated output directory in the above startup command will be created (if necessary) provided that the user under which the Receiver is run has sufficient permissions to do so.  The Receiver will create, under that directory, a subdir for each AP named with the AP's MAC address.  
+
+If files appear to be failing to reach the Receiver, review the sensor crontab settings on your AP (more detail in section \#4, below), insure that the process wccf_tx_rest is running and configured as required on your AP, and test the accessibility of the Receiver service with the following command:
+
+    $ telnet 10.10.10.101 8888
+
+    Trying 10.10.10.191...
+    Connected to 10.10.10.101.
+
+If you do not see the telnet session connect as above (rather, you see for example Connection refused, or, No route to host), then check all normal networking issues such as routes, firewalls, port numbers, etc.  Also verify that the logging output of the Receiver includes the output:
+
+    Listening on http://10.10.10.101:8888/
+
 
 ## 4. Configuring the OpenWrt Device
 
 OpenWrt offers a full Web-based U/I for configuration and management.  While this U/I is only optionally present on any OpenWrt device, the build instructions in [wccf/doc/HOWTO_build_flashable_image.md](./HOWTO_build_flashable_image.md) include the steps required to insure the Web U/I's presence.
 
-WCCF Version 1.4.0 Apps (see Section 3) assume certain settings within the Access Point.  Use of the Web U/I is recommended to set or change these and other device settings.
+WCCF Version 1.x Apps (see Section 3) assume certain settings within the Access Point.  Use of the Web U/I is recommended to set or change these and other device settings.
 
 ### i. Scheduled Tasks (crontab)
 
 The Sensors covered above (Section 3) are triggered periodically to capture Wi-Fi information via the familiar crontab. 
 
-In 1.4.0, the rsync config synchronizer is also triggered periodically by crontab.
+In 1.4.x, the rsync config synchronizer is also triggered periodically by crontab.
 
 In the Web U/I, menu `System -> Scheduled Tasks` will show the present crontab for user root (as installed by the WCCF image flash).  The crontab for user root is preserved across reflashes.
 
@@ -314,7 +342,7 @@ More detail on OpenWrt logging is available here: [https://wiki.openwrt.org/doc/
 
 ## 5. Setting Up rsync For AP Config File Management
 
-Important Note: Due to this following issue, rsync will be used without compression in release 1.4.0.
+Important Note: Due to this following issue, rsync will be used without compression in release 1.4.x.
 
 https://icesquare.com/wordpress/this-rsync-lacks-old-style-compress-due-to-its-external-zlib-try-zz/
 

@@ -39,12 +39,10 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
         /*
          * look up device name using interface index
          */
-        if (tb_msg[NL80211_ATTR_IFINDEX]) {
-            if_indextoname(nla_get_u32(tb_msg[NL80211_ATTR_IFINDEX]), device);
+        if_indextoname(nla_get_u32(ctx->if_index), device);
    
-            json_object *jdevname = json_object_new_string(device);
-            json_object_object_add(jdev, "APName", jdevname);
-        }
+        json_object *jdevname = json_object_new_string(device);
+        json_object_object_add(jdev, "APName", jdevname);
     
         /*
          * repeat AP Interface MAC address
@@ -55,11 +53,9 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
         /*
          * output interface index as numeric
          */
-        if (tb_msg[NL80211_ATTR_IFINDEX]) {
-            json_object *jifindex =
-                json_object_new_int(nla_get_u32(tb_msg[NL80211_ATTR_IFINDEX]));
-            json_object_object_add(jdev, "APIfIndex", jifindex);
-        }
+        json_object *jifindex =
+            json_object_new_int(nla_get_u32(ctx->if_index));
+        json_object_object_add(jdev, "APIfIndex", jifindex);
     
         /*
          * current c-epoch of data sample
@@ -462,6 +458,8 @@ int main(int argc, char *argv[])
         printf("cannot find index for %s, exiting\n", iface_name);
         exit(1);
     }
+
+    pc_args.if_index = if_index;
 
     genlmsg_put(msg, 0, 0, driver_id, 0, 773,
                 NL80211_CMD_GET_WIPHY, 0);

@@ -17,6 +17,7 @@ struct phycapa_args {
     bool width_40;
     bool width_80;
     bool width_160;
+    int if_index;
 };
   
 #endif

@@ -1,0 +1,49 @@
+#!/bin/sh /etc/rc.common
+#
+# Copyright (c) 2017 Applied Broadband, Inc., and
+#                    Cable Television Laboratories, Inc. ("CableLabs")
+#
+# Init script: wccf_sensor_track_reboots
+# Usage:
+#   Install is a three-step process - 
+#   1) copy this script into directory /etc/init.d/ 
+#   2) change permissions: $ chmod 755 /etc/init.d/wccf_sensor_track_reboots
+#   3) create a symlink:
+#       $ ln -s /etc/init.d/wccf_sensor_track_reboots /etc/rc.d/S90wccf_sensor_track_reboots
+#      note above is capital S on S90 of the symlink
+
+set -x
+
+START=90
+
+REBOOT_LOG=/root/reboot_times.log
+
+# The AP may boot up with a bad time.  This cannot be helped due to
+# the lack of a system board realtime clock (and clock shift). After
+# running for a time (600+ seconds?), we can expect an NTP clock set.
+# Below does an initial time report at boot up and then, if it
+# determines that the time has been corrected, it reports another
+# (corrected boot time) to the same tracking file.
+
+# WARNING: For long-running tests, space mgmt of the tracking file
+# may need to be added to this script (eg, replace date/time text
+# with simple counts to reduce progressive file-size increases).
+
+CORRECTION_INTERVAL=610
+
+start() {
+	NOW=`date`
+	THEN_SECS=`date +%s`
+	echo "* Bootup time: $NOW"
+	echo "* Bootup time: $NOW" >> $REBOOT_LOG
+	sleep $CORRECTION_INTERVAL
+	NOW_SECS=`date +%s`
+	# Using system-shell compatible syntax
+	CORRECTED_SECS=`expr $NOW_SECS - $CORRECTION_INTERVAL`
+	CORRECTED_DATE=`date -d @$CORRECTED_SECS`
+	# Only report new time if 'truely a correction'
+	if [ "$CORRECTED_SECS" -ne "$THEN_SECS" ]; then
+		echo "-- Corrected bootup time: $CORRECTED_DATE"
+		echo "-- Corrected bootup time: $CORRECTED_DATE" >> $REBOOT_LOG
+	fi
+}

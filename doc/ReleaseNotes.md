@@ -1,5 +1,18 @@
 # WCCF Release Notes
 
+## Version 1.4.1 - June 8, 2017
+
+### General Items
+- Added TP-LINK Archer C7 v2 sysupgrade and factory (vendor sw replacement) images to repo at [wccf/qa/images/1.4.1](../qa/images/1.4.1)
+- Admin Guide updated to clarify what items are applicate to all releases (1.x), 1.4.x releases, and 1.4.1 releases.
+- Crontab changed to 15-minute intervals (must force-update existing OpenWrt AP cronjobs with cmdline: # crontab /root/wccf_sensors.cron)
+- Crontab for wccf_sensor_scan was changed to execute at 14,29,44,59 minutes to provide 14 minutes for SSID collection
+- Fixed IfIndex, APName issues with PhyCapa sensor
+- Fixed problem with wccf_sensor_event where STAMAC values were incorrect
+
+####Known Issues:
+- JIRA issue C3CCF-57 - disabling a radio kills its event sensor; reboot required to work around (or pid file deletion; service restart)
+
 ## Version 1.4.0 - April 30, 2017
 
 ### General Issues

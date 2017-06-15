@@ -1,11 +1,13 @@
-*/5 * * * * /usr/sbin/wccf_sensor_scan --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_scan --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_station --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_station --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_channel --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_channel --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_phycapa --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_phycapa --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
-*/5 * * * * /usr/sbin/wccf_sensor_interface --output-dir=/tmp/wccf/sensor
+14,29,44,59 * * * * /usr/sbin/wccf_sensor_scan --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
+14,29,44,59 * * * * /usr/sbin/wccf_sensor_scan --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
+*/15 * * * * /usr/sbin/wccf_sensor_station --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
+*/15 * * * * /usr/sbin/wccf_sensor_station --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
+*/15 * * * * /usr/sbin/wccf_sensor_channel --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
+*/15 * * * * /usr/sbin/wccf_sensor_channel --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
+*/15 * * * * /usr/sbin/wccf_sensor_phycapa --interface-name=wlan0 --output-dir=/tmp/wccf/sensor
+*/15 * * * * /usr/sbin/wccf_sensor_phycapa --interface-name=wlan1 --output-dir=/tmp/wccf/sensor
+*/15 * * * * /usr/sbin/wccf_sensor_interface --output-dir=/tmp/wccf/sensor
+# Rsync of /etc/config (two-way) transfers
 */15 * * * * /usr/sbin/wccf_config_sync.sh /etc/config/wccf_config_sync.cfg
-4,19,34,49 * * * * /usr/sbin/wccf_util_update.sh wccf_util_update_worker.sh
+# General update worker offset from rsync transfers to avoid collision
+8,23,38,53 * * * * /usr/sbin/wccf_util_update.sh wccf_util_update_worker.sh

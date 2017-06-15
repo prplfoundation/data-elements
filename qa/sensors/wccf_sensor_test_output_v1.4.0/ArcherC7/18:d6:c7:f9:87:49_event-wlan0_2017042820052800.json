@@ -1,0 +1,1 @@
+{ "Device": { "Wifi": { "APMACAddress": "18:d6:c7:f9:87:46", "CurrentUTCTime": 1493409928, "Event": [ { "EventTime": "20:05:02.333156", "EventType": "AssocReq", "ConnectFrequency": 5180, "ConnectChannelNumber": 36, "ConnectMode": "11a", "ConnectSignal": -52, "SupportedBitrate": [ 6, 9, 12, 18, 24, 36, 48, 54 ], "STAMAC": "90:01:31:00:fa:00" } ] } } }

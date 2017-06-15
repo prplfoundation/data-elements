@@ -55,3 +55,5 @@ missing
 
 # Build product
 *.tar.gz
+.deps
+

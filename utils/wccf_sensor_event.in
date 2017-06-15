@@ -25,6 +25,7 @@ TCPDUMP=/usr/sbin/tcpdump
 start() {
     if [ ! -f "$WCCF_WLAN0_PIDFILE" ]
     then
+	sleep 1
 	echo "Starting wccf_sensor_event for wlan0"
 	mkdir -p $WCCF_OUTPUT_PATH
 	mkdir -p $WCCF_LOG_PATH
@@ -81,7 +82,7 @@ stop() {
 	echo "Stoping wccf_sensor_event for wlan0"
 	WCCF_PID=`cat $WCCF_WLAN0_PIDFILE`
 	kill -9 $WCCF_PID
-        pkill tcpdump
+        killall tcpdump
 	rm -f $WCCF_WLAN0_PIDFILE
     else
 	echo "File $WCCF_WLAN0_PIDFILE missing - cannot stop wccf_sensor_event for wlan0"
@@ -91,7 +92,7 @@ stop() {
 	echo "Stoping wccf_sensor_event for wlan1"
 	WCCF_PID=`cat $WCCF_WLAN1_PIDFILE`
 	kill -9 $WCCF_PID
-        pkill tcpdump
+        killall tcpdump
 	rm -f $WCCF_PIDFILE
     then
 	echo "File $WCCF_WLAN1_PIDFILE missing - cannot stop wccf_sensor_event for wlan1"
