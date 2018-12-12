@@ -1,0 +1,1409 @@
+Using JSON_OUTPUT_SOURCE_DIR: /home/abccf/git-local-wccf/wccf/qa/temp
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: APIfIndex				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: APIfIndex				Release Debut: R1
+
+Count = 1
+
+Total count for APIfIndex: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: APMACAddress				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: APMACAddress				Release Debut: R1
+
+Count = 1
+
+Total count for APMACAddress: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: APName				Release Debut: R2
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: APName				Release Debut: R2
+
+Count = 1
+
+Total count for APName: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: ChannelActiveTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: ChannelActiveTime				Release Debut: R1
+
+Count = 1
+
+Total count for ChannelActiveTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: ChannelBusyTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: ChannelBusyTime				Release Debut: R1
+
+Count = 1
+
+Total count for ChannelBusyTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: ChannelBusyExtTime				Release Debut: R2
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: ChannelBusyExtTime				Release Debut: R2
+
+Count = 0
+MISSING
+
+Total count for ChannelBusyExtTime: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: ChannelNumber				Release Debut: R2
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: ChannelNumber				Release Debut: R2
+
+Count = 1
+
+Total count for ChannelNumber: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: ChannelReceiveTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: ChannelReceiveTime				Release Debut: R1
+
+Count = 1
+
+Total count for ChannelReceiveTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: ChannelTransmitTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: ChannelTransmitTime				Release Debut: R1
+
+Count = 1
+
+Total count for ChannelTransmitTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: CurrentUTCTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: CurrentUTCTime				Release Debut: R1
+
+Count = 1
+
+Total count for CurrentUTCTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: Frequency				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: Frequency				Release Debut: R1
+
+Count = 1
+
+Total count for Frequency: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: InUse				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: InUse				Release Debut: R1
+
+Count = 1
+
+Total count for InUse: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Channel
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan0_2017042820100000.json
+Field: Noise				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_channel-wlan1_2017042820100000.json
+Field: Noise				Release Debut: R1
+
+Count = 1
+
+Total count for Noise: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: APIfIndex				Release Debut: R2
+
+Count = 1
+
+Total count for APIfIndex: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: APMACAddress				Release Debut: R2
+
+Count = 1
+
+Total count for APMACAddress: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: APName				Release Debut: R2
+
+Count = 1
+
+Total count for APName: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: CenterFreq1				Release Debut: R2
+
+Count = 1
+
+Total count for CenterFreq1: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: CenterFreq2				Release Debut: R2
+
+Count = 0
+MISSING
+
+Total count for CenterFreq2: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: ChannelWidth				Release Debut: R2
+
+Count = 1
+
+Total count for ChannelWidth: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: CurrentUTCTime				Release Debut: R2
+
+Count = 1
+
+Total count for CurrentUTCTime: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Interface
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_interface_2017042820100000.json
+Field: HtChannelType				Release Debut: R2
+
+Count = 1
+
+Total count for HtChannelType: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: APIfIndex				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: APIfIndex				Release Debut: R1
+
+Count = 1
+
+Total count for APIfIndex: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: APMACAddress				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: APMACAddress				Release Debut: R1
+
+Count = 1
+
+Total count for APMACAddress: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: APName				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: APName				Release Debut: R1
+
+Count = 1
+
+Total count for APName: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: ChannelNumber				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: ChannelNumber				Release Debut: R1
+
+Count = 1
+
+Total count for ChannelNumber: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: ChannelUtil				Release Debut: F
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: ChannelUtil				Release Debut: F
+
+Count = 0
+MISSING
+
+Total count for ChannelUtil: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: CurrentUTCTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: CurrentUTCTime				Release Debut: R1
+
+Count = 1
+
+Total count for CurrentUTCTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: Frequency				Release Debut: R2
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: Frequency				Release Debut: R2
+
+Count = 1
+
+Total count for Frequency: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: RemoteMACAddress				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: RemoteMACAddress				Release Debut: R1
+
+Count = 1
+
+Total count for RemoteMACAddress: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: Signal				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: Signal				Release Debut: R1
+
+Count = 1
+
+Total count for Signal: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: SSID				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: SSID				Release Debut: R1
+
+Count = 1
+
+Total count for SSID: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Scan
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan0_2017042820100200.json
+Field: StationCnt				Release Debut: F
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_scan-wlan1_2017042820100200.json
+Field: StationCnt				Release Debut: F
+
+Count = 0
+MISSING
+
+Total count for StationCnt: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: APIfIndex				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: APIfIndex				Release Debut: R1
+
+Count = 1
+
+Total count for APIfIndex: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: APMACAddress				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: APMACAddress				Release Debut: R1
+
+Count = 1
+
+Total count for APMACAddress: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: APName				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: APName				Release Debut: R1
+
+Count = 1
+
+Total count for APName: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: CurrentUTCTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: CurrentUTCTime				Release Debut: R1
+
+Count = 1
+
+Total count for CurrentUTCTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: HtRxMCS				Release Debut: R1
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: HtRxMCS				Release Debut: R1
+
+Count = 1
+
+Total count for HtRxMCS: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: HtTxMCS				Release Debut: R1
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: HtTxMCS				Release Debut: R1
+
+Count = 1
+
+Total count for HtTxMCS: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: InactiveTime				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: InactiveTime				Release Debut: R1
+
+Count = 1
+
+Total count for InactiveTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: IPv4Address				Release Debut: F
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: IPv4Address				Release Debut: F
+
+Count = 0
+MISSING
+
+Total count for IPv4Address: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: MACAddress				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: MACAddress				Release Debut: R1
+
+Count = 1
+
+Total count for MACAddress: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: RxBytes				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: RxBytes				Release Debut: R1
+
+Count = 1
+
+Total count for RxBytes: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: RxBytes				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: RxBytes				Release Debut: R1
+
+Count = 1
+
+Total count for RxBytes: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: RxBytes				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: RxBytes				Release Debut: R1
+
+Count = 1
+
+Total count for RxBytes: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: RxPackets				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: RxPackets				Release Debut: R1
+
+Count = 1
+
+Total count for RxPackets: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: RxPackets				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: RxPackets				Release Debut: R1
+
+Count = 1
+
+Total count for RxPackets: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: Signal				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: Signal				Release Debut: R1
+
+Count = 1
+
+Total count for Signal: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: SignalAvg				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: SignalAvg				Release Debut: R1
+
+Count = 1
+
+Total count for SignalAvg: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: StationName				Release Debut: F
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: StationName				Release Debut: F
+
+Count = 0
+MISSING
+
+Total count for StationName: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: TxBitrate				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: TxBitrate				Release Debut: R1
+
+Count = 1
+
+Total count for TxBitrate: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: RxBitrate				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: RxBitrate				Release Debut: R1
+
+Count = 1
+
+Total count for RxBitrate: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: TxBytes				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: TxBytes				Release Debut: R1
+
+Count = 1
+
+Total count for TxBytes: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: TxFailed				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: TxFailed				Release Debut: R1
+
+Count = 1
+
+Total count for TxFailed: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: TxPackets				Release Debut: R1
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: TxPackets				Release Debut: R1
+
+Count = 1
+
+Total count for TxPackets: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: TxRetries				Release Debut: R2
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: TxRetries				Release Debut: R2
+
+Count = 1
+
+Total count for TxRetries: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: VhtRxMCS				Release Debut: R2
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: VhtRxMCS				Release Debut: R2
+
+Count = 0
+MISSING
+
+Total count for VhtRxMCS: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: VhtTxMCS				Release Debut: R2
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: VhtTxMCS				Release Debut: R2
+
+Count = 0
+MISSING
+
+Total count for VhtTxMCS: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: VhtRxNSS				Release Debut: R2
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: VhtRxNSS				Release Debut: R2
+
+Count = 0
+MISSING
+
+Total count for VhtRxNSS: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: VhtTxNSS				Release Debut: R2
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: VhtTxNSS				Release Debut: R2
+
+Count = 0
+MISSING
+
+Total count for VhtTxNSS: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: VhtTxShortGI				Release Debut: R2
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: VhtTxShortGI				Release Debut: R2
+
+Count = 1
+
+Total count for VhtTxShortGI: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Station
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan0_2017042820100000.json
+Field: VhtRxShortGI				Release Debut: R2
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_station-wlan1_2017042820100000.json
+Field: VhtRxShortGI				Release Debut: R2
+
+Count = 1
+
+Total count for VhtRxShortGI: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: APName				Release Debut: R3
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: APName				Release Debut: R3
+
+Count = 0
+MISSING
+
+Total count for APName: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: APMACAddress				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: APMACAddress				Release Debut: R3
+
+Count = 1
+
+Total count for APMACAddress: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: APIfIndex				Release Debut: R3
+
+Count = 0
+MISSING
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: APIfIndex				Release Debut: R3
+
+Count = 0
+MISSING
+
+Total count for APIfIndex: 0
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: CurrentUTCTime				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: CurrentUTCTime				Release Debut: R3
+
+Count = 1
+
+Total count for CurrentUTCTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: Frequency				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: Frequency				Release Debut: R3
+
+Count = 1
+
+Total count for Frequency: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: ChannelNumber				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: ChannelNumber				Release Debut: R3
+
+Count = 1
+
+Total count for ChannelNumber: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: MaxTxPower				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: MaxTxPower				Release Debut: R3
+
+Count = 1
+
+Total count for MaxTxPower: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: ChannelWidth				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: ChannelWidth				Release Debut: R3
+
+Count = 1
+
+Total count for ChannelWidth: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: MCS				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: MCS				Release Debut: R3
+
+Count = 0
+MISSING
+
+Total count for MCS: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: MCS				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: MCS				Release Debut: R3
+
+Count = 0
+MISSING
+
+Total count for MCS: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: MCS				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: MCS				Release Debut: R3
+
+Count = 0
+MISSING
+
+Total count for MCS: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: VHTShortGI				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: VHTShortGI				Release Debut: R3
+
+Count = 0
+MISSING
+
+Total count for VHTShortGI: 1
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: PhyCapa
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan0_2017042820100000.json
+Field: HTMCS				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_phycapa-wlan1_2017042820100000.json
+Field: HTMCS				Release Debut: R3
+
+Count = 1
+
+Total count for HTMCS: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: EventTime				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: EventTime				Release Debut: R3
+
+Count = 1
+
+Total count for EventTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: EventType				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: EventType				Release Debut: R3
+
+Count = 1
+
+Total count for EventType: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: APMACAddress				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: APMACAddress				Release Debut: R3
+
+Count = 1
+
+Total count for APMACAddress: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: CurrentUTCTime				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: CurrentUTCTime				Release Debut: R3
+
+Count = 1
+
+Total count for CurrentUTCTime: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: STAMAC				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: STAMAC				Release Debut: R3
+
+Count = 1
+
+Total count for STAMAC: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: ConnectFrequency				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: ConnectFrequency				Release Debut: R3
+
+Count = 1
+
+Total count for ConnectFrequency: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: ConnectChannelNumber				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: ConnectChannelNumber				Release Debut: R3
+
+Count = 1
+
+Total count for ConnectChannelNumber: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: ConnectMode				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: ConnectMode				Release Debut: R3
+
+Count = 1
+
+Total count for ConnectMode: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: ConnectSignal				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: ConnectSignal				Release Debut: R3
+
+Count = 1
+
+Total count for ConnectSignal: 2
+__________________________________________________________________________________
+__________________________________________________________________________________
+For Sensor: Event
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820050300.json
+Field: SupportedBitrate				Release Debut: R3
+
+Count = 1
+
+=====
+File: /home/abccf/git-local-wccf/wccf/qa/temp/18:d6:c7:f9:87:49_event-wlan0_2017042820052800.json
+Field: SupportedBitrate				Release Debut: R3
+
+Count = 1
+
+Total count for SupportedBitrate: 2

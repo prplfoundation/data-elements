@@ -34,7 +34,7 @@ static int get_interface_cb(struct nl_msg *msg, void* arg)
         json_object *jdevname = json_object_new_string(device);
         json_object_object_add(jdev, "APName", jdevname);
     }
-    
+
     /*
      * repeat AP Interface MAC address
      */
@@ -46,38 +46,42 @@ static int get_interface_cb(struct nl_msg *msg, void* arg)
         sprintf(mac_str, "%02x:%02x:%02x:%02x:%02x:%02x",
                 mdat[0],mdat[1],mdat[2],mdat[3],mdat[4],mdat[5]);
         json_object *japmac = json_object_new_string(mac_str);
-        json_object_object_add(jdev, "APMACAddress", japmac);
+        json_object_object_add(jdev, "ID", japmac);
     }
 
     /*
-     * output interface index as numeric
+     * output interface index as b64
      */
     if (tb_msg[NL80211_ATTR_IFINDEX]) {
-        json_object *jifindex =
-            json_object_new_int(nla_get_u32(tb_msg[NL80211_ATTR_IFINDEX]));
+        unsigned ifidx = nla_get_u32(tb_msg[NL80211_ATTR_IFINDEX]);
+        const char *binidx = (char *)&ifidx;
+        char b64idx[(sizeof(int)*2)+1];
+        int len = Base64encode(b64idx, binidx, sizeof(int));
+        json_object *jifindex = json_object_new_string(b64idx);
         json_object_object_add(jdev, "APIfIndex", jifindex);
     }
-  
+
     //if (tb_msg[NL80211_ATTR_SSID]) {
     //    print_ssid_escaped(nla_len(tb_msg[NL80211_ATTR_SSID]),
     //                       nla_data(tb_msg[NL80211_ATTR_SSID]));
     //    printf("NOT IMPLEMENTED\n");
     //}
-    
+
     /*
      * current c-epoch of data sample
      */
     time_t current_time = time(0);
+    char timestr[TIMESTAMP_LENGTH];
+    (void)format_time(timestr, current_time);
+    json_object *jctime = json_object_new_string(timestr);
+    json_object_object_add(jdev, "TimeStamp", jctime);
 
-    json_object *jctime = json_object_new_int(current_time);
-    json_object_object_add(jdev, "CurrentUTCTime", jctime);
-  
     if (tb_msg[NL80211_ATTR_WIPHY]) {
 
         if (tb_msg[NL80211_ATTR_WIPHY_CHANNEL_TYPE]) {
             enum nl80211_channel_type channel_type;
             json_object *jctype = NULL;
-        
+
             channel_type = nla_get_u32(tb_msg[NL80211_ATTR_WIPHY_CHANNEL_TYPE]);
             switch (channel_type) {
             case NL80211_CHAN_NO_HT:
@@ -97,12 +101,12 @@ static int get_interface_cb(struct nl_msg *msg, void* arg)
             }
             json_object_object_add(jdev, "HtChannelType", jctype);
         }
-    
+
         if (tb_msg[NL80211_ATTR_CHANNEL_WIDTH]) {
             enum nl80211_chan_width width =
                 nla_get_u32(tb_msg[NL80211_ATTR_CHANNEL_WIDTH]);
             json_object *jcwidth = NULL, *jcenter1 = NULL, *jcenter2 = NULL;
-        
+
             switch (width) {
             case NL80211_CHAN_WIDTH_20_NOHT:
                 jcwidth = json_object_new_string("20NoHT");
@@ -133,21 +137,21 @@ static int get_interface_cb(struct nl_msg *msg, void* arg)
             }
 
             json_object_object_add(jdev, "ChannelWidth", jcwidth);
-        
+
             if (tb_msg[NL80211_ATTR_CENTER_FREQ1]) {
                 jcenter1 = json_object_new_int(nla_get_u32(tb_msg[NL80211_ATTR_CENTER_FREQ1]));
                 json_object_object_add(jdev, "CenterFreq1", jcenter1);
             }
-        
+
             if (tb_msg[NL80211_ATTR_CENTER_FREQ2]) {
                 jcenter2 = json_object_new_int(nla_get_u32(tb_msg[NL80211_ATTR_CENTER_FREQ2]));
                 json_object_object_add(jdev, "CenterFreq2", jcenter2);
             }
         }
     }
-    
+
     json_object_array_add(jarray, jdev);
-  
+
     return 0;
 }
 
@@ -165,15 +169,15 @@ int get_interface_mac(char *if_name, char *mac_string)
     strncpy(ifr.ifr_name , if_name , IFNAMSIZ-1);
 
     if (0 == ioctl(fd, SIOCGIFHWADDR, &ifr)) {
-        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;    
+        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;
         sprintf(mac_string, "%02x:%02x:%02x:%02x:%02x:%02x" ,
                 mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     }
 
     close(fd);
-  
+
     /*
-     * TODO - handle error responses 
+     * TODO - handle error responses
      */
     return 0;
 }
@@ -213,7 +217,7 @@ int main(int argc, char *argv[])
         printf("cannot allocate nls socket, exiting\n");
         exit(1);
     }
-  
+
     nl_socket_set_buffer_size(nls, 8192, 8192);
 
     ret = genl_connect(nls);
@@ -221,7 +225,7 @@ int main(int argc, char *argv[])
         printf("cannot connect netlink socket, exiting\n");
         exit(1);
     }
-  
+
     int driver_id = genl_ctrl_resolve(nls, "nl80211");
     if (driver_id < 0) {
         printf("cannot resolve nl80211 driver, exiting\n");
@@ -241,7 +245,7 @@ int main(int argc, char *argv[])
         printf("cannot allocate nl_msg, exiting\n");
         exit(1);
     }
-  
+
     genlmsg_put(msg, 0, 0, driver_id, 0, NLM_F_DUMP,
                 NL80211_CMD_GET_INTERFACE, 0);
 
@@ -250,7 +254,7 @@ int main(int argc, char *argv[])
         printf("cannot send request, exiting\n");
         exit(1);
     }
-    
+
     ret = nl_recvmsgs_default(nls);
     if (ret < 0) {
         printf("error returned while processing data %d", ret);
@@ -271,17 +275,17 @@ int main(int argc, char *argv[])
     struct tm *tstruct = gmtime(&t);
     strftime(tstamp, 16, "%Y%m%d%H%M%S", tstruct);
     get_interface_mac("br-wan", dev_mac);
-  
+
     sprintf(file_name, "%s/%s_interface_%s00.json", output_dir, dev_mac, tstamp);
     fp = fopen(file_name, "wb");
     if (!fp) {
         fprintf(stderr, "Cant open output file: %s", file_name);
         return 1;
     }
-  
+
     fprintf(fp, "%s\n", json_object_to_json_string(jdevice));
     fclose(fp);
-  
+
 
     return 0;
 

@@ -2,10 +2,9 @@
 
 # HOWTO\_build\_flashable\_image
 
-`Copyright (c) 2017 Applied Broadband, Inc., and`
+`Copyright (c) 2018 Applied Broadband, Inc., and`
 `                   Cable Television Laboratories, Inc. ("CableLabs")`
-
-### Version 1.4.0
+### Version 2.0.0
 
 This HOWTO assumes you have previously set up a reference build machine (see [wccf/doc/HOWTO_build_machine.md](./HOWTO_build_machine.md)), and have installed, built and tested OpenWrt locally including both creating and flashing an AP image (see [wccf/doc/HOWTO_start_here.md](./HOWTO_start_here.md)). It also assumes you have completed the steps documented in [wccf/doc/HOWTO_build_wccf.md](./HOWTO_build_wccf.md) which documents how to prepare the WCCF build products to integrate into an OpenWrt Access Point binary image.
 
@@ -21,7 +20,7 @@ The following steps assume that WCCF and OpenWrt are installed and built in para
 Copy WCCF pieces (see [wccf/doc/HOWTO_build_wccf.md](./HOWTO_build_wccf.md)) into existing OpenWrt build environment:
 
 		$ mkdir -p ~/openwrt-source/openwrt/dl
-		$ cp ~/wccf-source/wccf/wccf-1.4.0.tar.gz ~/openwrt-source/openwrt/dl/
+		$ cp ~/wccf-source/wccf/wccf-2.0.0.tar.gz ~/openwrt-source/openwrt/dl/
 		$ mkdir -p ~/openwrt-source/openwrt/package/network/wccf
 		$ cp ~/wccf-source/wccf/targets/openwrt/Makefile.template \
 		   ~/openwrt-source/openwrt/package/network/wccf/Makefile
@@ -108,6 +107,7 @@ This step is required to include support for the TP-LINK Archer C7 5GHz 802.11a/
 	Add Libraries -> (*) libexpat
 	Add Libraries -> (*) libiw
 	Add Libraries -> (*) libuuid
+	Add Libraries -> <*> uclibcxx
 
 
 ### Select Utilities

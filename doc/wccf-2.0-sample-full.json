@@ -1,0 +1,199 @@
+{
+    "wfa-dataelements:Network": {
+        "ID": "18:d6:c7:f9:65:0b",
+        "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+        "ControllerID": null,
+        "NumberOfDevices": 1,
+        "DeviceList": [
+            {
+                "ID": "18:d6:c7:f9:65:0b",
+                "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                "MultiAPCapabilities": "",
+                "CollectionInterval": 900000,
+                "NumberOfRadios": 2,
+                "RadioList": [
+                    {
+                        "ID": "AAAACg==",
+                        "Enabled": true,
+                        "CurrentOperatingClasses": [],
+                        "NumberOfCurrOpClass": 0,
+                        "Noise": 30,
+                        "Utilization": 56,
+                        "Transmit": 6,
+                        "ReceiveSelf": 0,
+                        "ReceiveOther": 0,
+                        "Capabilities": {
+                            "HECapabilities": "",
+                            "OperatingClasses": [],
+                            "NumberOfOpClasses": 0
+                        },
+                        "BackhaulSta": {},
+                        "UnassociatedStaList": [],
+                        "NumberOfUnassocSta": 0,
+                        "ScanResultList": {
+                            "NumberOfOpClassScans": 1,
+                            "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                            "OpClassScanList": [
+                                {
+                                    "ChannelScanList": []
+                                }
+                            ]
+                        },
+                        "NumberOfBSS": 1,
+                        "BSSList": [
+                            {
+                                "BSSID": "18:d6:c7:f9:65:09",
+                                "SSID": "",
+                                "Enabled": true,
+                                "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                                "UnicastBytesSent": 166653706,
+                                "UnicastBytesReceived": 15760830,
+                                "MulticastBytesSent": 0,
+                                "MulticastBytesReceived": 0,
+                                "BroadcastBytesSent": 0,
+                                "BroadcastBytesReceived": 0,
+                                "NumberOfSTA": 2,
+                                "STAList": [
+                                    {
+                                        "MACAddress": "f0:18:98:20:10:4b",
+                                        "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                                        "VHTCapabilities": "",
+                                        "HTCapabilities": "",
+                                        "SignalStrength": 194,
+                                        "LastConnectionTime": "",
+                                        "LastDataDownlinkRate": 176,
+                                        "LastDataUplinkRate": 216,
+                                        "EstMACDataRateDownlink": 0,
+                                        "EstMACDataRateUplink": 0,
+                                        "UtilizationReceive": 0,
+                                        "UtilizationTransmit": 0,
+                                        "BytesSent": 0,
+                                        "BytesReceived": 0,
+                                        "PacketsSent": 142389,
+                                        "PacketsReceived": 102779,
+                                        "ErrorsSent": 13,
+                                        "ErrorsReceived": 0,
+                                        "RetransCount": 25038,
+                                        "IPV6Address": "",
+                                        "IPV4Address": "",
+                                        "Hostname": "",
+                                        "NumberOfMeasurementReports": 0,
+                                        "MeasurementReport": []
+                                    },
+                                    {
+                                        "MACAddress": "f8:6f:c1:1d:6f:10",
+                                        "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                                        "VHTCapabilities": "",
+                                        "HTCapabilities": "",
+                                        "SignalStrength": 140,
+                                        "LastConnectionTime": "",
+                                        "LastDataDownlinkRate": 29,
+                                        "LastDataUplinkRate": 11,
+                                        "EstMACDataRateDownlink": 0,
+                                        "EstMACDataRateUplink": 0,
+                                        "UtilizationReceive": 0,
+                                        "UtilizationTransmit": 0,
+                                        "BytesSent": 0,
+                                        "BytesReceived": 0,
+                                        "PacketsSent": 24,
+                                        "PacketsReceived": 83,
+                                        "ErrorsSent": 0,
+                                        "ErrorsReceived": 0,
+                                        "RetransCount": 1,
+                                        "IPV6Address": "",
+                                        "IPV4Address": "",
+                                        "Hostname": "",
+                                        "NumberOfMeasurementReports": 0,
+                                        "MeasurementReport": []
+                                    }
+                                ],
+                                "EstServiceParametersBE": "",
+                                "EstServiceParametersBK": "",
+                                "EstServiceParametersVI": "",
+                                "EstServiceParametersVO": ""
+                            }
+                        ]
+                    },
+                    {
+                        "ID": "AAAACw==",
+                        "Enabled": true,
+                        "CurrentOperatingClasses": [],
+                        "NumberOfCurrOpClass": 0,
+                        "Noise": 14,
+                        "Utilization": 25,
+                        "Transmit": 0,
+                        "ReceiveSelf": 0,
+                        "ReceiveOther": 0,
+                        "Capabilities": {
+                            "HTCapabilities": "6v8=",
+                            "VHTCapabilities": "M4ABsg==",
+                            "HECapabilities": "",
+                            "OperatingClasses": [],
+                            "NumberOfOpClasses": 0
+                        },
+                        "BackhaulSta": {},
+                        "UnassociatedStaList": [],
+                        "NumberOfUnassocSta": 0,
+                        "ScanResultList": {
+                            "NumberOfOpClassScans": 1,
+                            "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                            "OpClassScanList": [
+                                {
+                                    "ChannelScanList": []
+                                }
+                            ]
+                        },
+                        "NumberOfBSS": 1,
+                        "BSSList": [
+                            {
+                                "BSSID": "18:d6:c7:f9:65:08",
+                                "SSID": "",
+                                "Enabled": true,
+                                "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                                "UnicastBytesSent": 76120729,
+                                "UnicastBytesReceived": 5659694,
+                                "MulticastBytesSent": 0,
+                                "MulticastBytesReceived": 0,
+                                "BroadcastBytesSent": 0,
+                                "BroadcastBytesReceived": 0,
+                                "NumberOfSTA": 1,
+                                "STAList": [
+                                    {
+                                        "MACAddress": "f8:38:80:4b:b0:26",
+                                        "TimeStamp": "2018-12-06T17:30:00.000+00:00",
+                                        "VHTCapabilities": "",
+                                        "HTCapabilities": "",
+                                        "SignalStrength": 134,
+                                        "LastConnectionTime": "",
+                                        "LastDataDownlinkRate": 6,
+                                        "LastDataUplinkRate": 866,
+                                        "EstMACDataRateDownlink": 0,
+                                        "EstMACDataRateUplink": 0,
+                                        "UtilizationReceive": 0,
+                                        "UtilizationTransmit": 0,
+                                        "BytesSent": 0,
+                                        "BytesReceived": 0,
+                                        "PacketsSent": 63385,
+                                        "PacketsReceived": 50794,
+                                        "ErrorsSent": 0,
+                                        "ErrorsReceived": 0,
+                                        "RetransCount": 0,
+                                        "IPV6Address": "",
+                                        "IPV4Address": "",
+                                        "Hostname": "",
+                                        "NumberOfMeasurementReports": 0,
+                                        "MeasurementReport": []
+                                    }
+                                ],
+                                "EstServiceParametersBE": "",
+                                "EstServiceParametersBK": "",
+                                "EstServiceParametersVI": "",
+                                "EstServiceParametersVO": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

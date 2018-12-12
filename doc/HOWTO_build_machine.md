@@ -84,6 +84,7 @@ Install the following set of software tools and libraries (as root, or with sudo
 		$ apt-get install subversion mercurial
 		$ apt-get install libboost-all-dev
 		$ apt-get install --no-install-recommends ubuntu-desktop
+                $ apt-get install --no-install-recommends gawk
 		$ apt-get install gnome-terminal
 
 Reboot the server to boot up into the GUI desktop (console or VNC session is probably required for GUI).

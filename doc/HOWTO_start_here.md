@@ -2,16 +2,17 @@
 
 # HOWTO_start_here
 
-### Version 1.4
+### Version 2.0
 
-`Copyright (c) 2017 Applied Broadband, Inc., and`
+`Copyright (c) 2018 Applied Broadband, Inc., and`
 `                   Cable Television Laboratories, Inc. ("CableLabs")`
 
-The Wireless Common Collection Framework (WCCF), Version 1.4.0, assumes a host environment of OpenWrt, branch master.  OpenWrt is described as a Linux distribution for embedded devices (from https://openwrt.org).  
+The Wireless Common Collection Framework (WCCF), Version 2.0.0, assumes a host environment of OpenWrt, branch master.  OpenWrt is described as a Linux distribution for embedded devices (from https://openwrt.org).  
 
 Building and using WCCF assumes strong familiarity with the mechanics of installing OpenWrt and building and deploying OpenWrt images.  No attempt is made to duplicate within the WCCF project the materials required to master those tasks.  However, just for clarity, note that it is not sufficient to download a prepared OpenWrt flash image which has already been created to be flashed onto your Vendor/Model-specific Access Point hardware device.  Rather, you must install the entire OpenWrt build environment and be able to create new flash images that incorporate the WCCF components.
 
-WCCF Version 1.4.0 has focused development and testing on two APs - the Netgear N600 Model WNDR3800, and the TP-LINK AC1750 Model Archer C7 Wireless Access Point devices.
+WCCF Version 2.0.0 has focused development and testing on two APs - the Netgear N600 Model WNDR3800, and the TP-LINK AC1750 Model Archer C7 Wireless Access Point devices.
+
 
 ## WCCF Build/Deployment/Run OVERVIEW
 
@@ -40,7 +41,7 @@ More detail is available in other HOWTO files (see below).  Here is a high-level
 
 Due to Ubuntu's high compatibility with OpenWrt, the WCCF project has adopted as the standard (reference) build environment Ubuntu 16.04.1 LTS (Long Term Support version).  While much of the software is portable to some degree, all final build and test is completed on this platform.
 
-The reference build machine iso file is available here (as of Jan 2017):
+The reference build machine iso file is available here (as of Jan 2018):
  
  https://www.ubuntu.com/download/server
  (file ubuntu-16.04.1-server-amd64.iso)

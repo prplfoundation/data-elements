@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <time.h>
+#include <assert.h>
 
 #include <stdbool.h>
 #include "nl80211.h"
@@ -32,5 +33,7 @@
 #include <getopt.h>
 #include "iwinfo.h"
 #include "json.h"
+#include "format_time.h"
+#include "base64.h"
 
 #endif
