@@ -38,14 +38,14 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
     if (tb[NL80211_ATTR_HT_CAPABILITY]) {
         printf("found NL80211_ATTR_HT_CAPABILITY\n");
     }
-    
+
     json_object *jdev = json_object_new_object();
 
     /*
      * look up device name using interface index
      */
     if_indextoname(nla_get_u32(tb[NL80211_ATTR_IFINDEX]), device);
-   
+
     json_object *jdevname = json_object_new_string(device);
     json_object_object_add(jdev, "APName", jdevname);
 
@@ -53,22 +53,28 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
      * repeat AP Interface MAC address
      */
     json_object *japmac = json_object_new_string(if_mac_address);
-    json_object_object_add(jdev, "APMACAddress", japmac);
+    json_object_object_add(jdev, "ID", japmac);
 
     /*
-     * output interface index as numeric
+     * output interface index as b64
      */
-    json_object *jifindex = json_object_new_int(nla_get_u32(tb[NL80211_ATTR_IFINDEX]));
+    unsigned ifidx = nla_get_u32(tb[NL80211_ATTR_IFINDEX]);
+    const char *binidx = (char *)&ifidx;
+    char b64idx[(sizeof(int)*2)+1];
+    int len = Base64encode(b64idx, binidx, sizeof(int));
+    json_object *jifindex = json_object_new_string(b64idx);
     json_object_object_add(jdev, "APIfIndex", jifindex);
+
 
     /*
      * current c-epoch of data sample
      */
     time_t current_time = time(0);
+    char timestr[TIMESTAMP_LENGTH];
+    (void)format_time(timestr, current_time);
+    json_object *jctime = json_object_new_string(timestr);
+    json_object_object_add(jdev, "TimeStamp", jctime);
 
-    json_object *jctime = json_object_new_int(current_time);
-    json_object_object_add(jdev, "CurrentUTCTime", jctime);
-  
     if (!tb[NL80211_ATTR_SURVEY_INFO]) {
         fprintf(stderr, "survey channel data missing!\n");
         return NL_SKIP;
@@ -104,7 +110,7 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
             channel = (freq - 56160) / 2160;
 
         json_object *jchan = json_object_new_int(channel);
-        json_object_object_add(jdev, "ChannelNumber", jchan);                                               
+        json_object_object_add(jdev, "Channel", jchan);
     }
     if (tb[NL80211_ATTR_WIPHY_BANDS]) {
         printf("Have NL80211_ATTR_WIPHY_BANDS\n");
@@ -114,16 +120,20 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
         json_object *jnoise = json_object_new_int(noise);
         json_object_object_add(jdev, "Noise", jnoise);
     }
-    // TODO fix issue with unsigned (using strings?)
+
+    float lastChange;
     if (sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME]) {
+        lastChange = (long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME]);
         json_object *jactivetime =
             json_object_new_int64((long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME]));
-        json_object_object_add(jdev, "ChannelActiveTime", jactivetime);
+        json_object_object_add(jdev, "LastChange", jactivetime);
     }
     if (sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_BUSY]) {
-        json_object *jbusytime =
-            json_object_new_int64((long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_BUSY]));
-        json_object_object_add(jdev, "ChannelBusyTime", jbusytime);
+        // hack to scale utilization between 0-255 JSP
+        float busyTime = (long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_BUSY]);
+        long long utilization = (busyTime / lastChange) * 255;
+        json_object *jbusytime = json_object_new_int64(utilization);
+        json_object_object_add(jdev, "Utilization", jbusytime);
     }
     if (sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_EXT_BUSY]) {
         json_object *jbusyexttime =
@@ -131,16 +141,20 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
         json_object_object_add(jdev, "ChannelBusyExtTime", jbusyexttime);
     }
     if (sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_RX]) {
-        json_object *jreceivetime =
-            json_object_new_int64((long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_RX]));
-        json_object_object_add(jdev, "ChannelReceiveTime", jreceivetime);
+        float rx = (long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_RX]);
+        long long receive = (rx / lastChange) * 255;
+        json_object *jreceiveSelf = json_object_new_int64(receive);
+        json_object_object_add(jdev, "ReceiveSelf", jreceiveSelf);
+        json_object *jreceiveOther = json_object_new_int64(receive);
+        json_object_object_add(jdev, "ReceiveOther", jreceiveOther); // always the same for us?!?
     }
     if (sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_TX]) {
-        json_object *jtransmittime =
-            json_object_new_int64((long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_TX]));
-        json_object_object_add(jdev, "ChannelTransmitTime", jtransmittime);
+        float tx = (long long)nla_get_u64(sinfo[NL80211_SURVEY_INFO_CHANNEL_TIME_TX]);
+        long long transmit = (tx / lastChange) * 255;
+        json_object *jtransmittime = json_object_new_int64(transmit);
+        json_object_object_add(jdev, "Transmit", jtransmittime);
     }
-  
+
     json_object *jinuse = NULL;
     if (sinfo[NL80211_SURVEY_INFO_IN_USE]) {
         jinuse = json_object_new_int(1);
@@ -148,11 +162,11 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
     else {
         jinuse = json_object_new_int(0);
     }
-  
-    json_object_object_add(jdev, "InUse", jinuse);
+
+    json_object_object_add(jdev, "Enabled", jinuse);
 
     json_object_array_add(jarray, jdev);
-  
+
     return NL_SKIP;
     //return 0;
 }
@@ -171,15 +185,15 @@ int get_interface_mac(char *if_name, char *mac_string)
     strncpy(ifr.ifr_name , if_name , IFNAMSIZ-1);
 
     if (0 == ioctl(fd, SIOCGIFHWADDR, &ifr)) {
-        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;    
+        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;
         sprintf(mac_string, "%02x:%02x:%02x:%02x:%02x:%02x" ,
                 mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     }
 
     close(fd);
-  
+
     /*
-     * TODO - handle error responses 
+     * TODO - handle error responses
      */
     return 0;
 }
@@ -222,7 +236,7 @@ int main(int argc, char *argv[])
         printf("cannot allocate nls socket, exiting\n");
         exit(1);
     }
-  
+
     nl_socket_set_buffer_size(nls, 8192, 8192);
 
     ret = genl_connect(nls);
@@ -230,7 +244,7 @@ int main(int argc, char *argv[])
         printf("cannot connect netlink socket, exiting\n");
         exit(1);
     }
-  
+
     int driver_id = genl_ctrl_resolve(nls, "nl80211");
     if (driver_id < 0) {
         printf("cannot resolver nl80211 driver, exiting\n");
@@ -250,12 +264,12 @@ int main(int argc, char *argv[])
         printf("cannot allocate nl_msg, exiting\n");
         exit(1);
     }
-  
+
     memset(iface_mac, 0, 18);
     ret = get_interface_mac(iface_name, iface_mac);
-  
+
     svy_args.if_mac_address = iface_mac;
-  
+
     int if_index = if_nametoindex(iface_name);
     if (if_index == 0) {
         printf("cannot find index for %s, exiting\n", iface_name);
@@ -293,7 +307,7 @@ int main(int argc, char *argv[])
     struct tm *tstruct = gmtime(&t);
     strftime(tstamp, 16, "%Y%m%d%H%M%S", tstruct);
     get_interface_mac("br-wan", dev_mac);
-  
+
     sprintf(file_name, "%s/%s_channel-%s_%s00.json", output_dir,
             dev_mac, iface_name, tstamp);
     fp = fopen(file_name, "wb");
@@ -301,10 +315,10 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Cant open output file: %s", file_name);
         return 1;
     }
-  
+
     fprintf(fp, "%s\n", json_object_to_json_string(jdevice));
     fclose(fp);
-  
+
 
     return 0;
 

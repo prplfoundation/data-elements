@@ -1,5 +1,19 @@
 # WCCF Release Notes
 
+## Version 2.0.0 - December 7, 2018
+
+### General Items
+ - Added new report (Network) output that conforms where possible to Multi-AP Specification v1.0
+ - Delete older WCCF reports after they have been merged into the new Network report
+ - Removed wccf_proc_null processor from the default installation startup scripts
+ - Upgraded OpenWRT version to 18.06.1
+ - Added new TP-LINK Archer C7 v2 sysupgrade and factory images to repo at [wccf/qa/images/2.0.0](../qa/images/2.0.0)
+ 
+### Known Issues
+ - Not all parameters in Multi-AP Specification v1.0 as defined in Data_Elements_DRAFT_Specification_v0.0.16.pdf are supported
+ - The software has only been tested on TP-LINK Archer C7 v2
+ - Execution of sensors can be increased up to a frequency of once per 2 minutes, sub-minute frequencies is limited by crontab. In this 2 minute option, scan reports should be executed on even minutes and all other reports should be exeuted on the odd minutes.
+ 
 ## Version 1.4.1 - June 8, 2017
 
 ### General Items
@@ -10,7 +24,8 @@
 - Fixed IfIndex, APName issues with PhyCapa sensor
 - Fixed problem with wccf_sensor_event where STAMAC values were incorrect
 
-#### Known Issues:
+####Known Issues:
+
 - JIRA issue C3CCF-57 - disabling a radio kills its event sensor; reboot required to work around (or pid file deletion; service restart)
 
 ## Version 1.4.0 - April 30, 2017

@@ -3,7 +3,7 @@
 #
 
 AC_PREREQ([2.65])
-AC_INIT([wccf], [1.4.0], [bugs@appliedbroadband.com])
+AC_INIT([wccf], [2.0.0], [bugs@appliedbroadband.com])
 LT_INIT
 
 AC_PREFIX_DEFAULT($WCCF_ROOT)

@@ -1,6 +1,6 @@
 /*
   #
-  # Copyright (c) 2017 Applied Broadband, Inc., and
+  # Copyright (c) 2018 Applied Broadband, Inc., and
   #                    Cable Television Laboratories, Inc. ("CableLabs")
   #
 */
@@ -17,10 +17,11 @@ static int get_interface_cb(struct nl_msg *msg, void* arg)
  */
 static int get_survey_cb(struct nl_msg *msg, void* arg)
 {
-    json_object *jarray = ((struct phycapa_args *)arg)->jarray;
-    char *if_mac_address = ((struct phycapa_args *)arg)->if_mac_address;
-    struct genlmsghdr *gnlh = nlmsg_data(nlmsg_hdr(msg));
+
     struct phycapa_args *ctx = arg;
+    json_object *jarray = ctx->jarray;
+    char *if_mac_address = ctx->if_mac_address;
+    struct genlmsghdr *gnlh = nlmsg_data(nlmsg_hdr(msg));
     struct nlattr *tb_msg[NL80211_ATTR_MAX + 1];
     struct nlattr *tb_band[NL80211_BAND_ATTR_MAX + 1];
     struct nlattr *tb_freq[NL80211_FREQUENCY_ATTR_MAX + 1];
@@ -28,52 +29,66 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
     struct nlattr *nl_freq;
     int rem_band, rem_freq;
     char device[20];
-    
+
     nla_parse(tb_msg, NL80211_ATTR_MAX, genlmsg_attrdata(gnlh, 0),
               genlmsg_attrlen(gnlh, 0), NULL);
 
     if (tb_msg[NL80211_ATTR_WIPHY_BANDS]) {
-        
+
         json_object *jdev = json_object_new_object();
 
         /*
          * look up device name using interface index
          */
-        if_indextoname(nla_get_u32(ctx->if_index), device);
-   
+
+        if_indextoname((unsigned int)ctx->if_index, device);
+
         json_object *jdevname = json_object_new_string(device);
         json_object_object_add(jdev, "APName", jdevname);
-    
+
+
         /*
          * repeat AP Interface MAC address
          */
         json_object *japmac = json_object_new_string(if_mac_address);
-        json_object_object_add(jdev, "APMACAddress", japmac);
+        json_object_object_add(jdev, "ID", japmac);
 
         /*
-         * output interface index as numeric
+         * output interface index as b64
          */
-        json_object *jifindex =
-            json_object_new_int(nla_get_u32(ctx->if_index));
+        const char *binidx = (char *)&(ctx->if_index);
+        char b64idx[(sizeof(int)*2)+1];
+        int len = Base64encode(b64idx, binidx, sizeof(int));
+        json_object *jifindex = json_object_new_string(b64idx);
         json_object_object_add(jdev, "APIfIndex", jifindex);
-    
+
+
         /*
          * current c-epoch of data sample
          */
         time_t current_time = time(0);
+        char timestr[TIMESTAMP_LENGTH];
+        (void)format_time(timestr, current_time);
+        json_object *jctime = json_object_new_string(timestr);
+        json_object_object_add(jdev, "TimeStamp", jctime);
 
-        json_object *jctime = json_object_new_int(current_time);
-        json_object_object_add(jdev, "CurrentUTCTime", jctime);
-    
         nla_for_each_nested(nl_band,
                             tb_msg[NL80211_ATTR_WIPHY_BANDS],
                             rem_band) {
+            char ht_capa[2];
+            char vht_capa[4];
+            char ht_capa_b64[9];
+            char vht_capa_b64[9];
             if (ctx->last_band != nl_band->nla_type) {
                 ctx->width_40 = false;
                 ctx->width_80 = false;
                 ctx->width_160 = false;
                 ctx->last_band = nl_band->nla_type;
             }
+
+            memset(ht_capa_b64, 0, 8);
+            memset(vht_capa_b64, 0, 8);
+
             nla_parse(tb_band,
                       NL80211_BAND_ATTR_MAX,
                       nla_data(nl_band),
@@ -81,7 +96,7 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
 
             if (tb_band[NL80211_BAND_ATTR_HT_CAPA]) {
                 __u16 cap = nla_get_u16(tb_band[NL80211_BAND_ATTR_HT_CAPA]);
-                
+
                 if (cap & BIT(1))
                     ctx->width_40 = true;
             }
@@ -92,17 +107,17 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
 
                 capa = nla_get_u32(tb_band[NL80211_BAND_ATTR_VHT_CAPA]);
                 switch ((capa >> 2) & 3) {
-                case 2:
-                case 1:
-                    ctx->width_160 = true;
-                    break;
+                    case 2:
+                    case 1:
+                        ctx->width_160 = true;
+                        break;
                 }
             }
-            
+
             if (tb_band[NL80211_BAND_ATTR_FREQS]) {
 
                 json_object *jcapas = json_object_new_array();
-                
+
                 nla_for_each_nested(nl_freq,
                                     tb_band[NL80211_BAND_ATTR_FREQS],
                                     rem_freq) {
@@ -120,14 +135,14 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
                     }
 
                     json_object *jcapa = json_object_new_object();
-                    
+
                     freq = nla_get_u32(tb_freq[NL80211_FREQUENCY_ATTR_FREQ]);
-                    
+
                     json_object *jfreq = json_object_new_int(freq);
                     json_object_object_add(jcapa, "Frequency", jfreq);
 
                     int chan = 0;
-                    
+
                     if (freq == 2484)
                         chan = 14;
                     else if (freq < 2484)
@@ -138,18 +153,18 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
                         chan = (freq - 5000) / 5;
                     else if (freq >= 58320 && freq <= 64800)
                         chan = (freq - 56160) / 2160;
-                    
+
                     json_object *jchan = json_object_new_int(chan);
-                    json_object_object_add(jcapa, "ChannelNumber", jchan);
-                    
+                    json_object_object_add(jcapa, "Channel", jchan);
+
                     if (tb_freq[NL80211_FREQUENCY_ATTR_MAX_TX_POWER]) {
                         double power =  0.01 * nla_get_u32(tb_freq[NL80211_FREQUENCY_ATTR_MAX_TX_POWER]);
                         json_object *jpow = json_object_new_double(power);
-                        json_object_object_add(jcapa, "MaxTxPower", jpow);
+                        json_object_object_add(jcapa, "TxPower", jpow);
                     }
-                    
+
                     json_object *jwidth = json_object_new_array();
-                     
+
                     if (!tb_freq[NL80211_FREQUENCY_ATTR_NO_20MHZ])
                         json_object_array_add(jwidth, json_object_new_string("20MHz"));
                     if (ctx->width_40 && !tb_freq[NL80211_FREQUENCY_ATTR_NO_HT40_MINUS])
@@ -160,191 +175,56 @@ static int get_survey_cb(struct nl_msg *msg, void* arg)
                         json_object_array_add(jwidth, json_object_new_string("VHT80"));
                     if (ctx->width_160 && !tb_freq[NL80211_FREQUENCY_ATTR_NO_160MHZ])
                         json_object_array_add(jwidth, json_object_new_string("VHT160"));
-                    
+
                     json_object_object_add(jcapa, "ChannelWidth", jwidth);
 
                     json_object_array_add(jcapas, jcapa);
                 }
                 json_object_object_add(jdev, "Capabilities", jcapas);
-            
+
                 if (tb_band[NL80211_BAND_ATTR_VHT_CAPA] &&
                     tb_band[NL80211_BAND_ATTR_VHT_MCS_SET]) {
                     unsigned tmp = 0;
                     unsigned char *mcs = nla_data(tb_band[NL80211_BAND_ATTR_VHT_MCS_SET]);
-
                     json_object *jrxarray = json_object_new_array();
-                    
-                    tmp = mcs[0] | (mcs[1] << 8);
-                    for (int i = 1; i <= 8; i++) {
-                        switch ((tmp >> ((i-1)*2) ) & 3) {
-                        case 0:
-                            {
-                                json_object *jobj = json_object_new_object();
-                                json_object_object_add(jobj, "NSS", json_object_new_int(i));
-                                json_object *jrxmcs = json_object_new_array();
-                                json_object_array_add(jrxmcs, json_object_new_int(0));
-                                json_object_array_add(jrxmcs, json_object_new_int(1));
-                                json_object_array_add(jrxmcs, json_object_new_int(2));
-                                json_object_array_add(jrxmcs, json_object_new_int(3));
-                                json_object_array_add(jrxmcs, json_object_new_int(4));
-                                json_object_array_add(jrxmcs, json_object_new_int(5));
-                                json_object_array_add(jrxmcs, json_object_new_int(6));
-                                json_object_array_add(jrxmcs, json_object_new_int(7));
-                                json_object_object_add(jobj, "MCS", jrxmcs);
-                                json_object_array_add(jrxarray, jobj);
-                            }
-                            break;
-                        case 1:
-                            {
-                                json_object *jobj = json_object_new_object();
-                                json_object_object_add(jobj, "NSS", json_object_new_int(i));
-                                json_object *jrxmcs = json_object_new_array();
-                                json_object_array_add(jrxmcs, json_object_new_int(0));
-                                json_object_array_add(jrxmcs, json_object_new_int(1));
-                                json_object_array_add(jrxmcs, json_object_new_int(2));
-                                json_object_array_add(jrxmcs, json_object_new_int(3));
-                                json_object_array_add(jrxmcs, json_object_new_int(4));
-                                json_object_array_add(jrxmcs, json_object_new_int(5));
-                                json_object_array_add(jrxmcs, json_object_new_int(6));
-                                json_object_array_add(jrxmcs, json_object_new_int(7));
-                                json_object_array_add(jrxmcs, json_object_new_int(8));
-                                json_object_object_add(jobj, "MCS", jrxmcs);
-                                json_object_array_add(jrxarray, jobj);
-                            }
-                            break;
-                        case 2:
-                            {
-                                json_object *jobj = json_object_new_object();
-                                json_object_object_add(jobj, "NSS", json_object_new_int(i));
-                                json_object *jrxmcs = json_object_new_array();
-                                json_object_array_add(jrxmcs, json_object_new_int(0));
-                                json_object_array_add(jrxmcs, json_object_new_int(1));
-                                json_object_array_add(jrxmcs, json_object_new_int(2));
-                                json_object_array_add(jrxmcs, json_object_new_int(3));
-                                json_object_array_add(jrxmcs, json_object_new_int(4));
-                                json_object_array_add(jrxmcs, json_object_new_int(5));
-                                json_object_array_add(jrxmcs, json_object_new_int(6));
-                                json_object_array_add(jrxmcs, json_object_new_int(7));
-                                json_object_array_add(jrxmcs, json_object_new_int(8));
-                                json_object_array_add(jrxmcs, json_object_new_int(9));
-                                json_object_object_add(jobj, "MCS", jrxmcs);
-                                json_object_array_add(jrxarray, jobj);
-                            }
-                            break;
-                        case 3: break;
-                        }
-                    }
-                    
-                    json_object_object_add(jdev, "VHTRxMCSSet", jrxarray);
-                    
-                    json_object *jtxarray = json_object_new_array();
+                    memset(ht_capa_b64,0,9);
 
-                    tmp = mcs[4] | (mcs[5] << 8);
-                    for (int i = 1; i <= 8; i++) {
-                        switch ((tmp >> ((i-1)*2) ) & 3) {
-                        case 0:
-                            {
-                                json_object *jobj = json_object_new_object();
-                                json_object_object_add(jobj, "NSS", json_object_new_int(i));
-                                json_object *jtxmcs = json_object_new_array();
-                                json_object_array_add(jtxmcs, json_object_new_int(0));
-                                json_object_array_add(jtxmcs, json_object_new_int(1));
-                                json_object_array_add(jtxmcs, json_object_new_int(2));
-                                json_object_array_add(jtxmcs, json_object_new_int(3));
-                                json_object_array_add(jtxmcs, json_object_new_int(4));
-                                json_object_array_add(jtxmcs, json_object_new_int(5));
-                                json_object_array_add(jtxmcs, json_object_new_int(6));
-                                json_object_array_add(jtxmcs, json_object_new_int(7));
-                                json_object_object_add(jobj, "MCS", jtxmcs);
-                                json_object_array_add(jtxarray, jobj);
-                            }
-                            break;
-                        case 1:
-                            {
-                                json_object *jobj = json_object_new_object();
-                                json_object_object_add(jobj, "NSS", json_object_new_int(i));
-                                json_object *jtxmcs = json_object_new_array();
-                                json_object_array_add(jtxmcs, json_object_new_int(0));
-                                json_object_array_add(jtxmcs, json_object_new_int(1));
-                                json_object_array_add(jtxmcs, json_object_new_int(2));
-                                json_object_array_add(jtxmcs, json_object_new_int(3));
-                                json_object_array_add(jtxmcs, json_object_new_int(4));
-                                json_object_array_add(jtxmcs, json_object_new_int(5));
-                                json_object_array_add(jtxmcs, json_object_new_int(6));
-                                json_object_array_add(jtxmcs, json_object_new_int(7));
-                                json_object_array_add(jtxmcs, json_object_new_int(8));
-                                json_object_object_add(jobj, "MCS", jtxmcs);
-                                json_object_array_add(jtxarray, jobj);
-                            }
-                            break;
-                        case 2:
-                            {
-                                json_object *jobj = json_object_new_object();
-                                json_object_object_add(jobj, "NSS", json_object_new_int(i));
-                                json_object *jtxmcs = json_object_new_array();
-                                json_object_array_add(jtxmcs, json_object_new_int(0));
-                                json_object_array_add(jtxmcs, json_object_new_int(1));
-                                json_object_array_add(jtxmcs, json_object_new_int(2));
-                                json_object_array_add(jtxmcs, json_object_new_int(3));
-                                json_object_array_add(jtxmcs, json_object_new_int(4));
-                                json_object_array_add(jtxmcs, json_object_new_int(5));
-                                json_object_array_add(jtxmcs, json_object_new_int(6));
-                                json_object_array_add(jtxmcs, json_object_new_int(7));
-                                json_object_array_add(jtxmcs, json_object_new_int(8));
-                                json_object_array_add(jtxmcs, json_object_new_int(9));
-                                json_object_object_add(jobj, "MCS", jtxmcs);
-                                json_object_array_add(jtxarray, jobj);
-                            }
-                            break;
-                        case 3: break;
-                        }
-                    }
-                    
-                    json_object_object_add(jdev, "VHTTxMCSSet", jtxarray);
+                    int b64len = Base64encode(ht_capa_b64, (const char *)mcs, 2);
+                    json_object *jvhtmcs = json_object_new_string(ht_capa_b64);
+                    json_object_object_add(jdev, "HTCapabilities", jvhtmcs);
 
                 }
-                
+
                 if (tb_band[NL80211_BAND_ATTR_VHT_CAPA]) {
-                    unsigned capa = nla_get_u32(tb_band[NL80211_BAND_ATTR_VHT_CAPA]);
-                    unsigned gival = (capa & 0x060) >> 5;
-                    if (gival) {
-                        json_object *jshortgi; 
-                        switch (gival) {
-                        case 1:
-                            jshortgi = json_object_new_string("80MHz");
-                            break;
-                        case 2:
-                        case 3:
-                            jshortgi = json_object_new_string("160MHz");
-                            break;
-                        }
-                        json_object_object_add(jdev, "VHTShortGI", jshortgi);
-                    }
-                }
-                
-                if (tb_band[NL80211_BAND_ATTR_HT_MCS_SET] &&
-                    nla_len(tb_band[NL80211_BAND_ATTR_HT_MCS_SET]) == 16) {
-                    json_object *jhtmcs = json_object_new_array();
-                    {
-                        int mcs_bit, prev_bit = -2, prev_cont = 0;
-                        unsigned char *mcs = nla_data(tb_band[NL80211_BAND_ATTR_HT_MCS_SET]);
-
-                        for (mcs_bit = 0; mcs_bit <= 76; mcs_bit++) {
-                            unsigned int mcs_octet = mcs_bit/8;
-                            unsigned int MCS_RATE_BIT = 1 << mcs_bit % 8;
-                            bool mcs_rate_idx_set;
-
-                            mcs_rate_idx_set = !!(mcs[mcs_octet] & MCS_RATE_BIT);
-
-                            if (mcs_rate_idx_set)
-                                json_object_array_add(jhtmcs, json_object_new_int(mcs_bit));
-                        }
-                    }
-
-                    json_object_object_add(jdev, "HTMCS", jhtmcs);
+                    unsigned char *capa = nla_data(tb_band[NL80211_BAND_ATTR_VHT_CAPA]);
+                    memset(vht_capa_b64,0,9);
+                    int b64len = Base64encode(vht_capa_b64, (const char *)capa, 4);
+                    json_object *jshortgi = json_object_new_string(vht_capa_b64);
+                    json_object_object_add(jdev, "VHTCapabilities", jshortgi);
                 }
             }
 
+            if (tb_band[NL80211_BAND_ATTR_HT_MCS_SET] &&
+                nla_len(tb_band[NL80211_BAND_ATTR_HT_MCS_SET]) == 16) {
+                json_object *jhtmcs = json_object_new_array();
+                {
+                int mcs_bit, prev_bit = -2, prev_cont = 0;
+                unsigned char *mcs = nla_data(tb_band[NL80211_BAND_ATTR_HT_MCS_SET]);
+
+                for (mcs_bit = 0; mcs_bit <= 76; mcs_bit++) {
+                    unsigned int mcs_octet = mcs_bit/8;
+                    unsigned int MCS_RATE_BIT = 1 << mcs_bit % 8;
+                    bool mcs_rate_idx_set;
+
+                    mcs_rate_idx_set = !!(mcs[mcs_octet] & MCS_RATE_BIT);
+
+                    if (mcs_rate_idx_set)
+                        json_object_array_add(jhtmcs, json_object_new_int(mcs_bit));
+                }
+                }
+
+                json_object_object_add(jdev, "HTMCS", jhtmcs);
+            }
         }
         json_object_array_add(jarray, jdev);
     }
@@ -366,15 +246,16 @@ int get_interface_mac(char *if_name, char *mac_string)
     strncpy(ifr.ifr_name , if_name , IFNAMSIZ-1);
 
     if (0 == ioctl(fd, SIOCGIFHWADDR, &ifr)) {
-        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;    
+        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;
+
         sprintf(mac_string, "%02x:%02x:%02x:%02x:%02x:%02x" ,
                 mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     }
 
     close(fd);
-  
+
     /*
-     * TODO - handle error responses 
+     * TODO - handle error responses
      */
     return 0;
 }
@@ -417,7 +298,7 @@ int main(int argc, char *argv[])
         printf("cannot allocate nls socket, exiting\n");
         exit(1);
     }
-  
+
     nl_socket_set_buffer_size(nls, 8192, 8192);
 
     ret = genl_connect(nls);
@@ -425,7 +306,7 @@ int main(int argc, char *argv[])
         printf("cannot connect netlink socket, exiting\n");
         exit(1);
     }
-  
+
     int driver_id = genl_ctrl_resolve(nls, "nl80211");
     if (driver_id < 0) {
         printf("cannot resolver nl80211 driver, exiting\n");
@@ -434,7 +315,7 @@ int main(int argc, char *argv[])
 
     pc_args.jarray = json_object_new_array();
     pc_args.last_band = -1;
-    
+
     ret = nl_socket_modify_cb(nls, NL_CB_VALID, NL_CB_CUSTOM,
                               get_survey_cb, (void *)&pc_args);
     if (ret < 0) {
@@ -447,12 +328,12 @@ int main(int argc, char *argv[])
         printf("cannot allocate nl_msg, exiting\n");
         exit(1);
     }
-  
+
     memset(iface_mac, 0, 18);
     ret = get_interface_mac(iface_name, iface_mac);
-  
+
     pc_args.if_mac_address = iface_mac;
-  
+
     int if_index = if_nametoindex(iface_name);
     if (if_index == 0) {
         printf("cannot find index for %s, exiting\n", iface_name);
@@ -465,6 +346,13 @@ int main(int argc, char *argv[])
                 NL80211_CMD_GET_WIPHY, 0);
 
     NLA_PUT_U32(msg, NL80211_ATTR_IFINDEX, if_index);
+
+    ret = nl_socket_modify_cb(nls, NL_CB_VALID, NL_CB_CUSTOM,
+                              get_survey_cb, (void *)&pc_args);
+    if (ret < 0) {
+        printf("cannot define request callback function, exiting\n");
+        exit(1);
+    }
 
     ret = nl_send_auto_complete(nls, msg);
     if (ret < 0) {
@@ -492,7 +380,7 @@ int main(int argc, char *argv[])
     struct tm *tstruct = gmtime(&t);
     strftime(tstamp, 16, "%Y%m%d%H%M%S", tstruct);
     get_interface_mac("br-wan", dev_mac);
-  
+
     sprintf(file_name, "%s/%s_phycapa-%s_%s00.json", output_dir,
             dev_mac, iface_name, tstamp);
     fp = fopen(file_name, "wb");
@@ -500,10 +388,9 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Cant open output file: %s", file_name);
         return 1;
     }
-  
+
     fprintf(fp, "%s\n", json_object_to_json_string(jdevice));
     fclose(fp);
-  
 
     return 0;
 

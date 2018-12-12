@@ -74,22 +74,33 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
      * repeat AP Interface MAC address
      */
     json_object *japmac = json_object_new_string(if_mac_address);
-    json_object_object_add(jdev, "APMACAddress", japmac);
+    json_object_object_add(jdev, "ID", japmac);
 
     /*
      * output interface index as numeric
      */
-    json_object *jifindex = json_object_new_int(nla_get_u32(tb_msg[NL80211_ATTR_IFINDEX]));
+    //json_object *jifindex = json_object_new_int(nla_get_u32(tb_msg[NL80211_ATTR_IFINDEX]));
+    //json_object_object_add(jdev, "APIfIndex", jifindex);
+
+    /*
+     * output interface index as b64
+     */
+    unsigned ifidx = nla_get_u32(tb_msg[NL80211_ATTR_IFINDEX]);
+    const char *binidx = (char *)&ifidx;
+    char b64idx[(sizeof(int)*2)+1];
+    int len = Base64encode(b64idx, binidx, sizeof(int));
+    json_object *jifindex = json_object_new_string(b64idx);
     json_object_object_add(jdev, "APIfIndex", jifindex);
-  
+
     /*
      * current c-epoch of data sample
      */
     time_t current_time = time(0);
+    char timestr[TIMESTAMP_LENGTH];
+    (void)format_time(timestr, current_time);
+    json_object *jctime = json_object_new_string(timestr);
+    json_object_object_add(jdev, "TimeStamp", jctime);
 
-    json_object *jctime = json_object_new_int(current_time);
-    json_object_object_add(jdev, "CurrentUTCTime", jctime);
-  
     /*
      * format MAC address for output
      */
@@ -97,7 +108,7 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
     memcpy(mdat, nla_data(tb_msg[NL80211_ATTR_MAC]), sizeof(mdat));
     sprintf(mac_str, "%02x:%02x:%02x:%02x:%02x:%02x",
             mdat[0],mdat[1],mdat[2],mdat[3],mdat[4],mdat[5]);
-  
+
     json_object *jmac = json_object_new_string(mac_str);
     json_object_object_add(jdev, "MACAddress", jmac);
 
@@ -108,7 +119,7 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
     }
 
     /*
-     * parse the station-specific data 
+     * parse the station-specific data
      */
     if (nla_parse_nested(sinfo, NL80211_STA_INFO_MAX,
                          tb_msg[NL80211_ATTR_STA_INFO],
@@ -123,7 +134,7 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
     if (tb_msg[NL80211_ATTR_STA_SUPPORTED_RATES]) {
         printf("found NL80211_ATTR_STA_SUPPORTED_RATES\n");
     }
-    
+
     if (sinfo[NL80211_STA_INFO_INACTIVE_TIME]) {
         json_object *jinactive =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_INACTIVE_TIME]));
@@ -132,54 +143,54 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
     if (sinfo[NL80211_STA_INFO_RX_BYTES64]) {
         json_object *jrxbytes =
             json_object_new_int((unsigned long long)nla_get_u64(sinfo[NL80211_STA_INFO_RX_BYTES64]));
-        json_object_object_add(jdev, "RxBytes", jrxbytes);
+        json_object_object_add(jdev, "UnicastBytesReceived", jrxbytes);
     }
     else if (sinfo[NL80211_STA_INFO_RX_BYTES]) {
         json_object *jrxbytes =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_RX_BYTES]));
-        json_object_object_add(jdev, "RxBytes", jrxbytes);
+        json_object_object_add(jdev, "UnicastBytesReceived", jrxbytes);
     }
     if (sinfo[NL80211_STA_INFO_RX_PACKETS]) {
         json_object *jrxpackets =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_RX_PACKETS]));
-        json_object_object_add(jdev, "RxPackets", jrxpackets);
+        json_object_object_add(jdev, "PacketsReceived", jrxpackets);
     }
     if (sinfo[NL80211_STA_INFO_TX_BYTES64]) {
         json_object *jtxbytes =
             json_object_new_int((unsigned long long)nla_get_u64(sinfo[NL80211_STA_INFO_TX_BYTES64]));
-        json_object_object_add(jdev, "TxBytes", jtxbytes);
+        json_object_object_add(jdev, "UnicastBytesSent", jtxbytes);
     }
     else if (sinfo[NL80211_STA_INFO_TX_BYTES]) {
         json_object *jtxbytes =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_TX_BYTES]));
-        json_object_object_add(jdev, "TxBytes", jtxbytes);
+        json_object_object_add(jdev, "UnicastBytesSent", jtxbytes);
     }
     if (sinfo[NL80211_STA_INFO_TX_PACKETS]) {
         json_object *jtxpackets =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_TX_PACKETS]));
-        json_object_object_add(jdev, "TxPackets", jtxpackets);
+        json_object_object_add(jdev, "PacketsSent", jtxpackets);
     }
     if (sinfo[NL80211_STA_INFO_TX_RETRIES]) {
         json_object *jtxretries =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_TX_RETRIES]));
-        json_object_object_add(jdev, "TxRetries", jtxretries);
+        json_object_object_add(jdev, "RetransCount", jtxretries);
     }
     if (sinfo[NL80211_STA_INFO_TX_FAILED]) {
         json_object *jtxfailed =
             json_object_new_int(nla_get_u32(sinfo[NL80211_STA_INFO_TX_FAILED]));
-        json_object_object_add(jdev, "TxFailed", jtxfailed);
+        json_object_object_add(jdev, "ErrorsSent", jtxfailed);
     }
 
     if (sinfo[NL80211_STA_INFO_SIGNAL]) {
         int8_t sig = (int8_t)nla_get_u8(sinfo[NL80211_STA_INFO_SIGNAL]);
         json_object *jsignal = json_object_new_int(sig);
-        json_object_object_add(jdev, "Signal", jsignal);
+        json_object_object_add(jdev, "SignalStrength", jsignal);
     }
 
     if (sinfo[NL80211_STA_INFO_SIGNAL_AVG]) {
         int8_t sigavg = (int8_t)nla_get_u8(sinfo[NL80211_STA_INFO_SIGNAL_AVG]);
         json_object *jsignalavg = json_object_new_int(sigavg);
-        json_object_object_add(jdev, "SignalAvg", jsignalavg);
+        json_object_object_add(jdev, "SignalStrength", jsignalavg);
     }
 
     // TODO Collapse logic into function for the bitrate calculations
@@ -193,7 +204,7 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
                 rate = nla_get_u16(rinfo[NL80211_RATE_INFO_BITRATE]);
             json_object *jtxbitrate =
                 json_object_new_double(((double)rate/10.0)+((double)(rate%10)/10.0));
-            json_object_object_add(jdev, "TxBitrate", jtxbitrate);
+            json_object_object_add(jdev, "LastDataDownlinkRate", jtxbitrate);
             if (rinfo[NL80211_RATE_INFO_MCS]) {
                 uint8_t mcs = nla_get_u8(rinfo[NL80211_RATE_INFO_MCS]);
                 json_object *jtxmcs = json_object_new_int(mcs);
@@ -226,7 +237,7 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
                 rate = nla_get_u16(rinfo[NL80211_RATE_INFO_BITRATE]);
             json_object *jrxbitrate =
                 json_object_new_double(((double)(rate/10))+((double)((rate%10)/10.0)));
-            json_object_object_add(jdev, "RxBitrate", jrxbitrate);
+            json_object_object_add(jdev, "LastDataUplinkRate", jrxbitrate);
             if (rinfo[NL80211_RATE_INFO_MCS]) {
                 uint8_t mcs = nla_get_u8(rinfo[NL80211_RATE_INFO_MCS]);
                 json_object *jrxmcs = json_object_new_int(mcs);
@@ -250,7 +261,7 @@ static int get_station_cb(struct nl_msg *msg, void* arg)
     }
 
     json_object_array_add(jarray, jdev);
-  
+
     return 0;
 }
 
@@ -268,15 +279,15 @@ int get_interface_mac(char *if_name, char *mac_string)
     strncpy(ifr.ifr_name , if_name , IFNAMSIZ-1);
 
     if (0 == ioctl(fd, SIOCGIFHWADDR, &ifr)) {
-        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;    
+        mac = (unsigned char *)ifr.ifr_hwaddr.sa_data;
         sprintf(mac_string, "%02x:%02x:%02x:%02x:%02x:%02x" ,
                 mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     }
 
     close(fd);
-  
+
     /*
-     * TODO - handle error responses 
+     * TODO - handle error responses
      */
     return 0;
 }
@@ -320,7 +331,7 @@ int main(int argc, char *argv[])
         printf("cannot allocate nls socket, exiting\n");
         exit(1);
     }
-  
+
     nl_socket_set_buffer_size(nls, 8192, 8192);
 
     ret = genl_connect(nls);
@@ -328,7 +339,7 @@ int main(int argc, char *argv[])
         printf("cannot connect netlink socket, exiting\n");
         exit(1);
     }
-  
+
     int driver_id = genl_ctrl_resolve(nls, "nl80211");
     if (driver_id < 0) {
         printf("cannot resolve nl80211 driver, exiting\n");
@@ -348,12 +359,12 @@ int main(int argc, char *argv[])
         printf("cannot allocate nl_msg, exiting\n");
         exit(1);
     }
-  
+
     memset(iface_mac, 0, 18);
     ret = get_interface_mac(iface_name, iface_mac);
-  
+
     sta_args.if_mac_address = iface_mac;
-  
+
     int if_index = if_nametoindex(iface_name);
     if (if_index == 0) {
         printf("cannot find index for %s, exiting\n", iface_name);
@@ -391,17 +402,17 @@ int main(int argc, char *argv[])
     struct tm *tstruct = gmtime(&t);
     strftime(tstamp, 16, "%Y%m%d%H%M%S", tstruct);
     get_interface_mac("br-wan", dev_mac);
-  
+
     sprintf(file_name, "%s/%s_station-%s_%s00.json", output_dir, dev_mac, iface_name, tstamp);
     fp = fopen(file_name, "wb");
     if (!fp) {
         fprintf(stderr, "Cant open output file: %s", file_name);
         return 1;
     }
-  
+
     fprintf(fp, "%s\n", json_object_to_json_string(jdevice));
     fclose(fp);
-  
+
 
     return 0;
 

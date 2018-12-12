@@ -1,7 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=wccf
-PKG_VERSION:=1.4.0
+PKG_VERSION:=2.0.0
+
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/wccf-$(PKG_VERSION)
@@ -16,7 +17,7 @@ define Package/wccf
   SECTION:=base
   CATEGORY:=Network
   TITLE:=Wireless Common Collection Framework - WCCF
-  DEPENDS:=+PACKAGE_kmod-cfg80211:libnl-tiny +libcurl +libjson-c +libiwinfo +libiw  +libnl-tiny +libc 
+  DEPENDS:=+PACKAGE_kmod-cfg80211:libnl-tiny +libcurl +libjson-c +libiwinfo +libiw  +libnl-tiny +libstdcpp +libc 
   URL:=http://wccf.appliedbroadband.com/
 endef
 
@@ -51,7 +52,7 @@ define Package/wccf/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_channel $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_phycapa $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/sensors/wccf_sensor_event $(1)/usr/sbin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/processors/wccf_proc_null $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/processors/wccf_proc_multiap $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/transmitters/wccf_tx_rest $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_util_purge.sh $(1)/usr/sbin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_util_update.sh $(1)/usr/sbin/
@@ -59,7 +60,7 @@ define Package/wccf/install
 	$(INSTALL_DIR) $(1)/etc/init.d/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_sensor_event $(1)/etc/init.d/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_tx_rest $(1)/etc/init.d/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_null $(1)/etc/init.d/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_multiap $(1)/etc/init.d/
 	$(INSTALL_DIR) $(1)/etc/crontabs/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/root $(1)/etc/crontabs/
 	$(INSTALL_DIR) $(1)/root/
@@ -69,8 +70,8 @@ define Package/wccf/install
 	chmod 755 $(1)/etc/config/wccf_sensor_event.cfg
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_tx_rest.cfg $(1)/etc/config/
 	chmod 755 $(1)/etc/config/wccf_tx_rest.cfg
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_null.cfg $(1)/etc/config/
-	chmod 755 $(1)/etc/config/wccf_proc_null.cfg
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_proc_multiap.cfg $(1)/etc/config/
+	chmod 755 $(1)/etc/config/wccf_proc_multiap.cfg
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_openwrt_pubkey $(1)/etc/config
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/utils/wccf_openwrt_privkey $(1)/etc/config
 	chmod 644 $(1)/etc/config/wccf_openwrt_p*key

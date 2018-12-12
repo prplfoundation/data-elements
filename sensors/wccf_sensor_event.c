@@ -1,6 +1,6 @@
 /*
   #
-  # Copyright (c) 2017 Applied Broadband, Inc., and
+  # Copyright (c) 2018 Applied Broadband, Inc., and
   #                    Cable Television Laboratories, Inc. ("CableLabs")
   #
 */
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
         printf("Error compiling address expression: %d\n", ret);
         exit(1);
     }
-    
+
     FILE *in;
     extern FILE *popen();
     char *buff = NULL;
@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
     size_t lineLen = 0;
     char cmd_str[512];
     char *m_dev;
-    
+
     char *cmd_fmt = "tcpdump -i %s -nnvXXSs 0 -n ether dst %s and type mgt subtype assoc-req";
 
     //
@@ -137,32 +137,32 @@ int main(int argc, char *argv[])
         m_dev = "mon0";
     else if  (0 == strcmp(iface_name, "wlan1"))
         m_dev = "mon1";
-    
+
     get_interface_mac(iface_name, iface_mac);
     memcpy(scan_mac, iface_mac, 18);
     remove_all_chars(scan_mac, ':');
     printf("scan_mac = %s\n", scan_mac);
 
     sprintf(cmd_str, cmd_fmt, m_dev, iface_mac);
-    
+
     if (NULL == (in = popen(cmd_str, "r"))) {
         printf("error executing tcpdump command: %s\n", strerror(errno));
         exit(1);
     }
-    
+
     int new_event = 0;
-    
+
     //
     // turn off stdio buffering
     //
     setvbuf(in, NULL, _IONBF, 0);
-    
+
     while (getline(&line, &lineLen, in) != -1) {
         json_object *jsta_array;
         json_object *jsta;
-        
+
         memset(result, 0, sizeof(result));
-        
+
         //
         // try to match the 5GHz event line
         //
@@ -171,10 +171,10 @@ int main(int argc, char *argv[])
             new_event = 1;
             memset(scan_buf, 0, MAX_SCAN_BUF_LEN);
             scan_idx = 0;
-            
+
             jsta_array = json_object_new_array();
             jsta = json_object_new_object();
-            
+
             for (int i=1; i < 11; i++) {
                 if (result[i].rm_so == result[i].rm_eo)
                     continue;
@@ -194,7 +194,7 @@ int main(int argc, char *argv[])
                     int channel = 0;
                     json_object *jcfreq = json_object_new_int(cfreq);
                     json_object_object_add(jsta, "ConnectFrequency", jcfreq);
-                    
+
                     if (cfreq == 2484)
                         channel = 14;
                     else if (cfreq < 2484)
@@ -207,7 +207,7 @@ int main(int argc, char *argv[])
                         channel = (cfreq - 56160) / 2160;
 
                     json_object *jchan = json_object_new_int(channel);
-                    json_object_object_add(jsta, "ConnectChannelNumber", jchan);
+                    json_object_object_add(jsta, "Channel", jchan);
                     free(res);
                 }
                 else if (i == 5) {
@@ -240,9 +240,9 @@ int main(int argc, char *argv[])
             }
             continue;
         }
-        
+
         memset(result, 0, sizeof(result));
-        
+
         //
         // try to match the 2.4GHz event line
         //
@@ -254,7 +254,7 @@ int main(int argc, char *argv[])
 
             jsta_array = json_object_new_array();
             jsta = json_object_new_object();
-            
+
             for (int i=1; i < 11; i++) {
                 if (result[i].rm_so == result[i].rm_eo)
                     continue;
@@ -264,7 +264,7 @@ int main(int argc, char *argv[])
                 res[rlen] = 0;
                 if (i == 1) {
                     json_object *jtime = json_object_new_string(res);
-                    json_object_object_add(jsta, "EventTime", jtime);
+                    json_object_object_add(jsta, "LastConnectTime", jtime);
                     json_object *jevent = json_object_new_string("AssocReq");
                     json_object_object_add(jsta, "EventType", jevent);
                     free(res);
@@ -274,7 +274,7 @@ int main(int argc, char *argv[])
                     int channel = 0;
                     json_object *jcfreq = json_object_new_int(cfreq);
                     json_object_object_add(jsta, "ConnectFrequency", jcfreq);
-                    
+
                     if (cfreq == 2484)
                         channel = 14;
                     else if (cfreq < 2484)
@@ -287,7 +287,7 @@ int main(int argc, char *argv[])
                         channel = (cfreq - 56160) / 2160;
 
                     json_object *jchan = json_object_new_int(channel);
-                    json_object_object_add(jsta, "ConnectChannelNumber", jchan);
+                    json_object_object_add(jsta, "Channel", jchan);
                     free(res);
                 }
                 else if (i == 5) {
@@ -320,17 +320,17 @@ int main(int argc, char *argv[])
             }
             continue;
         }
-        
+
         memset(result, 0, sizeof(result));
-        
+
         ret = regexec(&staddr_output, line, matchcount+1, result, 0);
         if (!ret) {
             char staddr[18];
-            
+
             if (new_event == 0) {
                 continue;
             }
-            
+
             for (int i=1; i < 19; i++) {
                 if (result[i].rm_so == result[i].rm_eo)
                     continue;
@@ -343,13 +343,13 @@ int main(int argc, char *argv[])
 
             if (line[5] != '6')
                 continue;
-            
+
             char *dest_match = strstr(scan_buf, scan_mac);
             if (dest_match) {
                 int offset = 12;
-                
+
                 memset(staddr, 0, 18);
-            
+
                 staddr[0]  = dest_match[offset++];
                 staddr[1]  = dest_match[offset++];
                 staddr[2]  = ':';
@@ -368,24 +368,25 @@ int main(int argc, char *argv[])
                 staddr[15] = dest_match[offset++];
                 staddr[16] = dest_match[offset++];
             }
-            
+
             json_object *jstamac = json_object_new_string(staddr);
-            json_object_object_add(jsta, "STAMAC", jstamac);
-            
+            json_object_object_add(jsta, "MACAddress", jstamac);
+
             json_object_array_add(jsta_array, jsta);
-            
+
             json_object *jevent = json_object_new_object();
 
             memset(iface_mac, 0, 18);
             ret = get_interface_mac(iface_name, iface_mac);
-    
-            json_object *japmac = json_object_new_string(iface_mac);
-            json_object_object_add(jevent, "APMACAddress", japmac);
-            
-            time_t current_time = time(0);
 
-            json_object *jctime = json_object_new_int(current_time);
-            json_object_object_add(jevent, "CurrentUTCTime", jctime);
+            json_object *japmac = json_object_new_string(iface_mac);
+            json_object_object_add(jevent, "ID", japmac);
+
+            time_t current_time = time(0);
+            char timestr[TIMESTAMP_LENGTH];
+            (void)format_time(timestr, current_time);
+            json_object *jctime = json_object_new_string(timestr);
+            json_object_object_add(jevent, "eventTime", jctime);
 
             json_object_object_add(jevent, "Event", jsta_array);
             /*
@@ -394,22 +395,20 @@ int main(int argc, char *argv[])
             json_object *jwifi = json_object_new_object();
             json_object_object_add(jwifi, "Wifi", jevent);
             json_object *jdevice = json_object_new_object();
-            json_object_object_add(jdevice, "Device", jwifi);
+            json_object_object_add(jdevice, "wfa-dataelements:AssociationEvent", jwifi);
 
-            time_t t = 0;
-            time(&t);
-            struct tm *tstruct = gmtime(&t);
+            struct tm *tstruct = gmtime(&current_time);
             strftime(tstamp, 16, "%Y%m%d%H%M%S", tstruct);
-            
+
             get_interface_mac("br-wan", dev_mac);
-  
+
             sprintf(file_name, "%s/%s_event-%s_%s00.json", output_dir, dev_mac, iface_name, tstamp);
             fp = fopen(file_name, "wb");
             if (!fp) {
                 fprintf(stderr, "Cant open output file: %s", file_name);
                 return 1;
             }
-            
+
             fprintf(fp, "%s\n", json_object_to_json_string(jdevice));
             fclose(fp);
 

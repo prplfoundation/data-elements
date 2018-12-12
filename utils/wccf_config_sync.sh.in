@@ -50,8 +50,8 @@ if [[ $line == *wccf_tx_rest.cfg ]]; then
 	continue
 fi
 
-if [[ $line == *wccf_proc_null.cfg ]]; then
-	`/etc/init.d/wccf_proc_null restart`
+if [[ $line == *wccf_proc_multiap.cfg ]]; then
+	`/etc/init.d/wccf_proc_multiap restart`
 	continue
 fi
 
