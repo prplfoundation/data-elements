@@ -2,8 +2,7 @@
 
 # HOWTO\_build\_machine
 
-`Copyright (c) 2017 Applied Broadband, Inc., and`
-`                   Cable Television Laboratories, Inc. ("CableLabs")`
+`Copyright (c) 2019 Cable Television Laboratories, Inc. ("CableLabs")`
 
 The WCCF project integrates important Proactive Network Maintenance capabilities with OpenWrt software elements.  Ubuntu has been found to be highly compatible with OpenWrt sources and therefore has been selected at this time as the reference machine environment for WCCF build and test efforts.
 
