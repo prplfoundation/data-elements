@@ -1,7 +1,7 @@
 # WCCF Admin Guide
 ## Version 2.0.0.  December 6, 2018
 
-Copyright (c) 2018 Applied Broadband, Inc., and Cable Television Laboratories, Inc. ("CableLabs")
+Copyright (c) 2019 Cable Television Laboratories, Inc. ("CableLabs")
 
 ## Contents
 
