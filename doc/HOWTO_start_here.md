@@ -4,8 +4,7 @@
 
 ### Version 2.0
 
-`Copyright (c) 2018 Applied Broadband, Inc., and`
-`                   Cable Television Laboratories, Inc. ("CableLabs")`
+`Copyright (c) 2019 Cable Television Laboratories, Inc. ("CableLabs")`
 
 The Wireless Common Collection Framework (WCCF), Version 2.0.0, assumes a host environment of OpenWrt, branch master.  OpenWrt is described as a Linux distribution for embedded devices (from https://openwrt.org).  
 
