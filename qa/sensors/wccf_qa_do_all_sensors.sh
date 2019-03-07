@@ -40,7 +40,7 @@ NOW_EPOCH=`date +%s`
 $SCRIPT_HOME/wccf_qa_all_sensors.sh $TMP_SENSOR_OUTPUT_DIR
 
 echo "#" > $OUT_FILE
-echo "# Copyright (c) 2017 Applied Broadband, Inc., and" > $OUT_FILE
+echo "# Copyright (c) 2019" > $OUT_FILE
 echo "#                    Cable Television Laboratories, Inc. (\"CableLabs\")" > $OUT_FILE
 echo "#" > $OUT_FILE
 echo "Test wccf_qa_do_all_sensors" > $OUT_FILE
