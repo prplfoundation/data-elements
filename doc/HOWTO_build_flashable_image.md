@@ -2,8 +2,7 @@
 
 # HOWTO\_build\_flashable\_image
 
-`Copyright (c) 2018 Applied Broadband, Inc., and`
-`                   Cable Television Laboratories, Inc. ("CableLabs")`
+`Copyright (c) 2010 Cable Television Laboratories, Inc. ("CableLabs")`
 ### Version 2.0.0
 
 This HOWTO assumes you have previously set up a reference build machine (see [wccf/doc/HOWTO_build_machine.md](./HOWTO_build_machine.md)), and have installed, built and tested OpenWrt locally including both creating and flashing an AP image (see [wccf/doc/HOWTO_start_here.md](./HOWTO_start_here.md)). It also assumes you have completed the steps documented in [wccf/doc/HOWTO_build_wccf.md](./HOWTO_build_wccf.md) which documents how to prepare the WCCF build products to integrate into an OpenWrt Access Point binary image.
