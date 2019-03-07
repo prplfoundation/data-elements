@@ -4,8 +4,18 @@
 
 ### Version 2.0.0
 
-`Copyright (c) 2018 Applied Broadband, Inc., and`
-`                   Cable Television Laboratories, Inc. ("CableLabs")`
+# Copyright (c) 2019 Cable Television Laboratories, Inc.
+# Licensed under the BSD+Patent (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#          https://opensource.org/licenses/BSDplusPatent
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 This HOWTO assumes you have previously set up a reference build machine (see [wccf/doc/HOWTO_build_machine.md](./HOWTO_build_machine.md)), and have installed, built and tested OpenWrt locally including creating and flashing an AP image (see [wccf/doc/HOWTO_start_here.md](./HOWTO_start_here.md)).
 
