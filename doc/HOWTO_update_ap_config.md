@@ -4,9 +4,7 @@
 
 ### Version 2.0.0
 
-`Copyright (c) 2018 Applied Broadband, Inc., and`
-
-`                   Cable Television Laboratories, Inc. ("CableLabs")`
+`Copyright (c) 2019 Cable Television Laboratories, Inc. ("CableLabs")`
 
 This HOWTO assumes you have completed all the previous steps to create a WCCF-enabled image and flash an AP device (see [wccf/doc/HOWTO_start_here.md](./HOWTO_start_here.md)).
 
