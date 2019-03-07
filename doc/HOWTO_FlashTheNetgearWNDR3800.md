@@ -1,7 +1,6 @@
 # Uploading and Flashing a SysUpgrade OpenWrt Build Product to the WNDR3800
     
-`Copyright (c) 2017 Applied Broadband, Inc., and`
-`                   Cable Television Laboratories, Inc. ("CableLabs")`
+`Copyright (c) 2019 Cable Television Laboratories, Inc. ("CableLabs")`
 
 This example assumes the build machine has direct access to the Netgear WNDR3800 Access Point.  This is not a requirement - the .bin can be scp'd anywhere.  Also, simply for clarity, this example upgrades OpenWrt Release Chaos Calmer to Release Designated Driver.  The same process is used to introduce any updated image to the AP.
 
