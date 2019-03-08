@@ -9,76 +9,127 @@ Except as expressly stated above, no rights or licenses from any copyright holde
 DISCLAIMER
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+Other license contained in this repository include:
+
+RapidJSON:
+// Tencent is pleased to support the open source community by making RapidJSON available.
+// 
+// Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
+//
+// Licensed under the MIT License (the "License"); you may not use this file except
+// in compliance with the License. You may obtain a copy of the License at
+//
+// http://opensource.org/licenses/MIT
+//
+// Unless required by applicable law or agreed to in writing, software distributed 
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
+// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+// specific language governing permissions and limitations under the License.
+
+
+
+
+Bottle.py:
+"""
+Bottle is a fast and simple micro-framework for small web applications. It
+offers request dispatching (Routes) with url parameter support, templates,
+a built-in HTTP Server and adapters for many third party WSGI/HTTP-server and
+template engines - all in a single file and with no dependencies other than the
+Python Standard Library.
+Homepage and documentation: http://bottlepy.org/
+Copyright (c) 2016, Marcel Hellkamp.
+License: MIT (see LICENSE for details)
+"""
+
+
+
+
+base64:
+/*
+ * Copyright (c) 2003 Apple Computer, Inc. All rights reserved.
+ *
+ * @APPLE_LICENSE_HEADER_START@
+ * 
+ * Copyright (c) 1999-2003 Apple Computer, Inc.  All Rights Reserved.
+ * 
+ * This file contains Original Code and/or Modifications of Original Code
+ * as defined in and that are subject to the Apple Public Source License
+ * Version 2.0 (the 'License'). You may not use this file except in
+ * compliance with the License. Please obtain a copy of the License at
+ * http://www.opensource.apple.com/apsl/ and read it before using this
+ * file.
+ * 
+ * The Original Code and all software distributed under the License are
+ * distributed on an 'AS IS' basis, WITHOUT WARRANTY OF ANY KIND, EITHER
+ * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
+ * INCLUDING WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT.
+ * Please see the License for the specific language governing rights and
+ * limitations under the License.
+ * 
+ * @APPLE_LICENSE_HEADER_END@
+ */
+/* ====================================================================
+ * Copyright (c) 1995-1999 The Apache Group.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ *
+ * 3. All advertising materials mentioning features or use of this
+ *    software must display the following acknowledgment:
+ *    "This product includes software developed by the Apache Group
+ *    for use in the Apache HTTP server project (http://www.apache.org/)."
+ *
+ * 4. The names "Apache Server" and "Apache Group" must not be used to
+ *    endorse or promote products derived from this software without
+ *    prior written permission. For written permission, please contact
+ *    apache@apache.org.
+ *
+ * 5. Products derived from this software may not be called "Apache"
+ *    nor may "Apache" appear in their names without prior written
+ *    permission of the Apache Group.
+ *
+ * 6. Redistributions of any form whatsoever must retain the following
+ *    acknowledgment:
+ *    "This product includes software developed by the Apache Group
+ *    for use in the Apache HTTP server project (http://www.apache.org/)."
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE APACHE GROUP ``AS IS'' AND ANY
+ * EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE APACHE GROUP OR
+ * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ * ====================================================================
+ *
+ * This software consists of voluntary contributions made by many
+ * individuals on behalf of the Apache Group and was originally based
+ * on public domain software written at the National Center for
+ * Supercomputing Applications, University of Illinois, Urbana-Champaign.
+ * For more information on the Apache Group and the Apache HTTP server
+ * project, please see <http://www.apache.org/>.
+ *
+ */
+
+
+
+
 
 Wireless Common Collection Framework - WCCF
 
 Please refer to wccf/doc for all documentation.
-
-Distribution date: Mon Jan 30 12:42:10 MST 2017
-Distribution date: Thu Sep  6 09:03:27 PDT 2018
-Distribution date: Wed Oct  3 14:16:42 PDT 2018
-Distribution date: Wed Oct  3 14:17:34 PDT 2018
-Distribution date: Thu Oct  4 12:07:51 PDT 2018
-Distribution date: Thu Oct  4 12:12:27 PDT 2018
-Distribution date: Thu Oct  4 12:45:29 PDT 2018
-Distribution date: Thu Oct  4 12:56:36 PDT 2018
-Distribution date: Thu Oct  4 13:48:55 PDT 2018
-Distribution date: Thu Oct  4 13:51:34 PDT 2018
-Distribution date: Tue Oct 16 09:44:20 PDT 2018
-Distribution date: Tue Oct 16 09:46:56 PDT 2018
-Distribution date: Tue Oct 16 09:47:21 PDT 2018
-Distribution date: Tue Oct 16 10:43:39 PDT 2018
-Distribution date: Wed Oct 17 15:56:11 PDT 2018
-Distribution date: Tue Oct 23 12:57:11 PDT 2018
-Distribution date: Tue Oct 23 13:41:00 PDT 2018
-Distribution date: Tue Oct 23 14:09:04 PDT 2018
-Distribution date: Tue Oct 23 14:13:10 PDT 2018
-Distribution date: Tue Oct 23 14:19:46 PDT 2018
-Distribution date: Tue Oct 23 15:41:20 PDT 2018
-Distribution date: Tue Oct 23 15:41:27 PDT 2018
-Distribution date: Wed Oct 24 09:53:47 PDT 2018
-Distribution date: Wed Oct 24 13:20:26 PDT 2018
-Distribution date: Wed Oct 24 13:40:19 PDT 2018
-Distribution date: Wed Oct 24 14:07:58 PDT 2018
-Distribution date: Mon Oct 29 11:15:49 PDT 2018
-Distribution date: Mon Oct 29 11:21:48 PDT 2018
-Distribution date: Mon Oct 29 11:26:10 PDT 2018
-Distribution date: Mon Oct 29 11:31:00 PDT 2018
-Distribution date: Mon Oct 29 12:05:09 PDT 2018
-Distribution date: Mon Oct 29 12:11:29 PDT 2018
-Distribution date: Mon Oct 29 12:28:51 PDT 2018
-Distribution date: Mon Oct 29 13:10:11 PDT 2018
-Distribution date: Mon Oct 29 13:14:38 PDT 2018
-Distribution date: Tue Oct 30 11:13:15 PDT 2018
-Distribution date: Tue Oct 30 12:12:49 PDT 2018
-Distribution date: Thu Nov  1 11:07:26 PDT 2018
-Distribution date: Thu Nov  1 11:24:33 PDT 2018
-Distribution date: Thu Nov  1 11:25:55 PDT 2018
-Distribution date: Thu Nov  1 14:25:30 PDT 2018
-Distribution date: Thu Nov  1 14:28:51 PDT 2018
-Distribution date: Thu Nov  1 14:32:01 PDT 2018
-Distribution date: Thu Nov  1 14:36:05 PDT 2018
-Distribution date: Thu Nov  1 15:24:10 PDT 2018
-Distribution date: Fri Nov  2 08:18:14 PDT 2018
-Distribution date: Fri Nov  2 08:30:36 PDT 2018
-Distribution date: Fri Nov  2 08:33:10 PDT 2018
-Distribution date: Wed Nov 21 10:46:00 PST 2018
-Distribution date: Wed Nov 21 11:25:56 PST 2018
-Distribution date: Wed Nov 21 11:28:36 PST 2018
-Distribution date: Wed Nov 21 11:30:35 PST 2018
-Distribution date: Wed Nov 21 11:32:45 PST 2018
-Distribution date: Wed Nov 21 11:35:21 PST 2018
-Distribution date: Wed Nov 21 11:35:28 PST 2018
-Distribution date: Fri Nov 23 12:04:56 PST 2018
-Distribution date: Fri Nov 23 12:16:37 PST 2018
-Distribution date: Fri Nov 23 12:20:31 PST 2018
-Distribution date: Fri Nov 23 12:22:49 PST 2018
-Distribution date: Fri Nov 23 13:20:36 PST 2018
-Distribution date: Tue Nov 27 10:01:39 PST 2018
-Distribution date: Tue Dec  4 08:09:14 PST 2018
-Distribution date: Tue Dec  4 08:12:24 PST 2018
-Distribution date: Tue Dec  4 09:43:52 PST 2018
-Distribution date: Tue Dec  4 10:18:05 PST 2018
-Distribution date: Wed Dec  5 12:35:12 PST 2018
-Distribution date: Wed Dec  5 14:13:14 PST 2018
-Distribution date: Thu Dec  6 08:12:57 PST 2018
